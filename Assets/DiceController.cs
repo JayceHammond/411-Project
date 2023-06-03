@@ -7,8 +7,8 @@ public class DiceController : MonoBehaviour
 {
     public GameObject twentySided;
     public float rollSpeed;
-    
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -18,10 +18,10 @@ public class DiceController : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)){
-            GameObject roll = Instantiate(twentySided, this.transform, true);
-            roll.GetComponent<Rigidbody>().velocity = new Vector3(roll.GetComponent<Rigidbody>().velocity.x, roll.GetComponent<Rigidbody>().velocity.y, 
+            GameObject roll = Instantiate(twentySided, this.transform);
+            roll.GetComponent<Rigidbody>().velocity = new Vector3(roll.GetComponent<Rigidbody>().velocity.x + Random.Range(-20, 20), roll.GetComponent<Rigidbody>().velocity.y, 
             roll.GetComponent<Rigidbody>().velocity.z + Random.Range(20, 40));
-            Destroy(roll, 5);
+            //Destroy(roll, 5);
         }
     }
 }
