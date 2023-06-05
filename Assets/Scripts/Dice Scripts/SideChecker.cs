@@ -24,6 +24,9 @@ public class SideChecker : MonoBehaviour
         if(obj.tag == "Tray" && timer > 3){
             Debug.Log(sideVal);
             timer = 0;
+        }else if(obj.tag != "Tray" && timer > 3){
+            Debug.Log("reroll");
+            timer = 0;
         }
     }
 }
