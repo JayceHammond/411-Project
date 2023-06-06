@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class DiceController : MonoBehaviour
 {
     public GameObject twentySided;
     public float rollSpeed;
+    public TextMeshProUGUI displayText;
     // Start is called before the first frame update
 
     void Start()
@@ -17,6 +20,7 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        displayText.text = SideChecker.DisplayText();
         if(Input.GetKeyDown(KeyCode.K)){
             GameObject roll = Instantiate(twentySided, this.transform);
             roll.GetComponent<Rigidbody>().velocity = new Vector3(roll.GetComponent<Rigidbody>().velocity.x + Random.Range(-20, 20), roll.GetComponent<Rigidbody>().velocity.y, 
