@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class DMController : MonoBehaviour
@@ -7,6 +10,7 @@ public class DMController : MonoBehaviour
     private InputManager inputManager;
     private Transform cameraTransform;
     public float flySpeed;
+    public List<string> dmAssets = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +21,11 @@ public class DMController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        moveDM();
+
+    }
+
+    public void moveDM(){
         if(Input.GetKey(KeyCode.W)){
             transform.Translate(cameraTransform.transform.forward * flySpeed);
         }
@@ -36,4 +45,15 @@ public class DMController : MonoBehaviour
             transform.Translate(cameraTransform.up * -flySpeed);
         }
     }
+
+    public void getAssets(){
+        DirectoryInfo dmFolder = new("Assets/DM_Assets/Foliage");
+        FileInfo[] info = dmFolder.GetFiles("*.prefab");
+        info.Select(f => f.FullName).ToArray();
+        foreach(FileInfo f in info){
+            dmAssets.Add(f.ToString());
+            Debug.Log(f.ToString());
+        }
+    }
+
 }
