@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e02ee9878f0a2a1448209f2a1404c4f1
+guid: a726e4b433d847b4d8ed03b81e449361
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,169 +105,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump_0
+      name: Light_charge_0
       rect:
         serializedVersion: 2
-        x: 49
+        x: 7
+        y: 1
+        width: 44
+        height: 65
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae8d0cc5db0cf646b8417399ce2cc9f
+      internalID: -1658344880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_1
+      rect:
+        serializedVersion: 2
+        x: 129
         y: 0
-        width: 29
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 51
+        height: 65
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 935ae918fccd55945aed2192c0ca3057
-      internalID: 1836131543
+      spriteID: 471c7b5583fd3814db4b1dee3a1def8e
+      internalID: -302637698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump_1
+      name: Light_charge_2
       rect:
         serializedVersion: 2
-        x: 179
+        x: 266
         y: 0
-        width: 22
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3af5fcabbc3cf749b58e4a4bf4e1251
-      internalID: 1012744934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump_2
-      rect:
-        serializedVersion: 2
-        x: 306
-        y: 7
-        width: 30
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 583dcb322496a9845b3ec8d4d0b21394
-      internalID: -1966634521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump_3
-      rect:
-        serializedVersion: 2
-        x: 442
-        y: 10
-        width: 22
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e200826e8286882488ee94c47b1e91dd
-      internalID: -1947666271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump_4
-      rect:
-        serializedVersion: 2
-        x: 561
-        y: 17
-        width: 35
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7465578caae82e441bda360f89a8a09a
-      internalID: 949879748
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump_5
-      rect:
-        serializedVersion: 2
-        x: 691
-        y: 0
-        width: 34
+        width: 37
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8044854e7f9ee92468caf1e70a443cc6
-      internalID: -1428709583
+      spriteID: 757b49d7591c7f94087e61c035a54b85
+      internalID: 360747773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump_6
+      name: Light_charge_3
       rect:
         serializedVersion: 2
-        x: 819
+        x: 394
         y: 0
-        width: 32
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 64
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18dc9251f83bb2040895af9fb2f7914c
-      internalID: 798287225
+      spriteID: ed3f2dd7c081ee340abb97e1be16e89d
+      internalID: 1855030289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump_7
+      name: Light_charge_4
       rect:
         serializedVersion: 2
-        x: 955
+        x: 520
         y: 0
-        width: 24
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 90
+        height: 62
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58527e8c6ccaf68408529fced2197382
-      internalID: 702258610
+      spriteID: 4ca8baca27cc2e2498f5a4f0edc4f135
+      internalID: -323177019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_5
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 0
+        width: 120
+        height: 66
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a38e688d749944cbb824c148296a55
+      internalID: -904962676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_6
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 0
+        width: 125
+        height: 74
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca7cd449822e0246b6898b5fb7f9710
+      internalID: -516188513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_7
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 0
+        width: 124
+        height: 74
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14eba67231e97d469cf649b6c31769f
+      internalID: -2120942909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_8
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 125
+        height: 72
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca01e543b0c9c64c85ffd11eb81b2da
+      internalID: -1417303915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_9
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 0
+        width: 123
+        height: 70
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8679ac0092f5b44c911e4942546bb47
+      internalID: -577891587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_10
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 0
+        width: 121
+        height: 70
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e893e5a799238a7479f4c4aff0dc8fbd
+      internalID: -382483861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_11
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 0
+        width: 126
+        height: 66
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48eaede5c08f1a4b8d15b1c1ee01a63
+      internalID: 1310063530
       vertices: []
       indices: 
       edges: []
@@ -275,7 +359,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 73db9934ad9dad44ebd2aa8d4c8ee5d5
+    spriteID: 1b9444cef3f19b643990eaaa44e9a045
     internalID: 0
     vertices: []
     indices: 
@@ -283,14 +367,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jump_0: 1836131543
-      Jump_1: 1012744934
-      Jump_2: -1966634521
-      Jump_3: -1947666271
-      Jump_4: 949879748
-      Jump_5: -1428709583
-      Jump_6: 798287225
-      Jump_7: 702258610
+      Light_charge_0: -1658344880
+      Light_charge_1: -302637698
+      Light_charge_10: -382483861
+      Light_charge_11: 1310063530
+      Light_charge_2: 360747773
+      Light_charge_3: 1855030289
+      Light_charge_4: -323177019
+      Light_charge_5: -904962676
+      Light_charge_6: -516188513
+      Light_charge_7: -2120942909
+      Light_charge_8: -1417303915
+      Light_charge_9: -577891587
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
