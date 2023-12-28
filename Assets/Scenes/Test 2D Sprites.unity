@@ -311,10 +311,10 @@ PrefabInstance:
     - target: {fileID: 4344619592595703288, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_SpriteLibraryAsset
       value: 
-      objectReference: {fileID: 7108339969198208228, guid: b291df814aa65ef45aedcf93cd553a50, type: 3}
+      objectReference: {fileID: 7108339969198208228, guid: 683d612cf97ef4147a4b46d3cb24e5a9, type: 3}
     - target: {fileID: 4344619592595703289, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_SpriteKey
-      value: 5.6766784e-19
+      value: 5.1498805e-12
       objectReference: {fileID: 0}
     - target: {fileID: 4344619592595703290, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_Enabled
@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 4344619592595703294, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1424120910, guid: 077fd52967e4faa438ec8af31cab007f, type: 3}
+      objectReference: {fileID: -1235681712, guid: 415c07dc669a5be40855856bf96a1602, type: 3}
     - target: {fileID: 4344619592595703295, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_RootOrder
       value: 2
