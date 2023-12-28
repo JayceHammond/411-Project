@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 535420864621985025}
   - component: {fileID: 535420864621985054}
   m_Layer: 0
-  m_Name: Wizard
+  m_Name: Wizard_Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6667416492226738811}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.641, y: 0.4877652, z: -0.0007226467}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
