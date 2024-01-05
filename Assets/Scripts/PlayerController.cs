@@ -40,10 +40,19 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * GameTime.deltaTime;
         controller.Move(playerVelocity * GameTime.deltaTime);
     }
+
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Die") {
+            Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
+        }
+    }
 }
+
 
 
 public static class GameTime{
     public static bool isPaused = false;
     public static float deltaTime {get {return isPaused ?0 : Time.deltaTime;}}
 }
+

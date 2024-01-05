@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 
 
 public class DiceController : MonoBehaviour
@@ -20,13 +21,12 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        displayText.text = SideChecker.DisplayText();
         if(Input.GetKeyDown(KeyCode.K)){
-            GameObject roll = Instantiate(twentySided, this.transform);
-            roll.GetComponent<Rigidbody>().velocity = new Vector3(roll.GetComponent<Rigidbody>().velocity.x + Random.Range(-20, 20), roll.GetComponent<Rigidbody>().velocity.y, 
-            roll.GetComponent<Rigidbody>().velocity.z + Random.Range(20, 40));
+            GameObject roll = Instantiate(twentySided, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
+            roll.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
             roll.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
             Destroy(roll, 10);
         }
+        displayText.text = SideChecker.DisplayText();
     }
 }

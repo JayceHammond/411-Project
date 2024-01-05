@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tray
+  - Die
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dice
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
