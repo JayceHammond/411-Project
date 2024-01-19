@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4344619592595703291, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344619592595703291, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4344619592595703295, guid: a90a122dbe2110942bcf6cd56acaead6, type: 3}
       propertyPath: m_RootOrder
