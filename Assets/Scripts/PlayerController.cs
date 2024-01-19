@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -43,8 +44,11 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * GameTime.deltaTime;
         controller.Move(playerVelocity * GameTime.deltaTime);
 
-        if(movement.x > 0 || movement.y > 0){
+        if(math.abs(movement.x) > 0 || math.abs(movement.y) > 0){
             animator.SetTrigger("Walk");
+        }else{
+            animator.ResetTrigger("Walk");
+            animator.SetTrigger("Idle");
         }
     }
 
