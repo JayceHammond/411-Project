@@ -161,6 +161,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &330034055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330034044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05442ab175e05944aaa80afb49f822af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647576362
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 5131084569766579060, guid: 18028615e026e39498b62ebc35318341, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -868067051, guid: 52f7439094d166741a9dfa150bc28adb, type: 3}
     - target: {fileID: 5685427409203480204, guid: 18028615e026e39498b62ebc35318341, type: 3}
       propertyPath: m_RootOrder
       value: 4

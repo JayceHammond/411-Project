@@ -15,12 +15,15 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,10 @@ public class PlayerController : MonoBehaviour
         controller.Move(move * GameTime.deltaTime * playerSpeed);
         playerVelocity.y += gravityValue * GameTime.deltaTime;
         controller.Move(playerVelocity * GameTime.deltaTime);
+
+        if(movement.x > 0 || movement.y > 0){
+            animator.SetTrigger("Walk");
+        }
     }
 
 
