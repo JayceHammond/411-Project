@@ -55,10 +55,14 @@ public class PlayerController : MonoBehaviour
             }else if(movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180){
                 controller.transform.Rotate(0f, -180f, 0f, Space.Self);
             }
-        }else{
 
+        }else{
             animator.ResetTrigger("Walk");
             animator.SetTrigger("Idle");
+        }
+
+        if(movement.y > 0){
+            animator.SetTrigger("Jumping");
         }
     }
 
