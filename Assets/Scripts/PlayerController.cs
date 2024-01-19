@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
+    private GameObject sprite;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -45,8 +46,17 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerVelocity * GameTime.deltaTime);
 
         if(math.abs(movement.x) > 0 || math.abs(movement.y) > 0){
+
+            animator.ResetTrigger("Idle");
             animator.SetTrigger("Walk");
+
+            if(movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0){
+                controller.transform.Rotate(0f, 180f, 0f, Space.Self);
+            }else if(movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180){
+                controller.transform.Rotate(0f, -180f, 0f, Space.Self);
+            }
         }else{
+
             animator.ResetTrigger("Walk");
             animator.SetTrigger("Idle");
         }
