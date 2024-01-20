@@ -180,4 +180,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 1
   jumpHeight: 1
-  gravityValue: 0
+  gravityValue: -1
