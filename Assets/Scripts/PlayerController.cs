@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
-    private GameObject sprite;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
