@@ -48,16 +48,16 @@ public class PlayerController : MonoBehaviour
             animator.ResetTrigger("Idle");
             animator.SetTrigger("Walk");
 
+            move.y = 0f;
+
             move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
             
-            move.y = 0f;
-            
             //To get proper oritation? of the character based on where they are walking
             if(movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0){
-                controller.transform.Rotate(0f, 180f, 0f, Space.Self);
+                controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }else if(movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180){
-                controller.transform.Rotate(0f, -180f, 0f, Space.Self);
+                controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
 
         }else{
