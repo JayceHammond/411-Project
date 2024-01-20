@@ -66,8 +66,8 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Idle");
         }
 
-        //Conditonals for Jump movement and Animation
-        if(movement.y > 0){
+        //Conditonals for Jump movement and Animation (Not Working due to plane movement)
+        if(-1 > 0){
 
             //playerVelocity.y = jumpHeight;
 
