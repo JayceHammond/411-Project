@@ -59,6 +59,6 @@ public class InputManager : MonoBehaviour
     }
 
     public bool PlayerRunning(){
-        return Input.GetKey(KeyCode.LeftShift);
+        return Input.GetKey(KeyCode.LeftShift) && playerControls.Player.Movement.IsPressed();
     }
 }

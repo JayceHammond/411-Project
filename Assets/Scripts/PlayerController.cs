@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         //Conditonals for Defend movement and Animation
         if(inputManager.PlayerDefended()){
             animator.SetTrigger("Defending");
+            animator.ResetTrigger("Idle");
         }
 
         //Conditonals for Base Attack action and Animation
