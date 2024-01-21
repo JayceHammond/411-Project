@@ -8,6 +8,7 @@ using Cinemachine;
 
 public class DiceController : MonoBehaviour
 {
+    public static int dieVal = 0;
     public static GameObject twentySided;
     public GameObject objD20;
     public float rollSpeed;
@@ -31,7 +32,6 @@ public class DiceController : MonoBehaviour
         roll.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
         roll.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
         Destroy(roll, 10);
-        //displayText.text = SideChecker.DisplayText();
-        return SideChecker.sideVal;
+        return SideChecker.sharedSideVal;
     }
 }
