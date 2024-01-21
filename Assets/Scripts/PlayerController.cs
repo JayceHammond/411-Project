@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
 
+            if(inputManager.PlayerBaseAttack()){
+            animator.SetTrigger("Attacking4");
+        }
+
         }
         else if (math.abs(movement.x) > 0 || math.abs(movement.y) > 0)  
         {
