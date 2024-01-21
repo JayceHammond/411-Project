@@ -610,6 +610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 5131084569766579061, guid: 18028615e026e39498b62ebc35318341, type: 3}
+      propertyPath: m_SpriteLibraryAsset
+      value: 
+      objectReference: {fileID: 7108339969198208228, guid: b291df814aa65ef45aedcf93cd553a50, type: 3}
     - target: {fileID: 5685427409203480204, guid: 18028615e026e39498b62ebc35318341, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.278
