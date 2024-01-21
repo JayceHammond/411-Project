@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 1.0f;
     [SerializeField]
     private float jumpHeight = 3.0f;
     [SerializeField]
@@ -41,27 +41,56 @@ public class PlayerController : MonoBehaviour
         //Vectors that grab the movement from the player's input to move the char
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
-       
-       //Conditonals for walking to try to keep the movement and the animations in the same place
-        if(math.abs(movement.x) > 0 || math.abs(movement.y) > 0){
 
+        //Conditonals for movement to try to keep the movement and the animations in the same place
+        if ((math.abs(movement.x) > 0 || math.abs(movement.y) > 0) && inputManager.PlayerRunning()){
+            playerSpeed = 2.0f;
             animator.ResetTrigger("Idle");
+            animator.ResetTrigger("Walk");
+            animator.SetTrigger("Running");
+            
+            move.y = 0f;
+
+            move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+            controller.Move(move * GameTime.deltaTime * playerSpeed);
+
+            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            {
+                controller.transform.Rotate(0f, 180f, 0f, Space.World);
+            }
+            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            {
+                controller.transform.Rotate(0f, -180f, 0f, Space.World);
+            }
+
+        }
+        else if (math.abs(movement.x) > 0 || math.abs(movement.y) > 0)  
+        {
+            playerSpeed = 1.0f;
+            animator.ResetTrigger("Idle");
+            animator.ResetTrigger("Running");
             animator.SetTrigger("Walk");
 
             move.y = 0f;
 
             move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
-            
+
             //To get proper oritation? of the character based on where they are walking
-            if(movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0){
+            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
-            }else if(movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180){
+            }
+            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            {
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
 
-        }else{
+        }
+        else
+        {
             animator.ResetTrigger("Walk");
+            animator.ResetTrigger("Running");
             animator.SetTrigger("Idle");
         }
 
@@ -75,6 +104,27 @@ public class PlayerController : MonoBehaviour
 
             animator.SetTrigger("Jumping");
         }
+
+        //Conditonals for Defend movement and Animation
+        if(inputManager.PlayerDefended()){
+            animator.SetTrigger("Defending");
+        }
+
+        //Conditonals for Base Attack action and Animation
+        if(inputManager.PlayerBaseAttack()){
+            animator.SetTrigger("Attacking");
+        }
+
+        //Conditonals for Attack 2 action and Animation
+        if(inputManager.PlayerSecondAttack()){
+            animator.SetTrigger("Attacking2");
+        }
+
+        //Conditonals for Attack 3 action and Animation
+        if(inputManager.PlayerThirdAttack()){
+            animator.SetTrigger("Attacking3");
+        }
+
     }
 
 

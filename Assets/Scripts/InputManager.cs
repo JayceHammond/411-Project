@@ -38,7 +38,27 @@ public class InputManager : MonoBehaviour
         return playerControls.Player.Look.ReadValue<Vector2>();
     }
 
+    public bool PlayerDefended(){
+        return playerControls.Player.Defending.IsPressed();
+    }
+
+    public bool PlayerBaseAttack(){
+        return playerControls.Player.BaseAttack.triggered;
+    }
+
+    public bool PlayerSecondAttack(){
+        return playerControls.Player.Attack2.triggered;
+    }
+
+    public bool PlayerThirdAttack(){
+        return playerControls.Player.Attack3.triggered;
+    }
+
     public bool PlayerJumpedThisFrame(){
         return playerControls.Player.Jump.triggered;
+    }
+
+    public bool PlayerRunning(){
+        return Input.GetKey(KeyCode.LeftShift);
     }
 }
