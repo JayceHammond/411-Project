@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         if ((math.abs(movement.x) > 0 || math.abs(movement.y) > 0) && inputManager.PlayerRunning()){
             playerSpeed = 2.0f;
             animator.ResetTrigger("Idle");
-            animator.ResetTrigger("Walk");
+            animator.ResetTrigger("Walking");
             animator.SetTrigger("Running");
             
             move.y = 0f;
