@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour
             }
 
             if(inputManager.PlayerBaseAttack()){
-            animator.SetTrigger("Attacking4");
-        }
+                animator.SetTrigger("RunningAttack");
+            }
 
         }
         else if (math.abs(movement.x) > 0 || math.abs(movement.y) > 0)  
@@ -128,6 +128,10 @@ public class PlayerController : MonoBehaviour
         //Conditonals for Attack 3 action and Animation
         if(inputManager.PlayerThirdAttack()){
             animator.SetTrigger("Attacking3");
+        }
+
+        if(inputManager.PlayerForthAttack()){
+            animator.SetTrigger("Attacking4");
         }
 
     }
