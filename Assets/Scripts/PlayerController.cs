@@ -73,14 +73,14 @@ public class PlayerController : MonoBehaviour
             playerSpeed = 1.0f;
             animator.ResetTrigger("Idle");
             animator.ResetTrigger("Running");
-            animator.SetTrigger("Walk");
+            animator.SetTrigger("Walking");
 
             move.y = 0f;
 
             move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            //To get proper oritation? of the character based on where they are walking
+            //To get proper oritation? of the character based on where they are Walking
             if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            animator.ResetTrigger("Walk");
+            animator.ResetTrigger("Walking");
             animator.ResetTrigger("Running");
             animator.SetTrigger("Idle");
         }
@@ -116,8 +116,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //Conditonals for Base Attack action and Animation
-        if(inputManager.PlayerBaseAttack()){
-            animator.SetTrigger("Attacking");
+        if(inputManager.PlayerBaseAttack() && !inputManager.PlayerRunning()){
+            animator.SetTrigger("Attacking1");
         }
 
         //Conditonals for Attack 2 action and Animation

@@ -43,24 +43,24 @@ public class InputManager : MonoBehaviour
     }
 
     public bool PlayerBaseAttack(){
-        return playerControls.Player.BaseAttack.triggered;
+        return playerControls.Player.Attacking1.triggered;
     }
 
     public bool PlayerSecondAttack(){
-        return playerControls.Player.Attack2.triggered;
+        return playerControls.Player.Attacking2.triggered;
     }
 
     public bool PlayerThirdAttack(){
-        return playerControls.Player.Attack3.triggered;
+        return playerControls.Player.Attacking3.triggered;
     }
 
     public bool PlayerForthAttack(){
-        return playerControls.Player.Attack4.triggered;
+        return playerControls.Player.Attacking4.triggered;
     }
 
 
     public bool PlayerJumpedThisFrame(){
-        return playerControls.Player.Jump.triggered;
+        return playerControls.Player.Jumping.triggered;
     }
 
     public bool PlayerRunning(){

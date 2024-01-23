@@ -46,7 +46,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Jumping"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e421b082-d685-4e53-b498-e7696d12edfb"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +55,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Base Attack"",
+                    ""name"": ""Attacking1"",
                     ""type"": ""Button"",
                     ""id"": ""032e657d-6308-4979-ba6a-5b9fc5c9cfd3"",
                     ""expectedControlType"": ""Button"",
@@ -64,7 +64,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack 2"",
+                    ""name"": ""Attacking2"",
                     ""type"": ""Button"",
                     ""id"": ""b308e1cf-8ea3-40ff-8146-e1df6dbe9ba2"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack 3"",
+                    ""name"": ""Attacking3"",
                     ""type"": ""Button"",
                     ""id"": ""22c2ef8a-275a-4785-b8b5-9937582f5b86"",
                     ""expectedControlType"": ""Button"",
@@ -82,7 +82,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sprint Attacking"",
+                    ""name"": ""Attacking4"",
                     ""type"": ""Button"",
                     ""id"": ""5f957982-4b8e-437b-97aa-3a03479fe1bb"",
                     ""expectedControlType"": ""Button"",
@@ -172,185 +172,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Base Attack"",
+                    ""action"": ""Attacking1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Sprint Attacking W"",
-                    ""id"": ""c254ef09-ba6e-4605-bc43-e8325fa7fec7"",
-                    ""path"": ""TwoModifiers"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier1"",
-                    ""id"": ""c918f881-fcb2-4269-85e2-e93216b1cfa8"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""modifier2"",
-                    ""id"": ""bda07b62-3d35-41dc-a6e3-92267c3e0da4"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""582c4ef6-7881-48c7-bbfc-999e55d94d92"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Sprint Attacking S"",
-                    ""id"": ""5b186aef-28b2-4b51-87df-48694fef7f12"",
-                    ""path"": ""TwoModifiers"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier1"",
-                    ""id"": ""57dc2bf2-2863-446a-8430-99cf8e142d0b"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""modifier2"",
-                    ""id"": ""7a4c48b0-1f6a-4e0b-a5e0-63cf8d28f9f8"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""d33a7afa-dffc-40b2-a3af-e5e5a2bcd038"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Sprint Attacking A"",
-                    ""id"": ""e7ed5a21-714a-4cb2-aca0-f7fdcc89affe"",
-                    ""path"": ""TwoModifiers"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier1"",
-                    ""id"": ""c9f515e6-b4b6-45fd-8489-7de4c9bcf84a"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""modifier2"",
-                    ""id"": ""9e439913-c304-4bbb-bf8a-0b20ca2104c2"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""8e402d69-19c4-4276-ace7-94558d0d309d"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Sprint Attacking D"",
-                    ""id"": ""5b21fd5f-f7cf-4ca8-9526-b516c18ade1f"",
-                    ""path"": ""TwoModifiers"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier1"",
-                    ""id"": ""f71fc623-afb5-47bf-bfab-15150cddf3d3"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""modifier2"",
-                    ""id"": ""79cb2de3-dde4-4095-ad0a-ee6918e6aae3"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""8d190468-2553-4982-95fc-3e7664eb9f0e"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint Attacking"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -370,14 +194,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Jumping"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""fe86b52c-10c6-4496-972c-b47140c46624"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -392,7 +216,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack 2"",
+                    ""action"": ""Attacking2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -403,7 +227,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack 3"",
+                    ""action"": ""Attacking3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -472,6 +296,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Running"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec807984-41a0-4ad5-b742-106bc87bd9d2"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attacking4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -482,11 +317,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Running = m_Player.FindAction("Running", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_BaseAttack = m_Player.FindAction("Base Attack", throwIfNotFound: true);
-        m_Player_Attack2 = m_Player.FindAction("Attack 2", throwIfNotFound: true);
-        m_Player_Attack3 = m_Player.FindAction("Attack 3", throwIfNotFound: true);
-        m_Player_SprintAttacking = m_Player.FindAction("Sprint Attacking", throwIfNotFound: true);
+        m_Player_Jumping = m_Player.FindAction("Jumping", throwIfNotFound: true);
+        m_Player_Attacking1 = m_Player.FindAction("Attacking1", throwIfNotFound: true);
+        m_Player_Attacking2 = m_Player.FindAction("Attacking2", throwIfNotFound: true);
+        m_Player_Attacking3 = m_Player.FindAction("Attacking3", throwIfNotFound: true);
+        m_Player_Attacking4 = m_Player.FindAction("Attacking4", throwIfNotFound: true);
         m_Player_Defending = m_Player.FindAction("Defending", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
     }
@@ -552,11 +387,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Running;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_BaseAttack;
-    private readonly InputAction m_Player_Attack2;
-    private readonly InputAction m_Player_Attack3;
-    private readonly InputAction m_Player_SprintAttacking;
+    private readonly InputAction m_Player_Jumping;
+    private readonly InputAction m_Player_Attacking1;
+    private readonly InputAction m_Player_Attacking2;
+    private readonly InputAction m_Player_Attacking3;
+    private readonly InputAction m_Player_Attacking4;
     private readonly InputAction m_Player_Defending;
     private readonly InputAction m_Player_Look;
     public struct PlayerActions
@@ -565,11 +400,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Running => m_Wrapper.m_Player_Running;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @BaseAttack => m_Wrapper.m_Player_BaseAttack;
-        public InputAction @Attack2 => m_Wrapper.m_Player_Attack2;
-        public InputAction @Attack3 => m_Wrapper.m_Player_Attack3;
-        public InputAction @SprintAttacking => m_Wrapper.m_Player_SprintAttacking;
+        public InputAction @Jumping => m_Wrapper.m_Player_Jumping;
+        public InputAction @Attacking1 => m_Wrapper.m_Player_Attacking1;
+        public InputAction @Attacking2 => m_Wrapper.m_Player_Attacking2;
+        public InputAction @Attacking3 => m_Wrapper.m_Player_Attacking3;
+        public InputAction @Attacking4 => m_Wrapper.m_Player_Attacking4;
         public InputAction @Defending => m_Wrapper.m_Player_Defending;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -587,21 +422,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Running.started += instance.OnRunning;
             @Running.performed += instance.OnRunning;
             @Running.canceled += instance.OnRunning;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @BaseAttack.started += instance.OnBaseAttack;
-            @BaseAttack.performed += instance.OnBaseAttack;
-            @BaseAttack.canceled += instance.OnBaseAttack;
-            @Attack2.started += instance.OnAttack2;
-            @Attack2.performed += instance.OnAttack2;
-            @Attack2.canceled += instance.OnAttack2;
-            @Attack3.started += instance.OnAttack3;
-            @Attack3.performed += instance.OnAttack3;
-            @Attack3.canceled += instance.OnAttack3;
-            @SprintAttacking.started += instance.OnSprintAttacking;
-            @SprintAttacking.performed += instance.OnSprintAttacking;
-            @SprintAttacking.canceled += instance.OnSprintAttacking;
+            @Jumping.started += instance.OnJumping;
+            @Jumping.performed += instance.OnJumping;
+            @Jumping.canceled += instance.OnJumping;
+            @Attacking1.started += instance.OnAttacking1;
+            @Attacking1.performed += instance.OnAttacking1;
+            @Attacking1.canceled += instance.OnAttacking1;
+            @Attacking2.started += instance.OnAttacking2;
+            @Attacking2.performed += instance.OnAttacking2;
+            @Attacking2.canceled += instance.OnAttacking2;
+            @Attacking3.started += instance.OnAttacking3;
+            @Attacking3.performed += instance.OnAttacking3;
+            @Attacking3.canceled += instance.OnAttacking3;
+            @Attacking4.started += instance.OnAttacking4;
+            @Attacking4.performed += instance.OnAttacking4;
+            @Attacking4.canceled += instance.OnAttacking4;
             @Defending.started += instance.OnDefending;
             @Defending.performed += instance.OnDefending;
             @Defending.canceled += instance.OnDefending;
@@ -618,21 +453,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Running.started -= instance.OnRunning;
             @Running.performed -= instance.OnRunning;
             @Running.canceled -= instance.OnRunning;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @BaseAttack.started -= instance.OnBaseAttack;
-            @BaseAttack.performed -= instance.OnBaseAttack;
-            @BaseAttack.canceled -= instance.OnBaseAttack;
-            @Attack2.started -= instance.OnAttack2;
-            @Attack2.performed -= instance.OnAttack2;
-            @Attack2.canceled -= instance.OnAttack2;
-            @Attack3.started -= instance.OnAttack3;
-            @Attack3.performed -= instance.OnAttack3;
-            @Attack3.canceled -= instance.OnAttack3;
-            @SprintAttacking.started -= instance.OnSprintAttacking;
-            @SprintAttacking.performed -= instance.OnSprintAttacking;
-            @SprintAttacking.canceled -= instance.OnSprintAttacking;
+            @Jumping.started -= instance.OnJumping;
+            @Jumping.performed -= instance.OnJumping;
+            @Jumping.canceled -= instance.OnJumping;
+            @Attacking1.started -= instance.OnAttacking1;
+            @Attacking1.performed -= instance.OnAttacking1;
+            @Attacking1.canceled -= instance.OnAttacking1;
+            @Attacking2.started -= instance.OnAttacking2;
+            @Attacking2.performed -= instance.OnAttacking2;
+            @Attacking2.canceled -= instance.OnAttacking2;
+            @Attacking3.started -= instance.OnAttacking3;
+            @Attacking3.performed -= instance.OnAttacking3;
+            @Attacking3.canceled -= instance.OnAttacking3;
+            @Attacking4.started -= instance.OnAttacking4;
+            @Attacking4.performed -= instance.OnAttacking4;
+            @Attacking4.canceled -= instance.OnAttacking4;
             @Defending.started -= instance.OnDefending;
             @Defending.performed -= instance.OnDefending;
             @Defending.canceled -= instance.OnDefending;
@@ -660,11 +495,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRunning(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnBaseAttack(InputAction.CallbackContext context);
-        void OnAttack2(InputAction.CallbackContext context);
-        void OnAttack3(InputAction.CallbackContext context);
-        void OnSprintAttacking(InputAction.CallbackContext context);
+        void OnJumping(InputAction.CallbackContext context);
+        void OnAttacking1(InputAction.CallbackContext context);
+        void OnAttacking2(InputAction.CallbackContext context);
+        void OnAttacking3(InputAction.CallbackContext context);
+        void OnAttacking4(InputAction.CallbackContext context);
         void OnDefending(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
     }
