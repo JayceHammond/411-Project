@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        else
+        else if(math.abs(movement.x) == 0 && math.abs(movement.y) == 0)
         {
             animator.ResetTrigger("Walking");
             animator.ResetTrigger("Running");
