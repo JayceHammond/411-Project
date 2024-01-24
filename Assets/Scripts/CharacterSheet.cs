@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
 using UnityEngine;
+using Skill = SkillController.Skill;
 
 public class CharacterSheet : MonoBehaviour
 {
@@ -25,7 +27,24 @@ public class CharacterSheet : MonoBehaviour
     public int INT;
     public int WIS;
     public int CHAR;
-    
+
+    //SKILLS
+    public Skill acrobatics;
+    public Skill arcana;
+    public Skill athletics;
+    public Skill crafting;
+    public Skill deception;
+    public Skill diplomacy;
+    public Skill intimidation;
+    public Skill medicine;
+    public Skill nature;
+    public Skill occultism;
+    public Skill performance;
+    public Skill religion;
+    public Skill society;
+    public Skill stealth;
+    public Skill survival;
+    public Skill thievery;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +65,7 @@ public class CharacterSheet : MonoBehaviour
     public int calculateStatBonus(int stat){
         return (stat - 10)/ 2;
     }
+
 
     public void calculateRoll(int stat){
         int statBonus = calculateStatBonus(stat);
