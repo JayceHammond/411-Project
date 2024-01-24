@@ -119,6 +119,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -131,7 +144,7 @@ TextureImporter:
         width: 21
         height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.42647073}
+      pivot: {x: 0.3730636, y: 0.7643939}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +165,7 @@ TextureImporter:
         width: 21
         height: 64
       alignment: 9
-      pivot: {x: 0.57469684, y: 0.43464068}
+      pivot: {x: 0.3841015, y: 0.77888125}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +186,7 @@ TextureImporter:
         width: 21
         height: 64
       alignment: 9
-      pivot: {x: 0.5248994, y: 0.42647073}
+      pivot: {x: 0.33994985, y: 0.78069216}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +207,7 @@ TextureImporter:
         width: 21
         height: 64
       alignment: 9
-      pivot: {x: 0.5746954, y: 0.42647073}
+      pivot: {x: 0.36754498, y: 0.78069216}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +228,7 @@ TextureImporter:
         width: 22
         height: 64
       alignment: 9
-      pivot: {x: 0.52376765, y: 0.40196094}
+      pivot: {x: 0.32615244, y: 0.77888125}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +249,7 @@ TextureImporter:
         width: 21
         height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.4183008}
+      pivot: {x: 0.32339332, y: 0.78793585}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,7 +270,7 @@ TextureImporter:
         width: 27
         height: 65
       alignment: 9
-      pivot: {x: 0.5193658, y: 0.43564612}
+      pivot: {x: 0.42702767, y: 0.7567602}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
