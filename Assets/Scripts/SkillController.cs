@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
-    Dictionary<string, int> proficiencyRanks = new Dictionary<string,int>(){
+    public static Dictionary<string, int> proficiencyRanks = new Dictionary<string,int>(){
         {"UNTRAINED", 0},
         {"TRAINED", 2},
         {"EXPERT", 4},
