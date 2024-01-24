@@ -43,7 +43,15 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
 
         //Conditonals for movement to try to keep the movement and the animations in the same place
-        if ((math.abs(movement.x) > 0 || math.abs(movement.y) > 0) && inputManager.PlayerRunning()){
+        if(math.abs(movement.x) == 0 && math.abs(movement.y) == 0)
+        {
+            animator.SetTrigger("Idle");
+            animator.ResetTrigger("Walking");
+            animator.ResetTrigger("Running");
+            
+        }
+        else if ((math.abs(movement.x) > 0 || math.abs(movement.y) > 0) && inputManager.PlayerRunning())
+        {
             playerSpeed = 2.0f;
             animator.ResetTrigger("Idle");
             animator.ResetTrigger("Walking");
@@ -91,12 +99,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        else if(math.abs(movement.x) == 0 && math.abs(movement.y) == 0)
-        {
-            animator.ResetTrigger("Walking");
-            animator.ResetTrigger("Running");
-            animator.SetTrigger("Idle");
-        }
+        
 
         //Conditonals for Jump movement and Animation (Not Working due to plane movement)
         if(-1 > 0){
@@ -112,7 +115,6 @@ public class PlayerController : MonoBehaviour
         //Conditonals for Defend movement and Animation
         if(inputManager.PlayerDefended()){
             animator.SetTrigger("Defending");
-            animator.ResetTrigger("Idle");
         }
 
         //Conditonals for Base Attack action and Animation

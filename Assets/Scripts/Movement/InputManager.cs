@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -64,6 +65,6 @@ public class InputManager : MonoBehaviour
     }
 
     public bool PlayerRunning(){
-        return Input.GetKey(KeyCode.LeftShift) && playerControls.Player.Movement.IsPressed();
+        return Input.GetKey(KeyCode.LeftShift) && (GetPlayerMovement() != null);
     }
 }
