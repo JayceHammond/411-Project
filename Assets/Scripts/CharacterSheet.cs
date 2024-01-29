@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -20,6 +21,28 @@ public class CharacterSheet : MonoBehaviour
     public int playerHeroPoint;
     public int playerSpeed;
 
+    //SKILLS
+    public Dictionary<string, string> skills = new Dictionary<string, string>(){
+        {"Acrobatics", "EXPERT"},
+        {"Arcana", "UNTRAINED"},
+        {"Athletics", "TRAINED"},
+        {"Crafting", "UNTRAINED"},
+        {"Deception", "UNTRAINED"},
+        {"Diplomacy", "UNTRAINED"},
+        {"Intimidation", "EXPERT"},
+        {"Medicine", "EXPERT"},
+        {"Nature", "TRAINED"},
+        {"Occultism","UNTRAINED"},
+        {"Performance", "TRAINED"},
+        {"Religion", "UNTRAINED"},
+        {"Society", "UNTRAINED"},
+        {"Stealth", "EXPERT"},
+        {"Survival", "TRAINED"},
+        {"Thievery", "TRAINED"}
+    };
+
+    
+
     //STATS
     public int STR;
     public int DEX;
@@ -28,23 +51,6 @@ public class CharacterSheet : MonoBehaviour
     public int WIS;
     public int CHAR;
 
-    //SKILLS
-    public Skill acrobatics;
-    public Skill arcana;
-    public Skill athletics;
-    public Skill crafting;
-    public Skill deception;
-    public Skill diplomacy;
-    public Skill intimidation;
-    public Skill medicine;
-    public Skill nature;
-    public Skill occultism;
-    public Skill performance;
-    public Skill religion;
-    public Skill society;
-    public Skill stealth;
-    public Skill survival;
-    public Skill thievery;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +62,7 @@ public class CharacterSheet : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)){
-            rollAthletics();
+            rollAcrobatics();
         }
         Debug.Log(finalRoll);
         Debug.Log(SideChecker.sharedSideVal);
@@ -67,66 +73,82 @@ public class CharacterSheet : MonoBehaviour
     }
 
 
-    public void calculateRoll(int stat){
+    public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
         DiceController.rollDie(this.transform);
-        StartCoroutine(WaitForRoll(statBonus));
+        StartCoroutine(WaitForRoll(statBonus, profBon));
     }
 
-    IEnumerator WaitForRoll(int statBonus){
+    IEnumerator WaitForRoll(int statBonus, int profBon){
         yield return new WaitUntil(SideChecker.isDone);
-        finalRoll = SideChecker.sharedSideVal + statBonus;
+        finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
         DiceController.displayText.text = finalRoll.ToString();
         SideChecker.allowedToCalculate = false;
     }
 
     //SKILL CHECKS
     public void rollAcrobatics(){
-        calculateRoll(DEX);
+        int rankBonus = SkillController.proficiencyRanks[skills["Acrobatics"]];
+        calculateRoll(DEX, rankBonus);
     }
     public void rollArcana(){
-        calculateRoll(INT);
+        int rankBonus = SkillController.proficiencyRanks[skills["Arcana"]];
+        calculateRoll(INT,rankBonus);
     }
     public void rollAthletics(){
-        calculateRoll(STR);
+        int rankBonus = SkillController.proficiencyRanks[skills["Athletics"]];
+        calculateRoll(STR, rankBonus);
     }
     public void rollCrafting(){
-        calculateRoll(INT);
+        int rankBonus = SkillController.proficiencyRanks[skills["Crafting"]];
+        calculateRoll(INT, rankBonus);
     }
     public void rollDeception(){
-        calculateRoll(CHAR);
+        int rankBonus = SkillController.proficiencyRanks[skills["Deception"]];
+        calculateRoll(CHAR, rankBonus);
     }
     public void rollDiplomacy(){
-        calculateRoll(CHAR);
+        int rankBonus = SkillController.proficiencyRanks[skills["Diplomacy"]];
+        calculateRoll(CHAR, rankBonus);
     }
     public void rollInitimidation(){
-        calculateRoll(CHAR);
+        int rankBonus = SkillController.proficiencyRanks[skills["Intimidation"]];
+        calculateRoll(CHAR, rankBonus);
     }
     public void rollMedicine(){
-        calculateRoll(WIS);
+        int rankBonus = SkillController.proficiencyRanks[skills["Medicine"]];
+        calculateRoll(WIS, rankBonus);
     }
     public void rollNature(){
-        calculateRoll(WIS);
+        int rankBonus = SkillController.proficiencyRanks[skills["Nature"]];
+        calculateRoll(WIS, rankBonus);
     }   
     public void rollOccultism(){
-        calculateRoll(INT);
+        int rankBonus = SkillController.proficiencyRanks[skills["Occultism"]];
+        calculateRoll(INT, rankBonus);
     }
     public void rollPerformance(){
-        calculateRoll(CHAR);
+        int rankBonus = SkillController.proficiencyRanks[skills["Performance"]];
+        calculateRoll(CHAR, rankBonus);
     }
     public void rollReligion(){
-        calculateRoll(WIS);
+        int rankBonus = SkillController.proficiencyRanks[skills["Religion"]];
+        calculateRoll(WIS, rankBonus);
     }
     public void rollSociety(){
-        calculateRoll(INT);
+        int rankBonus = SkillController.proficiencyRanks[skills["Society"]];
+        calculateRoll(INT, rankBonus);
     }
     public void rollStealth(){
-        calculateRoll(DEX);
+        int rankBonus = SkillController.proficiencyRanks[skills["Stealth"]];
+        calculateRoll(DEX, rankBonus);
     }   
     public void rollSurvival(){
-        calculateRoll(WIS);
+        int rankBonus = SkillController.proficiencyRanks[skills["Survival"]];
+        calculateRoll(WIS, rankBonus);
     }
     public void rollThievery(){
-        calculateRoll(DEX);
+        int rankBonus = SkillController.proficiencyRanks[skills["Thievery"]];
+        calculateRoll(DEX, rankBonus);
     }   
 }
