@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 1.0f;
     [SerializeField]
+    private float speedLimit = 4f;
+
     private float jumpHeight = 3.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
@@ -43,6 +46,8 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
 
         //Conditonals for movement to try to keep the movement and the animations in the same place
+
+        //Idle
         if(math.abs(movement.x) == 0 && math.abs(movement.y) == 0)
         {
             animator.SetTrigger("Idle");
@@ -50,9 +55,14 @@ public class PlayerController : MonoBehaviour
             animator.ResetTrigger("Running");
             
         }
-        else if ((math.abs(movement.x) > 0 || math.abs(movement.y) > 0) && inputManager.PlayerRunning())
+        //Sprinting
+        else if (math.abs(movement.x) > 0 || (math.abs(movement.y) > 0)  && inputManager.PlayerRunning())
         {
-            playerSpeed = 2.0f;
+            playerSpeed *= 2;
+            if(playerSpeed >= speedLimit){
+                playerSpeed = speedLimit;
+            }
+            
             animator.ResetTrigger("Idle");
             animator.ResetTrigger("Walking");
             animator.SetTrigger("Running");
@@ -76,6 +86,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        //Walking
         else if (math.abs(movement.x) > 0 || math.abs(movement.y) > 0)  
         {
             playerSpeed = 1.0f;
