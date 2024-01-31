@@ -28,8 +28,10 @@ public class DMCameraController : MonoBehaviour
     {
         sensitivity += Input.mouseScrollDelta.y;
         if(sensitivity < 0 ){
-            sensitivity = 1/math.abs(sensitivity);
-            //Debug.Log(sensitivity);
+            sensitivity = math.abs(sensitivity * 0.25f);
+            Debug.Log(sensitivity);
+        }else if(sensitivity >= 1) {
+            sensitivity = (int)sensitivity;
         }
 
         // Move the camera forward, backward, left, and right
