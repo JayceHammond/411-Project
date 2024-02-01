@@ -64,8 +64,7 @@ public class CharacterSheet : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.K)){
             rollAcrobatics();
         }
-        Debug.Log(finalRoll);
-        Debug.Log(SideChecker.sharedSideVal);
+        Debug.Log("This is my final roll: " + finalRoll);
     }
 
     public int calculateStatBonus(int stat){
@@ -75,6 +74,7 @@ public class CharacterSheet : MonoBehaviour
 
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
+        finalRoll = 0;
         DiceController.rollDie(this.transform);
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }

@@ -11,10 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speedLimit = 4f;
 
-    private float jumpHeight = 3.0f;
+    //private float jumpHeight = 3.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
-    private float yVelocity = 0f;
+    //private float yVelocity = 0f;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
         
 
         //Conditonals for Jump movement and Animation (Not Working due to plane movement)
+        /*
         if(-1 > 0){
 
             //playerVelocity.y = jumpHeight;
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
             animator.SetTrigger("Jumping");
         }
-
+        */
         //Conditonals for Defend movement and Animation
         if(inputManager.PlayerDefended()){
             animator.SetTrigger("Defending");
