@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
         //Vectors that grab the movement from the player's input to move the char
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
-
+        playerVelocity.y += gravityValue * GameTime.deltaTime;
+        controller.Move(playerVelocity * GameTime.deltaTime);
 
         //Conditonals for movement to try to keep the movement and the animations in the same place
 
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
             animator.ResetTrigger("Walking");
             animator.SetTrigger("Running");
             
-            move.y += gravityValue * Time.deltaTime;
+            //move.y += gravityValue * Time.deltaTime;
 
             move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
@@ -95,11 +96,10 @@ public class PlayerController : MonoBehaviour
             animator.ResetTrigger("Running");
             animator.SetTrigger("Walking");
 
-            move.y += gravityValue * Time.deltaTime;
+            //move.y += gravityValue * Time.deltaTime;
 
             move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
-            //transform.position = move;
 
             //To get proper oritation? of the character based on where they are Walking
             if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
@@ -155,6 +155,11 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Die") {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
+        }
+        if(other.gameObject.tag == "Tray"){
+            gravityValue = 0;
+        }else{
+            gravityValue = -9.81f;
         }
     }
 }
