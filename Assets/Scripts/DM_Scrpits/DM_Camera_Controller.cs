@@ -26,12 +26,18 @@ public class DMCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Sensitivity is a slider that allows the user to adjust the movement speed of their camera to move faster or slower
         sensitivity += Input.mouseScrollDelta.y;
         if(sensitivity < 0 ){
+            //Makes moves slower
             sensitivity = math.abs(sensitivity * 0.25f);
             Debug.Log(sensitivity);
         }else if(sensitivity >= 1) {
+            //Changes from fractional movement to whole numbers
             sensitivity = (int)sensitivity;
+        }else if(sensitivity >= 10){
+            //Limits the max movement speed to 10 since going above seems excessive
+            sensitivity = 10;
         }
 
         // Move the camera forward, backward, left, and right
