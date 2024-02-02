@@ -62,8 +62,14 @@ public class CharacterSheet : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)){
-            rollAcrobatics();
+            if(Cursor.lockState == CursorLockMode.None){
+                Cursor.lockState = CursorLockMode.Locked;
+            }else{
+                Cursor.lockState = CursorLockMode.None;
+            }
+            
         }
+        DiceController.displayText.text = finalRoll.ToString();
         Debug.Log("This is my final roll: " + finalRoll);
     }
 
@@ -74,16 +80,24 @@ public class CharacterSheet : MonoBehaviour
 
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
-        finalRoll = 0;
         DiceController.rollDie(this.transform);
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }
 
     IEnumerator WaitForRoll(int statBonus, int profBon){
-        yield return new WaitUntil(SideChecker.isDone);
-        finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
-        DiceController.displayText.text = finalRoll.ToString();
         SideChecker.allowedToCalculate = false;
+        yield return new WaitUntil(SideChecker.isDone);
+        //D20 CRIT STATEMENTS
+        if(SideChecker.sharedSideVal == 1){
+            DiceController.displayText.color = Color.red;
+        }
+        else if(SideChecker.sharedSideVal == 20){
+            DiceController.displayText.color = Color.green;
+        }
+        else{
+            DiceController.displayText.color = Color.white;
+        }
+        finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
     }
 
     //SKILL CHECKS
