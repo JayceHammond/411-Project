@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
+using Cinemachine;
 using UnityEngine;
 using Skill = SkillController.Skill;
 
@@ -64,12 +65,12 @@ public class CharacterSheet : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.K)){
             if(Cursor.lockState == CursorLockMode.None){
                 Cursor.lockState = CursorLockMode.Locked;
+                CinemachineCore.GetInputAxis("Horizontal");
             }else{
                 Cursor.lockState = CursorLockMode.None;
             }
             
         }
-        DiceController.displayText.text = finalRoll.ToString();
         Debug.Log("This is my final roll: " + finalRoll);
     }
 
@@ -98,6 +99,7 @@ public class CharacterSheet : MonoBehaviour
             DiceController.displayText.color = Color.white;
         }
         finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
+        DiceController.displayText.text = finalRoll.ToString();
     }
 
     //SKILL CHECKS
