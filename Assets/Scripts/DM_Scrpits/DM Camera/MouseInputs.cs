@@ -25,7 +25,7 @@ public class MouseInputs : MonoBehaviour
 
     public Vector3 MouseMovement(){
         mouseMovement.x = Input.GetAxis("Mouse X");
-        mouseMovement.y = Input.GetAxis("Mouse Y");
+        mouseMovement.y = -Input.GetAxis("Mouse Y");
         return mouseMovement;
     }
 
