@@ -10,6 +10,9 @@ public class CameraSwitch : MonoBehaviour
     [SerializeReference]
     private GameObject inputManager;
 
+    [SerializeReference]
+    private GameObject playerCamera;
+
     void Start()
     {
         button = GetComponent<Button>();
@@ -23,9 +26,12 @@ public class CameraSwitch : MonoBehaviour
 
     void toggleControls(){
 
-        if (inputManager.activeSelf)
+        if (inputManager.activeSelf && playerCamera.activeSelf){
             inputManager.SetActive(false);
-        else
+            playerCamera.SetActive(false);
+        }else{
             inputManager.SetActive(true);
+            playerCamera.SetActive(true);
+        }
     }
 }
