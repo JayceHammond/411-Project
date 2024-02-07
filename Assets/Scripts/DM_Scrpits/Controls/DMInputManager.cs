@@ -22,6 +22,7 @@ public class DMInputManager : MonoBehaviour
     }
 
     public bool isViewPressed(){
+        Debug.Log("Hotkey Manager");
         return hotKeys.CameraSwitch.CamSwitchHotkey.triggered;
     }
 

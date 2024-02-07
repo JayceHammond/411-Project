@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class CameraSwitch : MonoBehaviour
     private Button button;
 
     [SerializeReference]
-    private GameObject inputManager;
+    private GameObject inputManagerCamera;
 
     [SerializeReference]
     private GameObject playerCamera;
@@ -24,14 +25,12 @@ public class CameraSwitch : MonoBehaviour
         
     }
 
-    void toggleControls(){
+    public void toggleControls(){
+            bool isActive;
 
-        if (inputManager.activeSelf && playerCamera.activeSelf){
-            inputManager.SetActive(false);
-            playerCamera.SetActive(false);
-        }else{
-            inputManager.SetActive(true);
-            playerCamera.SetActive(true);
-        }
+            inputManagerCamera.GetComponent<InputManager>().enabled = !inputManagerCamera.GetComponent<InputManager>().enabled;
+            isActive = inputManagerCamera.GetComponent<InputManager>().enabled;
+            
+            playerCamera.SetActive(isActive);
     }
 }
