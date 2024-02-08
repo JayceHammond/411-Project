@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 using Skill = SkillController.Skill;
 
@@ -30,16 +31,16 @@ public class CharacterSheet : MonoBehaviour
         {"Crafting", "UNTRAINED"},
         {"Deception", "UNTRAINED"},
         {"Diplomacy", "UNTRAINED"},
-        {"Intimidation", "EXPERT"},
-        {"Medicine", "EXPERT"},
-        {"Nature", "TRAINED"},
-        {"Occultism","UNTRAINED"},
-        {"Performance", "TRAINED"},
+        {"Intimidation", "TRAINED"},
+        {"Medicine", "TRAINED"},
+        {"Nature", "UNTRAINED"},
+        {"Occultism","TRAINED"},
+        {"Performance", "UNTRAINED"},
         {"Religion", "UNTRAINED"},
         {"Society", "UNTRAINED"},
-        {"Stealth", "EXPERT"},
-        {"Survival", "TRAINED"},
-        {"Thievery", "TRAINED"}
+        {"Stealth", "TRAINED"},
+        {"Survival", "EXPERT"},
+        {"Thievery", "UNTRAINED"}
     };
 
     
@@ -53,6 +54,11 @@ public class CharacterSheet : MonoBehaviour
     public int CHAR;
 
 
+    public TextMeshProUGUI fpsTMP;
+    public string fpsText;
+	public float deltaTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,16 +68,10 @@ public class CharacterSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K)){
-            if(Cursor.lockState == CursorLockMode.None){
-                Cursor.lockState = CursorLockMode.Locked;
-                CinemachineCore.GetInputAxis("Horizontal");
-            }else{
-                Cursor.lockState = CursorLockMode.None;
-            }
-            
-        }
-        Debug.Log("This is my final roll: " + finalRoll);
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+		float fps = 1.0f / deltaTime;
+		fpsText = Mathf.Ceil (fps).ToString ();
+        fpsTMP.text = fpsText;
     }
 
     public int calculateStatBonus(int stat){

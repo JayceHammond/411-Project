@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 1.0f;
     [SerializeField]
     private float speedLimit = 4f;
+    private bool isLeft = false;
+    private bool isRight = false;
 
     //private float jumpHeight = 3.0f;
     [SerializeField]
@@ -20,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
+    public GameObject gameplayCam;
+    public GameObject uiCam;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -32,9 +37,27 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void toggleCameraLock(){
+        if(Input.GetKeyDown(KeyCode.K)){
+            uiCam.transform.position = gameplayCam.transform.position;
+            uiCam.transform.rotation = gameplayCam.transform.rotation;
+            if(gameplayCam.activeSelf == true){
+                uiCam.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+                gameplayCam.SetActive(false);
+            }else{
+                gameplayCam.SetActive(true);
+                Cursor.lockState = CursorLockMode.Locked;
+                uiCam.SetActive(false);
+            }
+            
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        toggleCameraLock();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -74,12 +97,15 @@ public class PlayerController : MonoBehaviour
             move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+
+            if (movement.x < 0 && transform.localRotation.eulerAngles.y == 0)
             {
+                Debug.Log("I turned left");
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (movement.x > 0 && transform.localRotation.eulerAngles.y == 180)
             {
+                Debug.Log("I turned right");
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
 
@@ -102,11 +128,11 @@ public class PlayerController : MonoBehaviour
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
             //To get proper oritation? of the character based on where they are Walking
-            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            if (transform.rotation.y < 0 && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (movement.y > 0 && controller.transform.localRotation.eulerAngles.y == 180)
             {
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
