@@ -6,7 +6,7 @@
             "id": "530d5cc8-a8e9-4310-a1a9-d1bb560cf98c",
             "actions": [
                 {
-                    "name": "CamSwitch Hotkey",
+                    "name": "SwitchHotkey",
                     "type": "Button",
                     "id": "737cedc0-0494-412c-b1c0-3a250e5a1a67",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CamSwitch Hotkey",
+                    "action": "SwitchHotkey",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

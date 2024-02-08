@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
         //Sprinting
         else if ((math.abs(movement.x) > 0 || (math.abs(movement.y) > 0))  && inputManager.PlayerRunning())
         {
-            Debug.Log(inputManager.PlayerRunning());
             playerSpeed *= 2;
             if(playerSpeed >= speedLimit){
                 playerSpeed = speedLimit;

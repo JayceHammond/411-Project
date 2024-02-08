@@ -11,19 +11,27 @@ public class DMInputManager : MonoBehaviour
         }
     }
 
-    private DM_HotKeys hotKeys;
+    private HotKeyControls hotKeys;
     private void Awake(){
         if(_instance != null && _instance != this){
             Destroy(this.gameObject);
         }else{
             _instance = this;
         }
-        hotKeys = new DM_HotKeys();
+        hotKeys = new HotKeyControls();
+    }
+
+    private void OnEnable(){
+        hotKeys.Enable();
+    }
+
+    private void OnDisable() {
+        hotKeys.Disable();
     }
 
     public bool isViewPressed(){
-        Debug.Log("Hotkey Manager");
-        return hotKeys.CameraSwitch.CamSwitchHotkey.triggered;
+        //Debug.Log("Hotkey Manager Value: " + hotKeys.CameraSwitch.SwitchHotkey.triggered);
+        return hotKeys.CameraSwitch.SwitchHotkey.triggered;
     }
 
 }
