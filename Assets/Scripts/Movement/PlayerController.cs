@@ -69,14 +69,15 @@ public class PlayerController : MonoBehaviour
             
             move.y = 0f;
 
-            move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+            move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            //To get proper oritation (Keep This)
+            if (inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (!inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 180)
             {
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
@@ -96,15 +97,15 @@ public class PlayerController : MonoBehaviour
 
             move.y = 0f;
 
-            move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+            move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            //To get proper oritation? of the character based on where they are Walking
-            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            //To get proper oritation (Keep This)
+            if (inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (!inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 180)
             {
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
@@ -149,12 +150,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Die") {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
         }
     }
+    
 }
 
 
