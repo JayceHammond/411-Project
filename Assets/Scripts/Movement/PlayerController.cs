@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
@@ -97,13 +98,13 @@ public class PlayerController : MonoBehaviour
             move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-
-            if (movement.x < 0 && transform.localRotation.eulerAngles.y == 0)
+            //To get proper oritation (Keep This)
+            if (inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 Debug.Log("I turned left");
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && transform.localRotation.eulerAngles.y == 180)
+            else if (!inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 180)
             {
                 Debug.Log("I turned right");
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         }
         //Walking
-        else if (math.abs(movement.x) > 0 || math.abs(movement.y) > 0)  
+        else   
         {
             playerSpeed = 1.0f;
             animator.ResetTrigger("Idle");
@@ -127,12 +128,12 @@ public class PlayerController : MonoBehaviour
             move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            //To get proper oritation? of the character based on where they are Walking
-            if (transform.rotation.y < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            //To get proper oritation (Keep This)
+            if (inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.y > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (!inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 180)
             {
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
@@ -178,7 +179,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Die") {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
             gravityValue = -9.81f;
         }
     }
+    
 }
 
 
