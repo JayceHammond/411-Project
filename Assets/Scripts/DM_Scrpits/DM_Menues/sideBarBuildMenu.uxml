@@ -1,27 +1,31 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Scripts/DM_Scrpits/DM_Menues/USS_SideBar.uss?fileID=7433441132597879392&amp;guid=40f6af2e7b5213742a00f78365864b92&amp;type=3#USS_SideBar" />
-    <ui:VisualElement name="Container" focusable="false" style="flex-grow: 1; width: 245px; height: 650px; align-items: auto; align-self: auto; justify-content: flex-start; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; flex-wrap: nowrap; flex-direction: column; overflow: visible; visibility: visible; opacity: 1; flex-shrink: 1; flex-basis: auto; left: auto; scale: 1 1; transform-origin: left top;">
-        <ui:Label tabindex="-1" text="Object Selected" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Object_Selected" focusable="false" style="align-items: center; justify-content: flex-start; -unity-text-align: upper-center; font-size: 25px;" />
-        <ui:VisualElement name="Position" style="flex-grow: 1; justify-content: space-around; align-items: stretch; align-self: stretch; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
-            <ui:Label tabindex="-1" text="Position" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 15px; justify-content: center; align-self: center; align-items: center;" />
-            <ui:FloatField label="X" value="0" name="X" />
-            <ui:FloatField label="Y" value="0" name="Y" />
-            <ui:FloatField label="Z" value="0" name="Z" />
-            <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset_Pos" focusable="true" style="height: auto; width: auto; align-self: stretch; align-items: center; flex-wrap: wrap; flex-direction: column; -unity-text-align: middle-center; white-space: nowrap; text-overflow: clip; justify-content: flex-start;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="Rotation" style="flex-grow: 1; align-items: stretch; justify-content: space-around; align-self: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: auto; height: auto; overflow: hidden;">
-            <ui:Label tabindex="-1" text="Rotation" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Rotation" style="justify-content: center; align-self: center; font-size: 15px; align-items: center;" />
-            <ui:FloatField label="X" value="0" readonly="false" name="X" style="align-self: stretch; justify-content: center; align-items: stretch;" />
-            <ui:FloatField label="Y" value="0" name="Y" />
-            <ui:FloatField label="Z" value="0" name="Z" />
-            <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset" style="align-self: stretch; width: auto; height: auto; justify-content: flex-start; align-items: center; flex-direction: column; flex-wrap: wrap;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="Scale" style="flex-grow: 1; align-items: stretch; justify-content: space-around; align-self: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: auto; height: auto; flex-direction: column; overflow: hidden;">
-            <ui:Label tabindex="-1" text="Scale" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Scale" style="align-items: center; justify-content: center; align-self: center; font-size: 15px;" />
-            <ui:FloatField label="X" value="1" name="X" style="align-self: stretch; flex-direction: row; justify-content: center;" />
-            <ui:FloatField label="Y" value="1" name="Y" style="justify-content: center; align-self: stretch;" />
-            <ui:FloatField label="Z" value="1" name="Z" style="justify-content: center; align-items: stretch; align-self: stretch; flex-direction: row;" />
-            <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset" style="justify-content: space-around; align-items: auto; align-self: stretch; flex-wrap: wrap; flex-direction: column;" />
-        </ui:VisualElement>
+    <ui:VisualElement name="SidePanel" style="flex-grow: 1; height: 1142px; width: 310px; align-items: auto; justify-content: space-between; align-self: auto; flex-direction: column-reverse; flex-wrap: wrap; position: relative; scale: 1 1; transform-origin: left top; background-color: rgba(41, 41, 38, 0.4); -unity-background-scale-mode: stretch-to-fill;">
+        <ui:ScrollView focusable="false" mode="Vertical" touch-scroll-type="Unrestricted" nested-interaction-kind="Default" style="flex-direction: column; align-items: auto; justify-content: space-between; align-self: stretch; position: relative; top: 0; height: 1000px; width: auto; left: 18px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; max-width: 300px; max-height: 1000px;">
+            <ui:VisualElement name="Container" focusable="false" style="flex-grow: 1; width: 245px; height: 727px; align-items: flex-end; align-self: flex-start; justify-content: space-between; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-wrap: nowrap; flex-direction: column; overflow: visible; visibility: visible; opacity: 1; flex-shrink: 1; flex-basis: auto; left: auto; scale: 1 1; transform-origin: left top; background-color: rgba(60, 64, 58, 0.75);">
+                <ui:Label tabindex="-1" text="Object Selected" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Object_Selected" focusable="false" style="align-items: center; justify-content: center; -unity-text-align: upper-center; font-size: 25px; background-color: rgba(255, 255, 255, 0); color: rgb(213, 207, 207); align-self: center;" />
+                <ui:VisualElement name="Position" style="flex-grow: 1; justify-content: space-around; align-items: stretch; align-self: stretch; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+                    <ui:Label tabindex="-1" text="Position" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 15px; justify-content: center; align-self: center; align-items: center; color: rgb(196, 198, 203);" />
+                    <ui:FloatField label="X" value="0" name="X" style="color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="Y" value="0" name="Y" style="color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="Z" value="0" name="Z" style="color: rgb(196, 198, 204);" />
+                    <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset_Pos" focusable="true" style="height: auto; width: auto; align-self: stretch; align-items: center; flex-wrap: wrap; flex-direction: column; -unity-text-align: middle-center; white-space: nowrap; text-overflow: clip; justify-content: flex-start;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Rotation" style="flex-grow: 1; align-items: stretch; justify-content: space-around; align-self: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: auto; height: auto; overflow: hidden;">
+                    <ui:Label tabindex="-1" text="Rotation" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Rotation" style="justify-content: center; align-self: center; font-size: 15px; align-items: center; color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="X" value="0" readonly="false" name="X" style="align-self: stretch; justify-content: center; align-items: stretch; color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="Y" value="0" name="Y" style="color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="Z" value="0" name="Z" style="color: rgb(196, 198, 204);" />
+                    <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset" style="align-self: stretch; width: auto; height: auto; justify-content: flex-start; align-items: center; flex-direction: column; flex-wrap: wrap;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Scale" style="flex-grow: 1; align-items: stretch; justify-content: space-around; align-self: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: auto; height: auto; flex-direction: column; overflow: hidden;">
+                    <ui:Label tabindex="-1" text="Scale" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Scale" style="align-items: center; justify-content: center; align-self: center; font-size: 15px; color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="X" value="1" name="X" style="align-self: stretch; flex-direction: row; justify-content: center; color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="Y" value="1" name="Y" style="justify-content: center; align-self: stretch; color: rgb(196, 198, 204);" />
+                    <ui:FloatField label="Z" value="1" name="Z" style="justify-content: center; align-items: stretch; align-self: stretch; flex-direction: row; color: rgb(196, 198, 204); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                    <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset" style="justify-content: space-around; align-items: auto; align-self: stretch; flex-wrap: wrap; flex-direction: column;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>
