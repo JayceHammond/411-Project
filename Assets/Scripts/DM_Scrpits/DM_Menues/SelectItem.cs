@@ -28,10 +28,11 @@ public class SelectItem : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && gettingGameObject(out RaycastHit hit))
         {
-            //Grabs the object the mouse clicks on
+            //Grabs the object the mouse left clicks on
             //Needs to hit a 3D collider
             return hit.collider.gameObject;
         }else if(Input.GetMouseButtonDown(1) && (objectSelected != null)){
+            //Deselects the object on right click
             return null;
         }else{
             return objectSelected;
