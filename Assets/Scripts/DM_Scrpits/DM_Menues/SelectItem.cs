@@ -19,6 +19,7 @@ public class SelectItem : MonoBehaviour
     }
 
     private bool gettingGameObject(out RaycastHit hit){
+        //Sends out a raycast to the object the mouse is over
         Ray selectBeam = freeCam.ScreenPointToRay(Input.mousePosition);
         return Physics.Raycast(selectBeam, out hit);
     }
@@ -27,7 +28,7 @@ public class SelectItem : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && gettingGameObject(out RaycastHit hit))
         {
-            //Grab the object the mouse is currently over via ray cast.
+            //Grabs the object the mouse clicks on
             //Needs to hit a 3D collider
             return hit.collider.gameObject;
         }else if(Input.GetMouseButtonDown(1) && (objectSelected != null)){
