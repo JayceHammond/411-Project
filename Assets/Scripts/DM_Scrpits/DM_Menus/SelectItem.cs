@@ -8,14 +8,21 @@ public class SelectItem : MonoBehaviour
 
     [SerializeField]
     private Camera freeCam;
+
+     [SerializeField]
+    private GameObject emptyObject;
     private GameObject objectSelected;
+
+    void Start(){
+        objectSelected = emptyObject;
+    }
 
     // Update is called once per frame
     void Update()
     {
         //Test of object selection
         objectSelected = objectSelection();
-        Debug.Log(objectSelected);
+        //Debug.Log(objectSelected);
     }
 
     private bool gettingGameObject(out RaycastHit hit){
@@ -31,9 +38,9 @@ public class SelectItem : MonoBehaviour
             //Grabs the object the mouse left clicks on
             //Needs to hit a 3D collider
             return hit.collider.gameObject;
-        }else if(Input.GetMouseButtonDown(1) && (objectSelected != null)){
+        }else if(Input.GetMouseButtonDown(1) && (objectSelected != emptyObject)){
             //Deselects the object on right click
-            return null;
+            return emptyObject;
         }else{
             return objectSelected;
         }
