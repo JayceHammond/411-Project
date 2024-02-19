@@ -14,7 +14,7 @@ public class SelectItem : MonoBehaviour
     void Update()
     {
         //Test of object selection
-        itemSelected = OnMouseHover();
+        itemSelected = itemSelection();
         Debug.Log(itemSelected);
     }
 
@@ -23,7 +23,7 @@ public class SelectItem : MonoBehaviour
         return Physics.Raycast(selectBeam, out hit);
     }
 
-    private GameObject OnMouseHover(){
+    public GameObject itemSelection(){
         
         if (Input.GetMouseButtonDown(0) && gettingGameObject(out RaycastHit hit))
         {
