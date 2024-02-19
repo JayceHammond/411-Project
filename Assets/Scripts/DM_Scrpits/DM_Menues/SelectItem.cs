@@ -10,17 +10,11 @@ public class SelectItem : MonoBehaviour
     private Camera freeCam;
     private GameObject itemSelected;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        OnMouseHover();
-
+        //Test of object selection
+        itemSelected = OnMouseHover();
         Debug.Log(itemSelected);
     }
 
@@ -29,15 +23,17 @@ public class SelectItem : MonoBehaviour
         return Physics.Raycast(selectBeam, out hit);
     }
 
-    private void OnMouseHover(){
+    private GameObject OnMouseHover(){
         
         if (Input.GetMouseButtonDown(0) && gettingGameObject(out RaycastHit hit))
         {
             //Grab the object the mouse is currently over via ray cast.
             //Needs to hit a 3D collider
-            itemSelected = hit.collider.gameObject; 
-        }else if(Input.GetMouseButtonDown(1)){
-            itemSelected = null;
+            return hit.collider.gameObject;
+        }else if(Input.GetMouseButtonDown(1) && (itemSelected != null)){
+            return null;
+        }else{
+            return itemSelected;
         }
     }
 }
