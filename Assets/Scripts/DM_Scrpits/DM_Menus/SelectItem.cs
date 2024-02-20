@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class SelectItem : MonoBehaviour
 {
-
     [SerializeField]
-    private Camera freeCam;
-
-     [SerializeField]
     private GameObject emptyObject;
     private GameObject objectSelected;
+    private Camera freeCam;
 
     void Start(){
+        freeCam = GetComponent<Camera>();
         objectSelected = emptyObject;
     }
 
