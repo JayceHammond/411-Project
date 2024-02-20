@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
-public class SelectItem : MonoBehaviour
+public class SelectObject : MonoBehaviour
 {
     [SerializeField]
     private GameObject emptyObject;
     private GameObject objectSelected;
     private Camera freeCam;
-
+    
     void Start(){
         freeCam = GetComponent<Camera>();
         objectSelected = emptyObject;

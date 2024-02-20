@@ -7,7 +7,7 @@ public class BuildMenuUI : MonoBehaviour
 {
 
     private VisualElement root;
-    private SelectItem selectedItem;
+    private SelectObject selectedObject;
 
     void Start(){
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -15,19 +15,19 @@ public class BuildMenuUI : MonoBehaviour
     }
 
     void Update(){
-        Debug.Log("Try here: " + selectedItem.getSelectedName());
+        Debug.Log("Try here: " + selectedObject.getSelectedName());
     }
 
     private void changeSelectLable(){
-        GameObject selectedObject;
+        GameObject objectGiven;
 
-        Debug.Log("Game Object: " + selectedItem.objectSelection().GetInstanceID());
+        Debug.Log("Game Object: " + selectedObject.objectSelection().GetInstanceID());
 
-        selectedObject = selectedItem.objectSelection();
+        objectGiven = selectedObject.objectSelection();
 
-        if ("emptyObject" != selectedObject.name)
+        if ("emptyObject" != objectGiven.name)
         {
-            root.Q<Label>("Object_Selected").text = selectedObject.name;
+            root.Q<Label>("Object_Selected").text = objectGiven.name;
             Debug.Log(root.Q<Label>("Object_Selected").text + "The Name!!");
         }
         else
