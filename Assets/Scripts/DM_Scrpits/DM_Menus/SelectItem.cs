@@ -38,9 +38,13 @@ public class SelectItem : MonoBehaviour
             return hit.collider.gameObject;
         }else if(Input.GetMouseButtonDown(1) && (objectSelected != emptyObject)){
             //Deselects the object on right click
-            return emptyObject;
+            return emptyObject.gameObject;
         }else{
-            return objectSelected;
+            return objectSelected.gameObject;
         }
+    }
+
+    public string getSelectedName(){
+        return objectSelected.name;
     }
 }

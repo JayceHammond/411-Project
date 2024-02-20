@@ -15,14 +15,15 @@ public class BuildMenuUI : MonoBehaviour
     }
 
     void Update(){
-        changeSelectLable();
+        Debug.Log("Try here: " + selectedItem.getSelectedName());
     }
 
     private void changeSelectLable(){
         GameObject selectedObject;
-        selectedObject = selectedItem.objectSelection();
 
-        Debug.Log(selectedObject);
+        Debug.Log("Game Object: " + selectedItem.objectSelection().GetInstanceID());
+
+        selectedObject = selectedItem.objectSelection();
 
         if ("emptyObject" != selectedObject.name)
         {
