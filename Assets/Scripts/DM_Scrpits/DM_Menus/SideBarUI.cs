@@ -11,17 +11,16 @@ public class BuildMenuUI : MonoBehaviour
 
     void Start(){
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        selectedObject = SelectObject.Instance;
         //Debug.Log(root.Q<Label>("Object_Selected").text);
     }
 
     void Update(){
-        Debug.Log("Try here: " + selectedObject.getSelectedName());
+        Debug.Log("Try here: " + selectedObject.objectSelection());
     }
 
     private void changeSelectLable(){
         GameObject objectGiven;
-
-        Debug.Log("Game Object: " + selectedObject.objectSelection().GetInstanceID());
 
         objectGiven = selectedObject.objectSelection();
 

@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class SelectObject : MonoBehaviour
@@ -9,6 +9,13 @@ public class SelectObject : MonoBehaviour
     private GameObject emptyObject;
     private GameObject objectSelected;
     private Camera freeCam;
+
+    private static SelectObject _instance;
+    public static SelectObject Instance{
+        get{
+            return _instance;
+        }
+    }
     
     void Start(){
         freeCam = GetComponent<Camera>();
@@ -40,11 +47,8 @@ public class SelectObject : MonoBehaviour
             //Deselects the object on right click
             return emptyObject.gameObject;
         }else{
-            return objectSelected.gameObject;
+            return objectSelected;
         }
     }
 
-    public string getSelectedName(){
-        return objectSelected.name;
-    }
 }
