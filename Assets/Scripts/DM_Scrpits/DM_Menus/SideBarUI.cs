@@ -9,20 +9,23 @@ public class SidebarUI : MonoBehaviour
 
     private VisualElement root;
     public GameObject selectedObject;
+    private GameObject lastSelectedObject;
 
     void Start(){
-        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        root = GetComponent<UIDocument>().rootVisualElement;
     }
 
     void Update(){     
-        Debug.Log(root.Q<Label>("Object_Selected").ToString());   
-        //changeSelectLable();
+        //Debug.Log(root.Q<Label>("Object_Selected").ToString());   
+        changeSelectLable();
+        if(lastSelectedObject != selectedObject){
+            setCurrentPosition();
+        }
     }
 
     private void changeSelectLable(){
 
-        Debug.Log(selectedObject.name);
-        //Debug.Log(root.Q<Label>("Object_Selected"));
+        //Debug.Log(selectedObject.name);
        
         if (null != selectedObject)
         {
@@ -31,7 +34,17 @@ public class SidebarUI : MonoBehaviour
         }
         else
         {
-            root.Q<Label>("Object_Selected").text.Equals("No Object Selected");
+            root.Q<Label>("Object_Selected").text= "No Object Selected";
+        }
+    }
+
+    private void setCurrentPosition(){
+        if(null != selectedObject){
+            root.Q<VisualElement>("Position").Q<FloatField>("X").value = selectedObject.transform.position.x;
+            root.Q<VisualElement>("Position").Q<FloatField>("Y").value = selectedObject.transform.position.y;
+            root.Q<VisualElement>("Position").Q<FloatField>("Z").value = selectedObject.transform.position.z;
+        }else{
+
         }
     }
 }
