@@ -10,7 +10,7 @@
                     <ui:FloatField label="X" value="0" name="X" style="color: rgb(196, 198, 204);" />
                     <ui:FloatField label="Y" value="0" name="Y" style="color: rgb(196, 198, 204);" />
                     <ui:FloatField label="Z" value="0" name="Z" style="color: rgb(196, 198, 204);" />
-                    <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset_Pos" focusable="true" style="height: auto; width: auto; align-self: stretch; align-items: center; flex-wrap: wrap; flex-direction: column; -unity-text-align: middle-center; white-space: nowrap; text-overflow: clip; justify-content: flex-start;" />
+                    <ui:Button text="Reset" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Reset_Pos" focusable="flase" style="height: auto; width: auto; align-self: stretch; align-items: center; flex-wrap: wrap; flex-direction: column; -unity-text-align: middle-center; white-space: nowrap; text-overflow: clip; justify-content: flex-start;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Rotation" style="flex-grow: 1; align-items: stretch; justify-content: space-around; align-self: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: auto; height: auto; overflow: hidden;">
                     <ui:Label tabindex="-1" text="Rotation" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Rotation" style="justify-content: center; align-self: center; font-size: 15px; align-items: center; color: rgb(196, 198, 204);" />

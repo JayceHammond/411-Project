@@ -1,33 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BuildMenuUI : MonoBehaviour
+public class SidebarUI : MonoBehaviour
 {
 
-    private VisualElement root;
-    private SelectObject selectedObject;
+    public VisualElement root;
+    public GameObject selectedObject;
 
     void Start(){
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
-        selectedObject = SelectObject.Instance;
-        //Debug.Log(root.Q<Label>("Object_Selected").text);
     }
 
-    void Update(){
-        Debug.Log("Try here: " + selectedObject.objectSelection());
+    void Update(){        
+        changeSelectLable();
     }
 
     private void changeSelectLable(){
-        GameObject objectGiven;
 
-        objectGiven = selectedObject.objectSelection();
-
-        if ("emptyObject" != objectGiven.name)
+        Debug.Log(selectedObject.name);
+        Debug.Log(root.Q<Label>("Object_Selected"));
+       
+        if (null != selectedObject)
         {
-            root.Q<Label>("Object_Selected").text = objectGiven.name;
-            Debug.Log(root.Q<Label>("Object_Selected").text + "The Name!!");
+            root.Q<Label>("Object_Selected").text = selectedObject.name;
+            //Debug.Log(root.Q<Label>("Object_Selected").text + "The Name!!");
         }
         else
         {
