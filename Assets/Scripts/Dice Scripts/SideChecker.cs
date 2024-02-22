@@ -20,9 +20,13 @@ public class SideChecker : MonoBehaviour
 
     void Update(){
         if(IsNotColliding && CompareTag("D4") && timer > 6){
-            Debug.Log("I rolled " + sideVal);
-            pubSideVal = sideVal.ToString();
+            sharedSideVal = sideVal;
+            pubSideVal = sharedSideVal.ToString();
+            DiceController.displayText.text = pubSideVal;
+            Debug.Log("I rolled " + sharedSideVal);
             timer = 0;
+        }else{
+            Debug.Log("not d20");
         }
     }
 
@@ -46,9 +50,8 @@ public class SideChecker : MonoBehaviour
         GameObject obj = col.gameObject;
         timer += Time.deltaTime;
 
-        if(CompareTag("D20"))
+        if(!CompareTag("D4"))
         {
-            Debug.Log("Rolled D20");
             if(obj.CompareTag("Tray") && timer > 3){
                 pubSideVal = sideVal.ToString();
                 allowedToCalculate = true;

@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.tag == "Die") {
+        if (other.gameObject.CompareTag("D20")) {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
         }
         if(other.gameObject.tag == "Tray"){

@@ -19,6 +19,8 @@ public class CharacterSheet : MonoBehaviour
     public int playerHP;
     public int playerTempHP;
     public List<string> playerConditions;
+    public List<GameObject> dice;
+    public int selectedDie;
     public int playerClassDC;
     public int playerHeroPoint;
     public int playerSpeed;
@@ -68,6 +70,11 @@ public class CharacterSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(DiceController.displayText.text);
+        if(Input.GetKeyDown(KeyCode.J)){
+            rollFlatDie();
+
+        }
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
 		float fps = 1.0f / deltaTime;
 		fpsText = Mathf.Ceil (fps).ToString ();
@@ -75,13 +82,16 @@ public class CharacterSheet : MonoBehaviour
     }
 
     public int calculateStatBonus(int stat){
+        if(stat == 0){
+            return 0;
+        }
         return (stat - 10)/ 2;
     }
 
 
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
-        DiceController.rollDie(this.transform);
+        DiceController.rollDie(dice[selectedDie],this.transform);
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }
 
@@ -100,6 +110,10 @@ public class CharacterSheet : MonoBehaviour
         }
         finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
         DiceController.displayText.text = finalRoll.ToString();
+    }
+
+    public void rollFlatDie(){
+        calculateRoll(0,0);
     }
 
     //SKILL CHECKS
