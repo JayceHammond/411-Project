@@ -1,25 +1,55 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class SidebarUI : MonoBehaviour
 {
 
-    private VisualElement root;
+    public VisualElement root;
     public GameObject selectedObject;
     private GameObject lastSelectedObject;
+    private ChangesNTransform changesOfObject;
+    private GetTransforms transformsOfObject;
+    private SetTransforms settingObjectTransform;
+
+    public Dictionary<string, float> intialTransformValues = new Dictionary<string, float>()
+    {
+        {"posX", 0.00f},
+        {"posY", 0.00f},
+        {"posZ", 0.00f},
+
+        {"rotX", 0.00f},
+        {"rotY", 0.00f},
+        {"rotZ", 0.00f},
+
+        {"scalX", 0.00f},
+        {"scalY", 0.00f},
+        {"scalZ", 0.00f},
+    };
 
     void Start(){
         root = GetComponent<UIDocument>().rootVisualElement;
+        lastSelectedObject = null;
     }
 
     void Update(){     
         //Debug.Log(root.Q<Label>("Object_Selected").ToString());   
         changeSelectLable();
         if(lastSelectedObject != selectedObject){
-            setCurrentPosition();
+            transformsOfObject.getCurrentPosition(selectedObject);
+            transformsOfObject.getCurrentRotation(selectedObject);
+            transformsOfObject.getCurrentScale(selectedObject);
+
+            lastSelectedObject = selectedObject;
+        }
+        if(changesOfObject.checkForChanges(selectedObject)){
+            settingObjectTransform.setCurrentPosition(selectedObject);
+            settingObjectTransform.setCurrentRotation(selectedObject);
+            settingObjectTransform.setCurrentScale(selectedObject);
         }
     }
 
@@ -37,14 +67,5 @@ public class SidebarUI : MonoBehaviour
             root.Q<Label>("Object_Selected").text= "No Object Selected";
         }
     }
-
-    private void setCurrentPosition(){
-        if(null != selectedObject){
-            root.Q<VisualElement>("Position").Q<FloatField>("X").value = selectedObject.transform.position.x;
-            root.Q<VisualElement>("Position").Q<FloatField>("Y").value = selectedObject.transform.position.y;
-            root.Q<VisualElement>("Position").Q<FloatField>("Z").value = selectedObject.transform.position.z;
-        }else{
-
-        }
-    }
+    
 }
