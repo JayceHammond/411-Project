@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,9 +8,6 @@ public class SidebarUI : MonoBehaviour
     public VisualElement root;
     public GameObject selectedObject;
     private GameObject lastSelectedObject;
-    private ChangesNTransform changesOfObject;
-    private GetTransforms transformsOfObject;
-    private SetTransforms settingObjectTransform;
 
     public Dictionary<string, float> intialTransformValues = new Dictionary<string, float>()
     {
@@ -39,17 +32,21 @@ public class SidebarUI : MonoBehaviour
     void Update(){     
         //Debug.Log(root.Q<Label>("Object_Selected").ToString());   
         changeSelectLable();
-        if(lastSelectedObject != selectedObject){
-            transformsOfObject.getCurrentPosition(selectedObject);
-            transformsOfObject.getCurrentRotation(selectedObject);
-            transformsOfObject.getCurrentScale(selectedObject);
+        if (selectedObject != null)
+        {
+            if (lastSelectedObject != selectedObject){
+                Debug.Log(selectedObject);
+                getCurrentPosition(selectedObject);
+                getCurrentRotation(selectedObject);
+                getCurrentScale(selectedObject);
 
-            lastSelectedObject = selectedObject;
-        }
-        if(changesOfObject.checkForChanges(selectedObject)){
-            settingObjectTransform.setCurrentPosition(selectedObject);
-            settingObjectTransform.setCurrentRotation(selectedObject);
-            settingObjectTransform.setCurrentScale(selectedObject);
+                lastSelectedObject = selectedObject;
+            }
+            if (checkForChanges(selectedObject)){
+                selectedObject.transform.position = setCurrentPosition(selectedObject);
+                selectedObject.transform.rotation = setCurrentRotation(selectedObject);
+                selectedObject.transform.localScale = setCurrentScale(selectedObject);
+            }
         }
     }
 
@@ -68,4 +65,129 @@ public class SidebarUI : MonoBehaviour
         }
     }
     
+    public void getCurrentPosition(GameObject selectedObject){
+        if(null != selectedObject){
+            root.Q<VisualElement>("Position").Q<FloatField>("X").value = selectedObject.transform.position.x;
+            intialTransformValues["posX"] = selectedObject.transform.position.x;
+            root.Q<VisualElement>("Position").Q<FloatField>("Y").value = selectedObject.transform.position.y;
+            intialTransformValues["posY"] = selectedObject.transform.position.y;
+            root.Q<VisualElement>("Position").Q<FloatField>("Z").value = selectedObject.transform.position.z;
+            intialTransformValues["posZ"] = selectedObject.transform.position.z;
+        }
+    }
+
+    public void getCurrentRotation(GameObject selectedObject){
+        if(null != selectedObject){
+            root.Q<VisualElement>("Rotation").Q<FloatField>("X").value = selectedObject.transform.rotation.x;
+            intialTransformValues["rotX"] = selectedObject.transform.rotation.x;
+            root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value = selectedObject.transform.rotation.y;
+            intialTransformValues["rotY"] = selectedObject.transform.rotation.y;
+            root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value = selectedObject.transform.rotation.z;
+            intialTransformValues["rotZ"] = selectedObject.transform.rotation.z;
+        }
+    }
+
+    public void getCurrentScale(GameObject selectedObject){
+        if(null != selectedObject){
+            root.Q<VisualElement>("Scale").Q<FloatField>("X").value = selectedObject.transform.localScale.x;
+            intialTransformValues["scalX"] = selectedObject.transform.localScale.x;
+            root.Q<VisualElement>("Scale").Q<FloatField>("Y").value = selectedObject.transform.localScale.y;
+            intialTransformValues["scalY"] = selectedObject.transform.localScale.y;
+            root.Q<VisualElement>("Scale").Q<FloatField>("Z").value = selectedObject.transform.localScale.z;
+            intialTransformValues["scalZ"] = selectedObject.transform.localScale.z;
+        }
+    }
+
+    public bool checkForChanges(GameObject selectedObject){
+        bool changes = false;
+        changes = changesInPosition(selectedObject) || changesInRotaion(selectedObject) || changesInScale(selectedObject);
+        return changes;
+    }
+
+    private bool changesInPosition(GameObject selectedObject){
+        UnityEngine.Vector3 position = selectedObject.transform.position;
+
+        UnityEngine.Vector3 showedPosition;
+        showedPosition.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
+        showedPosition.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
+        showedPosition.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
+
+        if (position.Equals(showedPosition))
+            return true;
+
+        return false;
+    }
+
+    private bool changesInRotaion(GameObject selectedObject){
+        UnityEngine.Quaternion rotation = selectedObject.transform.rotation;
+
+        UnityEngine.Quaternion showedRotation;
+        showedRotation.x = root.Q<VisualElement>("Rotation").Q<FloatField>("X").value;
+        showedRotation.y = root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value;
+        showedRotation.z = root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value;
+        showedRotation.w = rotation.w;
+
+        if (rotation.Equals(showedRotation))
+            return true;
+
+        return false;
+    }
+
+    private bool changesInScale(GameObject selectedObject){
+        UnityEngine.Vector3 scale = selectedObject.transform.localScale;
+
+        UnityEngine.Vector3 showedScale;
+        showedScale.x = root.Q<VisualElement>("Scale").Q<FloatField>("X").value;
+        showedScale.y = root.Q<VisualElement>("Scale").Q<FloatField>("Y").value;
+        showedScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
+
+        if (scale.Equals(showedScale))
+            return true;
+
+        return false;
+    }
+
+    public Vector3 setCurrentPosition(GameObject selectedObject){
+        if (null != selectedObject){
+            UnityEngine.Vector3 newPostion;
+
+            newPostion.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
+            newPostion.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
+            newPostion.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
+
+            return newPostion;
+        }
+
+        return selectedObject.transform.position;
+    }
+
+    public Quaternion setCurrentRotation(GameObject selectedObject){
+        if (null != selectedObject){
+            UnityEngine.Quaternion newRotation;
+
+            newRotation.x = root.Q<VisualElement>("Rotation").Q<FloatField>("X").value;
+            newRotation.y = root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value;
+            newRotation.z = root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value;
+            newRotation.w = selectedObject.transform.rotation.w;
+
+
+            return newRotation;
+        }
+
+        return selectedObject.transform.rotation;
+    }
+
+    public Vector3 setCurrentScale(GameObject selectedObject){
+        if (null != selectedObject){
+            UnityEngine.Vector3 newScale;
+
+            newScale.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
+            newScale.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
+            newScale.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
+
+            return newScale;
+        }
+
+        return selectedObject.transform.localScale;
+    }
 }

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class GetTransforms : MonoBehaviour
 {
     public VisualElement root;
-    private SidebarUI sidebarUI;
+    public SidebarUI sidebarUI;
     void Start(){
         root = sidebarUI.root;
     }
