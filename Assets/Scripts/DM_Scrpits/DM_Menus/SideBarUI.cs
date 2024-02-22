@@ -8,6 +8,7 @@ public class SidebarUI : MonoBehaviour
     public VisualElement root;
     public GameObject selectedObject;
     private GameObject lastSelectedObject;
+    private HotKeys hotKeys;
 
     public Dictionary<string, float> intialTransformValues = new Dictionary<string, float>()
     {
@@ -24,7 +25,7 @@ public class SidebarUI : MonoBehaviour
         {"scalZ", 0.00f},
     };
 
-    void Start(){
+    void OnEnable(){
         root = GetComponent<UIDocument>().rootVisualElement;
         lastSelectedObject = null;
     }
@@ -47,6 +48,8 @@ public class SidebarUI : MonoBehaviour
                 selectedObject.transform.rotation = setCurrentRotation(selectedObject);
                 selectedObject.transform.localScale = setCurrentScale(selectedObject);
             }
+        }else{
+            selectedObject = null;
         }
     }
 
@@ -181,9 +184,9 @@ public class SidebarUI : MonoBehaviour
         if (null != selectedObject){
             UnityEngine.Vector3 newScale;
 
-            newScale.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
-            newScale.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
-            newScale.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
+            newScale.x = root.Q<VisualElement>("Scale").Q<FloatField>("X").value;
+            newScale.y = root.Q<VisualElement>("Scale").Q<FloatField>("Y").value;
+            newScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
 
             return newScale;
         }
