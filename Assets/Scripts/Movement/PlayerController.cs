@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,19 +11,25 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 1.0f;
     [SerializeField]
     private float speedLimit = 4f;
+    private bool isLeft = false;
+    private bool isRight = false;
 
-    private float jumpHeight = 3.0f;
+    //private float jumpHeight = 3.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
+    //private float yVelocity = 0f;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private InputManager inputManager;
     private Transform cameraTransform;
+    public GameObject gameplayCam;
+    public GameObject uiCam;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
@@ -31,10 +38,27 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void toggleCameraLock(){
+        if(Input.GetKeyDown(KeyCode.K)){
+            uiCam.transform.position = gameplayCam.transform.position;
+            uiCam.transform.rotation = gameplayCam.transform.rotation;
+            if(gameplayCam.activeSelf == true){
+                uiCam.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+                gameplayCam.SetActive(false);
+            }else{
+                gameplayCam.SetActive(true);
+                Cursor.lockState = CursorLockMode.Locked;
+                uiCam.SetActive(false);
+            }
+            
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-
+        toggleCameraLock();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -44,6 +68,8 @@ public class PlayerController : MonoBehaviour
         //Vectors that grab the movement from the player's input to move the char
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
+        playerVelocity.y += gravityValue * GameTime.deltaTime;
+        controller.Move(playerVelocity * GameTime.deltaTime);
 
         //Conditonals for movement to try to keep the movement and the animations in the same place
 
@@ -56,7 +82,7 @@ public class PlayerController : MonoBehaviour
             
         }
         //Sprinting
-        else if (math.abs(movement.x) > 0 || (math.abs(movement.y) > 0)  && inputManager.PlayerRunning())
+        else if ((math.abs(movement.x) > 0 || (math.abs(movement.y) > 0))  && inputManager.PlayerRunning())
         {
             playerSpeed *= 2;
             if(playerSpeed >= speedLimit){
@@ -67,17 +93,20 @@ public class PlayerController : MonoBehaviour
             animator.ResetTrigger("Walking");
             animator.SetTrigger("Running");
             
-            move.y = 0f;
+            //move.y += gravityValue * Time.deltaTime;
 
-            move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+            move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            //To get proper oritation (Keep This)
+            if (inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 0)
             {
+                Debug.Log("I turned left");
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (!inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 180)
             {
+                Debug.Log("I turned right");
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
 
@@ -87,24 +116,24 @@ public class PlayerController : MonoBehaviour
 
         }
         //Walking
-        else if (math.abs(movement.x) > 0 || math.abs(movement.y) > 0)  
+        else   
         {
             playerSpeed = 1.0f;
             animator.ResetTrigger("Idle");
             animator.ResetTrigger("Running");
             animator.SetTrigger("Walking");
 
-            move.y = 0f;
+            //move.y += gravityValue * Time.deltaTime;
 
-            move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+            move = transform.forward * move.z + transform.right * move.x;
             controller.Move(move * GameTime.deltaTime * playerSpeed);
 
-            //To get proper oritation? of the character based on where they are Walking
-            if (movement.x < 0 && controller.transform.localRotation.eulerAngles.y == 0)
+            //To get proper oritation (Keep This)
+            if (inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 0)
             {
                 controller.transform.Rotate(0f, 180f, 0f, Space.World);
             }
-            else if (movement.x > 0 && controller.transform.localRotation.eulerAngles.y == 180)
+            else if (!inputManager.getLeftMovement() && controller.transform.localRotation.eulerAngles.y == 180)
             {
                 controller.transform.Rotate(0f, -180f, 0f, Space.World);
             }
@@ -113,6 +142,7 @@ public class PlayerController : MonoBehaviour
         
 
         //Conditonals for Jump movement and Animation (Not Working due to plane movement)
+        /*
         if(-1 > 0){
 
             //playerVelocity.y = jumpHeight;
@@ -122,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
             animator.SetTrigger("Jumping");
         }
-
+        */
         //Conditonals for Defend movement and Animation
         if(inputManager.PlayerDefended()){
             animator.SetTrigger("Defending");
@@ -149,12 +179,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Die") {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
         }
+        if(other.gameObject.tag == "Tray"){
+            gravityValue = 0;
+        }else{
+            gravityValue = -9.81f;
+        }
     }
+    
 }
 
 

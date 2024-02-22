@@ -5,6 +5,8 @@ using System.ComponentModel.Design;
 using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
+using Cinemachine;
+using TMPro;
 using UnityEngine;
 using Skill = SkillController.Skill;
 
@@ -29,16 +31,16 @@ public class CharacterSheet : MonoBehaviour
         {"Crafting", "UNTRAINED"},
         {"Deception", "UNTRAINED"},
         {"Diplomacy", "UNTRAINED"},
-        {"Intimidation", "EXPERT"},
-        {"Medicine", "EXPERT"},
-        {"Nature", "TRAINED"},
-        {"Occultism","UNTRAINED"},
-        {"Performance", "TRAINED"},
+        {"Intimidation", "TRAINED"},
+        {"Medicine", "TRAINED"},
+        {"Nature", "UNTRAINED"},
+        {"Occultism","TRAINED"},
+        {"Performance", "UNTRAINED"},
         {"Religion", "UNTRAINED"},
         {"Society", "UNTRAINED"},
-        {"Stealth", "EXPERT"},
-        {"Survival", "TRAINED"},
-        {"Thievery", "TRAINED"}
+        {"Stealth", "TRAINED"},
+        {"Survival", "EXPERT"},
+        {"Thievery", "UNTRAINED"}
     };
 
     
@@ -52,6 +54,11 @@ public class CharacterSheet : MonoBehaviour
     public int CHAR;
 
 
+    public TextMeshProUGUI fpsTMP;
+    public string fpsText;
+	public float deltaTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,11 +68,10 @@ public class CharacterSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K)){
-            DiceController.rollDie(this.transform);
-        }
-        Debug.Log(finalRoll);
-        Debug.Log(SideChecker.sharedSideVal);
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+		float fps = 1.0f / deltaTime;
+		fpsText = Mathf.Ceil (fps).ToString ();
+        fpsTMP.text = fpsText;
     }
 
     public int calculateStatBonus(int stat){
@@ -80,10 +86,20 @@ public class CharacterSheet : MonoBehaviour
     }
 
     IEnumerator WaitForRoll(int statBonus, int profBon){
+        SideChecker.allowedToCalculate = false;
         yield return new WaitUntil(SideChecker.isDone);
+        //D20 CRIT STATEMENTS
+        if(SideChecker.sharedSideVal == 1){
+            DiceController.displayText.color = Color.red;
+        }
+        else if(SideChecker.sharedSideVal == 20){
+            DiceController.displayText.color = Color.green;
+        }
+        else{
+            DiceController.displayText.color = Color.white;
+        }
         finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
         DiceController.displayText.text = finalRoll.ToString();
-        SideChecker.allowedToCalculate = false;
     }
 
     //SKILL CHECKS
