@@ -62,7 +62,7 @@ public class CharacterSheet : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)){
-            rollAcrobatics();
+            DiceController.rollDie(this.transform);
         }
         Debug.Log(finalRoll);
         Debug.Log(SideChecker.sharedSideVal);
