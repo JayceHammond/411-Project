@@ -36,7 +36,9 @@ public class SidebarUI : MonoBehaviour
         {
             if (lastSelectedObject == selectedObject){
                 
-                root.Q<VisualElement>("Position").Q<Button>("Reset_Pos").clickable.clicked += () => resetPosition(selectedObject);
+                root.Q<VisualElement>("Position").Q<Button>("Reset").clickable.clicked += () => resetPosition(selectedObject);
+                root.Q<VisualElement>("Rotation").Q<Button>("Reset").clickable.clicked += () => resetRotaion(selectedObject);
+                root.Q<VisualElement>("Scale").Q<Button>("Reset").clickable.clicked += () => resetScale(selectedObject);
 
             }else{
 
@@ -209,6 +211,33 @@ public class SidebarUI : MonoBehaviour
         selectedObject.transform.localPosition = oldPosition;
         getCurrentPosition(selectedObject);
         Debug.Log(selectedObject.transform.localPosition + " Reset Vals: " + oldPosition);
+
+    }
+
+    public void resetRotaion(GameObject selectedObject){
+        Quaternion oldRotation;
+
+        oldRotation.x = intialTransformValues["rotX"];
+        oldRotation.y = intialTransformValues["rotY"];
+        oldRotation.z = intialTransformValues["rotZ"];
+        oldRotation.w = selectedObject.transform.rotation.w;
+
+        selectedObject.transform.localRotation = oldRotation;
+        getCurrentRotation(selectedObject);
+        Debug.Log(selectedObject.transform.localRotation + " Reset Vals: " + oldRotation);
+
+    }
+
+    public void resetScale(GameObject selectedObject){
+        Vector3 oldScale;
+
+        oldScale.x = intialTransformValues["scalX"];
+        oldScale.y = intialTransformValues["scalY"];
+        oldScale.z = intialTransformValues["scalZ"];
+
+        selectedObject.transform.localScale = oldScale;
+        getCurrentScale(selectedObject);
+        Debug.Log(selectedObject.transform.localScale + " Reset Vals: " + oldScale);
 
     }
 }
