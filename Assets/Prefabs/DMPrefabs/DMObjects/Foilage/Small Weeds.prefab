@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4997845229814729174}
   m_Layer: 0
   m_Name: Small Weeds
-  m_TagString: Untagged
+  m_TagString: Foilage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
