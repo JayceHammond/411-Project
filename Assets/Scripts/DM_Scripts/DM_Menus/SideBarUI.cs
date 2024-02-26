@@ -8,7 +8,6 @@ public class SidebarUI : MonoBehaviour
     public VisualElement root;
     public GameObject selectedObject;
     private GameObject lastSelectedObject;
-    private HotKeys hotKeys;
 
     public Dictionary<string, float> intialTransformValues = new Dictionary<string, float>()
     {
@@ -35,19 +34,25 @@ public class SidebarUI : MonoBehaviour
         changeSelectLable();
         if (selectedObject != null)
         {
-            if (lastSelectedObject != selectedObject){
-                Debug.Log(selectedObject);
+            if (lastSelectedObject == selectedObject){
+                
+                root.Q<VisualElement>("Position").Q<Button>("Reset_Pos").clickable.clicked += () => resetPosition(selectedObject);
+
+            }else{
+
                 getCurrentPosition(selectedObject);
                 getCurrentRotation(selectedObject);
                 getCurrentScale(selectedObject);
 
                 lastSelectedObject = selectedObject;
             }
+
             if (checkForChanges(selectedObject)){
                 selectedObject.transform.position = setCurrentPosition(selectedObject);
                 selectedObject.transform.rotation = setCurrentRotation(selectedObject);
                 selectedObject.transform.localScale = setCurrentScale(selectedObject);
             }
+
         }else{
             selectedObject = null;
         }
@@ -108,9 +113,9 @@ public class SidebarUI : MonoBehaviour
     }
 
     private bool changesInPosition(GameObject selectedObject){
-        UnityEngine.Vector3 position = selectedObject.transform.position;
+        Vector3 position = selectedObject.transform.position;
 
-        UnityEngine.Vector3 showedPosition;
+        Vector3 showedPosition;
         showedPosition.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
         showedPosition.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
         showedPosition.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
@@ -122,9 +127,9 @@ public class SidebarUI : MonoBehaviour
     }
 
     private bool changesInRotaion(GameObject selectedObject){
-        UnityEngine.Quaternion rotation = selectedObject.transform.rotation;
+        Quaternion rotation = selectedObject.transform.rotation;
 
-        UnityEngine.Quaternion showedRotation;
+        Quaternion showedRotation;
         showedRotation.x = root.Q<VisualElement>("Rotation").Q<FloatField>("X").value;
         showedRotation.y = root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value;
         showedRotation.z = root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value;
@@ -137,9 +142,9 @@ public class SidebarUI : MonoBehaviour
     }
 
     private bool changesInScale(GameObject selectedObject){
-        UnityEngine.Vector3 scale = selectedObject.transform.localScale;
+        Vector3 scale = selectedObject.transform.localScale;
 
-        UnityEngine.Vector3 showedScale;
+        Vector3 showedScale;
         showedScale.x = root.Q<VisualElement>("Scale").Q<FloatField>("X").value;
         showedScale.y = root.Q<VisualElement>("Scale").Q<FloatField>("Y").value;
         showedScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
@@ -152,7 +157,7 @@ public class SidebarUI : MonoBehaviour
 
     public Vector3 setCurrentPosition(GameObject selectedObject){
         if (null != selectedObject){
-            UnityEngine.Vector3 newPostion;
+            Vector3 newPostion;
 
             newPostion.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
             newPostion.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
@@ -166,7 +171,7 @@ public class SidebarUI : MonoBehaviour
 
     public Quaternion setCurrentRotation(GameObject selectedObject){
         if (null != selectedObject){
-            UnityEngine.Quaternion newRotation;
+            Quaternion newRotation;
 
             newRotation.x = root.Q<VisualElement>("Rotation").Q<FloatField>("X").value;
             newRotation.y = root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value;
@@ -182,7 +187,7 @@ public class SidebarUI : MonoBehaviour
 
     public Vector3 setCurrentScale(GameObject selectedObject){
         if (null != selectedObject){
-            UnityEngine.Vector3 newScale;
+            Vector3 newScale;
 
             newScale.x = root.Q<VisualElement>("Scale").Q<FloatField>("X").value;
             newScale.y = root.Q<VisualElement>("Scale").Q<FloatField>("Y").value;
@@ -192,5 +197,18 @@ public class SidebarUI : MonoBehaviour
         }
 
         return selectedObject.transform.localScale;
+    }
+
+    public void resetPosition(GameObject selectedObject){
+        Vector3 oldPosition;
+
+        oldPosition.x = intialTransformValues["posX"];
+        oldPosition.y = intialTransformValues["posY"];
+        oldPosition.z = intialTransformValues["posZ"];
+
+        selectedObject.transform.localPosition = oldPosition;
+        getCurrentPosition(selectedObject);
+        Debug.Log(selectedObject.transform.localPosition + " Reset Vals: " + oldPosition);
+
     }
 }
