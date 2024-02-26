@@ -57,6 +57,7 @@ public class SidebarUI : MonoBehaviour
 
         }else{
             selectedObject = null;
+            lastSelectedObject = null;
         }
     }
 
