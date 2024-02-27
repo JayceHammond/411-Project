@@ -28,12 +28,10 @@
             </ui:VisualElement>
         </ui:ScrollView>
     </ui:VisualElement>
-    <ui:VisualElement name="BuildMenu" focusable="true" style="flex-grow: 1; transform-origin: left bottom; justify-content: flex-start; align-self: auto; height: auto; width: auto; translate: 0 0; max-width: none; max-height: 400px; min-width: auto; min-height: auto; flex-direction: column; align-items: auto; position: relative; top: auto; bottom: auto; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgba(46, 46, 44, 0.39);">
+    <ui:VisualElement name="BuildMenu" focusable="true" style="flex-grow: 1; transform-origin: left bottom; justify-content: flex-start; align-self: stretch; height: 200px; width: auto; translate: 0 0; max-width: none; max-height: 250px; min-width: auto; min-height: auto; flex-direction: column; align-items: stretch; position: relative; top: auto; bottom: auto; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgba(46, 46, 44, 0.39); flex-wrap: nowrap;">
         <ui:Toggle label="Foilage" value="false" name="Foilage" style="align-items: stretch; justify-content: space-between; align-self: center;" />
-        <ui:ScrollView mode="Horizontal" style="align-items: flex-end; flex-direction: row; justify-content: flex-start; align-self: stretch; width: auto; height: auto; white-space: nowrap; -unity-text-align: middle-left;">
-            <ui:VisualElement name="ObjectHolder" style="flex-grow: 1; background-color: rgba(60, 60, 60, 0.59); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row; align-items: auto; justify-content: flex-start; align-self: auto; flex-wrap: nowrap; max-height: 400px; height: auto;">
-                <uie:ObjectField label="Object Field" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; -unity-text-align: upper-center; white-space: normal;" />
-            </ui:VisualElement>
+        <ui:ScrollView mode="Horizontal" style="align-items: stretch; flex-direction: row; justify-content: space-between; align-self: stretch; width: auto; height: auto; white-space: nowrap; -unity-text-align: middle-left; max-height: 200px; flex-wrap: wrap;">
+            <ui:VisualElement name="ObjectHolder" style="flex-grow: 1; background-color: rgba(60, 60, 60, 0.59); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row; align-items: stretch; justify-content: flex-start; align-self: stretch; flex-wrap: wrap; max-height: 200px; height: auto; min-height: auto;" />
         </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>

@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
-using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,10 +16,21 @@ public class BottomBarUI : MonoBehaviour
         ObjectListHolder = root.Q<VisualElement>("ObjectHolder");
 
         ObjectList = prefabs.getAllPrefabs();
+        gettingGameObjects(ObjectList);
     }
 
     void Update(){
         Debug.Log(ObjectList.Length);
+    }
+
+    void gettingGameObjects(Array objectList){
+        foreach(FileInfo item in ObjectList){
+            ObjectField newObject = new ObjectField();
+            newObject.name = item.Name;
+            newObject.label = item.Name;
+
+            ObjectListHolder.Add(newObject);
+        }
     }
 
 }

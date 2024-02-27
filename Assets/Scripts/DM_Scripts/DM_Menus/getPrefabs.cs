@@ -7,7 +7,7 @@ using UnityEngine;
 public class getPrefabs : MonoBehaviour
 {
 
-    public GameObject prefab;
+    private GameObject prefab;
 
     public Array getAllPrefabs(){
         return getAllBuildings().Concat(getAllFoilage()).Concat(getAllCharacters()).ToArray();
@@ -23,8 +23,6 @@ public class getPrefabs : MonoBehaviour
     private FileInfo[] getAllFoilage(){
         DirectoryInfo DMPrefabObjects = new DirectoryInfo("Assets/Prefabs/DMPrefabs/DMObjects/Foilage");
         FileInfo[] AllPrefabs = DMPrefabObjects.GetFiles("*.prefab");
-
-        Debug.Log(AllPrefabs.Length);
 
         return AllPrefabs;
     }
