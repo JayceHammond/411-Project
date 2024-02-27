@@ -23,14 +23,30 @@ public class BottomBarUI : MonoBehaviour
         Debug.Log(ObjectList.Length);
     }
 
-    void gettingGameObjects(Array objectList){
+    private void gettingGameObjects(Array objectList){
         foreach(FileInfo item in ObjectList){
-            ObjectField newObject = new ObjectField();
+            VisualElement newObject = new VisualElement();
             newObject.name = item.Name;
-            newObject.label = item.Name;
+
+            newObject.Add(makeObjectLabel(item));
+            newObject.Add(makeObjectImage(item));
 
             ObjectListHolder.Add(newObject);
         }
+    }
+
+    private Label makeObjectLabel(FileInfo item){
+        Label ObjectLabel = new Label();
+        ObjectLabel.text = item.Name.Substring(0,item.Name.Length-7);
+
+        return ObjectLabel;
+    }
+
+    private Image makeObjectImage(FileInfo item){
+        Image ObjectImage = new Image();
+        GameObject objectForImage = GameObject.Find(item.Name);
+
+        return ObjectImage;
     }
 
 }
