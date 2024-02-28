@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
+
+
+[System.Serializable]
+public class AncestryDataArrayWrapper{
+    public List<JSONDataLoader.AncestryData> ancestryData;
+}
 
 public class JSONDataLoader : MonoBehaviour
 {
@@ -31,20 +38,32 @@ public class JSONDataLoader : MonoBehaviour
         public int max;
     }
 
+
     // Create a list to store all ancestry data
     public List<AncestryData> ancestryList;
+    public List<AncestryData> ParseJsonArray(string json){
+        // Use JsonUtility to directly deserialize the JSON array into a list of AncestryData objects
+        AncestryDataArrayWrapper dataArray = JsonUtility.FromJson<AncestryDataArrayWrapper>(json);
+        //Debug.Log(dataArray.ancestryData[1]);
+        return new List<AncestryData>((IEnumerable<AncestryData>)dataArray.ancestryData);
+    }
 
     void Start()
     {
         // Load JSON file from Resources folder
-        TextAsset jsonFile = Resources.Load<TextAsset>("ancestryData");
+        TextAsset jsonFile = Resources.Load<TextAsset>("ancestry");
 
         // Parse JSON data into list of AncestryData objects
         if (jsonFile != null)
         {
             ancestryList = new List<AncestryData>();
             string jsonString = jsonFile.ToString();
-            ancestryList.AddRange(JsonUtility.FromJson<AncestryData[]>(jsonString));
+            //ancestryList.AddRange((IEnumerable<AncestryData>)JsonUtility.FromJson<AncestryData>(jsonString));
+            List<AncestryData> ancestryDataList = ParseJsonArray(jsonString);
+            foreach(AncestryData data in ancestryDataList){
+                ancestryList.Add(data);
+                //Debug.Log(JsonUtility.ToJson(data));
+            }
         }
         else
         {
