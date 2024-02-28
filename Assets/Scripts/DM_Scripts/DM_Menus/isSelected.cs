@@ -12,4 +12,9 @@ public class isSelected : MonoBehaviour, IPointerClickHandler
         sidebarUI.selectedObject = this.gameObject;
     }
 
+    public GameObject OnPointerClickGameObject(PointerEventData eventData)
+    {
+        return this.gameObject;
+    }
+
 }

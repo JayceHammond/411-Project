@@ -6,31 +6,13 @@ using UnityEngine;
 
 public class getPrefabs : MonoBehaviour
 {
-
+    public String path = "Assets/Prefabs/DMPrefabs/DMObjects";
     private GameObject prefab;
 
     public Array getAllPrefabs(){
-        return getAllBuildings().Concat(getAllFoilage()).Concat(getAllCharacters()).ToArray();
-    }
-
-    private FileInfo[] getAllBuildings(){
-        DirectoryInfo DMPrefabObjects = new DirectoryInfo("Assets/Prefabs/DMPrefabs/DMObjects/Buildings");
+        DirectoryInfo DMPrefabObjects = new DirectoryInfo(path);
         FileInfo[] AllPrefabs = DMPrefabObjects.GetFiles("*.prefab");
 
-        return AllPrefabs;
-    }
-
-    private FileInfo[] getAllFoilage(){
-        DirectoryInfo DMPrefabObjects = new DirectoryInfo("Assets/Prefabs/DMPrefabs/DMObjects/Foilage");
-        FileInfo[] AllPrefabs = DMPrefabObjects.GetFiles("*.prefab");
-
-        return AllPrefabs;
-    }
-
-    private FileInfo[] getAllCharacters(){
-        DirectoryInfo DMPrefabObjects = new DirectoryInfo("Assets/Prefabs/DMPrefabs/DMObjects/Characters");
-        FileInfo[] AllPrefabs = DMPrefabObjects.GetFiles("*.prefab");
-
-        return AllPrefabs;
+        return AllPrefabs.ToArray();
     }
 }
