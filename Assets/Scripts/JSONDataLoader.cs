@@ -79,4 +79,5 @@ public class JSONDataLoader : MonoBehaviour
             // Access other properties similarly
         }
     }
+
 }
