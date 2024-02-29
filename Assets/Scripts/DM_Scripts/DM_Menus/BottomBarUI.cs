@@ -1,7 +1,6 @@
 using System;
+using System.Collections;
 using System.IO;
-using JetBrains.Annotations;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,32 +8,35 @@ public class BottomBarUI : MonoBehaviour
 {
     public VisualElement root;
     public getPrefabs prefabs;
+    public Camera DMCamera;
+    public GameObject objectToSpawn;
+
     private VisualElement ObjectListHolder;
     private Array ObjectList;
+    private GameObject spawnedObject;
+    private bool holding = false;
 
     void OnEnable(){
         root = GetComponent<UIDocument>().rootVisualElement;
         ObjectListHolder = root.Q<VisualElement>("ObjectHolder");
 
         ObjectList = prefabs.getAllPrefabs();
-        gettingGameObjects(ObjectList);
+        fillingBottomUI(ObjectList);
     }
 
     void Update(){
-        //Debug.Log(ObjectList.Length);
-        
+        holding = mouseObjectPlacing(holding);
     }
 
-    private void gettingGameObjects(Array objectList){
+    private void fillingBottomUI(Array objectList){
         foreach(FileInfo item in ObjectList){
-            VisualElement newObject = new VisualElement();
-            newObject.name = item.Name;
+            VisualElement newObject = new VisualElement
+            {
+                name = item.Name
+            };
 
+            newObject.AddManipulator(new Clickable(click => holding = true));
             newObject.Add(makeObjectLabel(item));
-            //Might need to make a tempary screen to get the pictures or make photos and store them then grab them
-            //newObject.Add(makeObjectImage(item));
-            newObject.AddManipulator(new Clickable(evt => Debug.Log("Clicked " + item.Name)));
-            newObject.focusable = true;
             ObjectListHolder.Add(newObject);
         }
     }
@@ -48,17 +50,25 @@ public class BottomBarUI : MonoBehaviour
         return ObjectLabel;
     }
 
-    private Image makeObjectImage(FileInfo item){
-        Image ObjectImage = new Image();
-        GameObject objectForImage = GameObject.Find(item.Name);
+    private bool mouseObjectPlacing(bool holding){
+        if (Input.GetMouseButton(0) && holding){
+            Debug.Log("Placing");
+            Vector3 mousePosition = DMCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,0,DMCamera.nearClipPlane));
 
-        return ObjectImage;
+            spawnedObject = Instantiate(objectToSpawn, mousePosition, Quaternion.identity);
+            spawnedObject.transform.localPosition = mousePosition;
+
+            spawnedObject = null;
+            return !holding;
+        }else if(Input.GetMouseButton(1) && holding){
+            Debug.Log("Canceled");
+
+            spawnedObject = null;
+            return !holding;
+        }else{
+             return holding;
+        }
     }
 
-    private GameObject spawnSelectedObject(FileInfo itemFile){
-        //Player needs to select the object from the UI then based on which object the user chooses
-        //then spawn that item and place the object where they release the mouse button
 
-        return null;
-    }
 }
