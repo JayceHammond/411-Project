@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DMCameraController : MonoBehaviour
@@ -40,10 +36,10 @@ public class DMCameraController : MonoBehaviour
         if (mouseInputs.rightClick())
         {
             transform.eulerAngles += new Vector3(mouseInputs.MouseMovement().y, mouseInputs.MouseMovement().x, 0);
-            camera.fieldOfView += mouseInputs.scrollWheel().y;
+            transform.position += new Vector3(0 , 0 , -mouseInputs.scrollWheel().y);
         }else{
             // Scrollwheel moves the camera in the Z direction
-            transform.position += new Vector3(0 , 0 , -mouseInputs.scrollWheel().y);
+            camera.fieldOfView += mouseInputs.scrollWheel().y;
         }
 
     }

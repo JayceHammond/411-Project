@@ -26,13 +26,7 @@ public class BottomBarUI : MonoBehaviour
     }
 
     void Update(){
-        if(spawnedObject != null){
-            spawnedObject.transform.localPosition = DMCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 10f));
-        }else{
-            holding = mouseObjectPlacing(holding);
-        }
     }
-
 
     private bool mouseObjectPlacing(bool holding){
         if (Input.GetMouseButton(0) && holding){
