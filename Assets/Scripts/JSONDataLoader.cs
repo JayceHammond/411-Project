@@ -15,8 +15,8 @@ public class JSONDataLoader : MonoBehaviour
     [System.Serializable]
     public class AncestryData
     {
-        public string id;
         public string name;
+        public string summary;
         public string type;
         public int hp;
         public SpeedData speed;
@@ -68,15 +68,6 @@ public class JSONDataLoader : MonoBehaviour
         else
         {
             Debug.LogError("Ancestry JSON file not found!");
-        }
-
-        // Example usage:
-        // Access individual ancestry data
-        if (ancestryList.Count > 0)
-        {
-            Debug.Log("First Ancestry ID: " + ancestryList[0].id);
-            Debug.Log("First Ancestry Name: " + ancestryList[0].name);
-            // Access other properties similarly
         }
     }
 
