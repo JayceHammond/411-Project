@@ -1,29 +1,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class BottomBarUI : MonoBehaviour
 {
     public VisualElement root;
-    public getPrefabs prefabs;
     public Camera DMCamera;
 
     private VisualElement ObjectListHolder;
     private GameObject spawnedObject;
-    private String path = "Assets/Resources";
+    private String path = "Prefabs";
+    private StyleSheet ObjectLabelStyle;
+    private StyleSheet ObjectVisEleStyle;
     private List<GameObject> ObjectList;
 
     void OnEnable(){
         root = GetComponent<UIDocument>().rootVisualElement;
         ObjectListHolder = root.Q<VisualElement>("ObjectHolder");
 
-        ObjectList = Resources.LoadAll<GameObject>("Prefabs").ToList();
-        foreach (var item in ObjectList){
-            Debug.Log(item.name);
-        }
-
+        ObjectList = Resources.LoadAll<GameObject>(path).ToList();
+        ObjectLabelStyle = Resources.Load<StyleSheet>("CSS/ObjectLabelStyles");
+        ObjectVisEleStyle = Resources.Load<StyleSheet>("CSS/ObjectVisualElement");
 
         fillingBottomUI(ObjectList);
     }
@@ -43,8 +43,12 @@ public class BottomBarUI : MonoBehaviour
                 name = item.name
             };
 
-            newObject.AddManipulator(new Clickable(click => mouseObjectPlacing(item)));
             newObject.Add(makeObjectLabel(item));
+            newObject.Add(makeObjectImage(item));
+
+            newObject.AddManipulator(new Clickable(click => mouseObjectPlacing(item)));
+            newObject.styleSheets.Add(ObjectVisEleStyle);
+
             ObjectListHolder.Add(newObject);
         }
     }
@@ -54,6 +58,21 @@ public class BottomBarUI : MonoBehaviour
             text = item.name //.Substring(0, item.Name.Length - 7)
         };
 
+        ObjectLabel.styleSheets.Add(ObjectLabelStyle);
+
         return ObjectLabel;
+    }
+
+    private VisualElement makeObjectImage(GameObject item){
+        VisualElement ObjectImage = new VisualElement
+        {
+            name = item.name + "Image"
+        };
+
+        ObjectImage.style.backgroundImage = new StyleBackground(item.GetComponent<SpriteRenderer>().sprite);
+        ObjectImage.style.width = 100;
+        ObjectImage.style.height = 150;
+
+        return ObjectImage;
     }
 }
