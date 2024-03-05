@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7573681962763639317}
   - component: {fileID: 8800580278265211084}
   - component: {fileID: -6149068218293078178}
-  - component: {fileID: 4997845229814729174}
   - component: {fileID: -3168563846202782155}
+  - component: {fileID: -5219785899914842724}
   m_Layer: 0
   m_Name: Small Weeds
   m_TagString: Foilage
@@ -121,21 +121,8 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.33121336
   m_Height: 0.82879925
-  m_Direction: 0
+  m_Direction: 1
   m_Center: {x: -0.05, y: -0.67, z: 0}
---- !u!114 &4997845229814729174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3437287803160786293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sidebarUI: {fileID: 0}
 --- !u!114 &-3168563846202782155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5353caf1733090a4e98f87d7a92a5c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5219785899914842724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437287803160786293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sidebarUI: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1079568871899438936}
   - component: {fileID: 1813164737630619486}
   - component: {fileID: 4369387175607774959}
-  - component: {fileID: 3206512593979467473}
   - component: {fileID: 433326455364969188}
   - component: {fileID: 7737921065356105282}
+  - component: {fileID: -7327331630476387615}
   m_Layer: 0
   m_Name: Small Stone
   m_TagString: Foilage
@@ -100,19 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e12494d6e5a31a43a79217b11ecaf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3206512593979467473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9207275824042159813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sidebarUI: {fileID: 0}
 --- !u!65 &433326455364969188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -146,3 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5353caf1733090a4e98f87d7a92a5c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7327331630476387615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207275824042159813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sidebarUI: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7164314460798944889}
   - component: {fileID: 3979924435177217846}
   - component: {fileID: 7699858296523856191}
-  - component: {fileID: 5924367407208983195}
   - component: {fileID: 3643421523891597907}
+  - component: {fileID: 8894519253146706674}
   m_Layer: 0
   m_Name: Medium Weed
   m_TagString: Foilage
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8208232474988688762}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.89, y: -7.0051165, z: 31.68}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,19 +123,6 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: -0.5, z: 0}
---- !u!114 &5924367407208983195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8208232474988688762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sidebarUI: {fileID: 0}
 --- !u!114 &3643421523891597907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5353caf1733090a4e98f87d7a92a5c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8894519253146706674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208232474988688762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sidebarUI: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}

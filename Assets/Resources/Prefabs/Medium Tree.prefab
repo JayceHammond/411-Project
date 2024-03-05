@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3419214157018719798}
   - component: {fileID: 1528738833221509389}
   - component: {fileID: 3471666771591770477}
-  - component: {fileID: 6270308106229515492}
   - component: {fileID: 1609758657668416262}
   - component: {fileID: -1351482329357366434}
+  - component: {fileID: -2131174321239405933}
   m_Layer: 0
   m_Name: Medium Tree
   m_TagString: Foilage
@@ -100,19 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e12494d6e5a31a43a79217b11ecaf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6270308106229515492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3511610291195067784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sidebarUI: {fileID: 0}
 --- !u!136 &1609758657668416262
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5353caf1733090a4e98f87d7a92a5c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2131174321239405933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511610291195067784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1578a0260d7c04441afad9e6b80b5cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sidebarUI: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}
