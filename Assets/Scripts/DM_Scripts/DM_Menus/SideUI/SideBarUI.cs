@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+//using System.Numerics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,20 +10,9 @@ public class SidebarUI : MonoBehaviour
     public GameObject selectedObject;
     private GameObject lastSelectedObject;
 
-    public Dictionary<string, float> intialTransformValues = new Dictionary<string, float>()
-    {
-        {"posX", 0.00f},
-        {"posY", 0.00f},
-        {"posZ", 0.00f},
-
-        {"rotX", 0.00f},
-        {"rotY", 0.00f},
-        {"rotZ", 0.00f},
-
-        {"scalX", 0.00f},
-        {"scalY", 0.00f},
-        {"scalZ", 0.00f},
-    };
+    private Vector3 lastPosition;
+    private Quaternion lastRotaion;
+    private Vector3 lastScale;
 
     void OnEnable(){
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -44,9 +33,9 @@ public class SidebarUI : MonoBehaviour
 
             }else{
 
-                getCurrentPosition(selectedObject);
-                getCurrentRotation(selectedObject);
-                getCurrentScale(selectedObject);
+                getCurrentPosition(selectedObject,false);
+                getCurrentRotation(selectedObject,false);
+                getCurrentScale(selectedObject,false);
                 changeName();
 
                 lastSelectedObject = selectedObject;
@@ -89,36 +78,47 @@ public class SidebarUI : MonoBehaviour
         }
     }
     
-    public void getCurrentPosition(GameObject selectedObject){
+    public void getCurrentPosition(GameObject selectedObject, bool reset){
         if(null != selectedObject){
             root.Q<VisualElement>("Position").Q<FloatField>("X").value = selectedObject.transform.position.x;
-            intialTransformValues["posX"] = selectedObject.transform.position.x;
             root.Q<VisualElement>("Position").Q<FloatField>("Y").value = selectedObject.transform.position.y;
-            intialTransformValues["posY"] = selectedObject.transform.position.y;
             root.Q<VisualElement>("Position").Q<FloatField>("Z").value = selectedObject.transform.position.z;
-            intialTransformValues["posZ"] = selectedObject.transform.position.z;
+            
+            if(!reset){
+                lastPosition.x = selectedObject.transform.position.x;
+                lastPosition.y = selectedObject.transform.position.y;
+                lastPosition.z = selectedObject.transform.position.z;
+            }
         }
     }
 
-    public void getCurrentRotation(GameObject selectedObject){
+    public void getCurrentRotation(GameObject selectedObject, bool reset){
         if(null != selectedObject){
             root.Q<VisualElement>("Rotation").Q<FloatField>("X").value = selectedObject.transform.rotation.x;
-            intialTransformValues["rotX"] = selectedObject.transform.rotation.x;
             root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value = selectedObject.transform.rotation.y;
-            intialTransformValues["rotY"] = selectedObject.transform.rotation.y;
             root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value = selectedObject.transform.rotation.z;
-            intialTransformValues["rotZ"] = selectedObject.transform.rotation.z;
+
+            if(!reset){
+                lastRotaion.x = selectedObject.transform.rotation.x;
+                lastRotaion.y = selectedObject.transform.rotation.y;
+                lastRotaion.z = selectedObject.transform.rotation.z;
+                lastRotaion.w = selectedObject.transform.rotation.w;
+            }
+
         }
     }
 
-    public void getCurrentScale(GameObject selectedObject){
+    public void getCurrentScale(GameObject selectedObject, bool reset){
         if(null != selectedObject){
             root.Q<VisualElement>("Scale").Q<FloatField>("X").value = selectedObject.transform.localScale.x;
-            intialTransformValues["scalX"] = selectedObject.transform.localScale.x;
             root.Q<VisualElement>("Scale").Q<FloatField>("Y").value = selectedObject.transform.localScale.y;
-            intialTransformValues["scalY"] = selectedObject.transform.localScale.y;
             root.Q<VisualElement>("Scale").Q<FloatField>("Z").value = selectedObject.transform.localScale.z;
-            intialTransformValues["scalZ"] = selectedObject.transform.localScale.z;
+
+            if(!reset){
+                lastScale.x = selectedObject.transform.position.x;
+                lastScale.y = selectedObject.transform.position.y;
+                lastScale.z = selectedObject.transform.position.z;
+            }
         }
     }
 
@@ -241,42 +241,23 @@ public class SidebarUI : MonoBehaviour
     }
 
     public void resetPosition(GameObject selectedObject){
-        Vector3 oldPosition;
-
-        oldPosition.x = intialTransformValues["posX"];
-        oldPosition.y = intialTransformValues["posY"];
-        oldPosition.z = intialTransformValues["posZ"];
-
-        selectedObject.transform.localPosition = oldPosition;
-        getCurrentPosition(selectedObject);
-        Debug.Log(selectedObject.transform.localPosition + " Reset Vals: " + oldPosition);
+        selectedObject.transform.position = lastPosition;
+        getCurrentPosition(selectedObject,true);
+        //Debug.Log(selectedObject.transform.localPosition + " Reset Vals: " + oldPosition);
 
     }
 
     public void resetRotaion(GameObject selectedObject){
-        Quaternion oldRotation;
-
-        oldRotation.x = intialTransformValues["rotX"];
-        oldRotation.y = intialTransformValues["rotY"];
-        oldRotation.z = intialTransformValues["rotZ"];
-        oldRotation.w = selectedObject.transform.rotation.w;
-
-        selectedObject.transform.localRotation = oldRotation;
-        getCurrentRotation(selectedObject);
-        Debug.Log(selectedObject.transform.localRotation + " Reset Vals: " + oldRotation);
+        selectedObject.transform.rotation = lastRotaion;
+        getCurrentRotation(selectedObject,true);
+        //Debug.Log(selectedObject.transform.localRotation + " Reset Vals: " + oldRotation);
 
     }
 
     public void resetScale(GameObject selectedObject){
-        Vector3 oldScale;
-
-        oldScale.x = intialTransformValues["scalX"];
-        oldScale.y = intialTransformValues["scalY"];
-        oldScale.z = intialTransformValues["scalZ"];
-
-        selectedObject.transform.localScale = oldScale;
-        getCurrentScale(selectedObject);
-        Debug.Log(selectedObject.transform.localScale + " Reset Vals: " + oldScale);
+        selectedObject.transform.localScale = lastScale;
+        getCurrentScale(selectedObject,true);
+        //Debug.Log(selectedObject.transform.localScale + " Reset Vals: " + oldScale);
 
     }
 }
