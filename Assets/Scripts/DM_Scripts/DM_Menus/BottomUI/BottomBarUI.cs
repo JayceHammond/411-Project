@@ -32,7 +32,27 @@ public class BottomBarUI : MonoBehaviour
     }
 
     private void mouseObjectPlacing(GameObject item){
-        spawnedObject = Resources.Load<GameObject>(path + item.name);
+        Vector3 IntialPosition = new Vector3 {
+            x = 0,
+            y = 10,
+            z = 0
+        };
+
+        Quaternion IntialRotation = new Quaternion {
+            x = 0,
+            y = 10,
+            z = 0,
+            w = 1
+        };
+
+        spawnedObject = Resources.Load<GameObject>(path + "/" + item.name);
+        Debug.Log(spawnedObject);
+
+        spawnedObject.transform.position = IntialPosition;
+        spawnedObject.transform.rotation = IntialRotation;
+
+
+        Instantiate(spawnedObject);
     }
 
     private void fillingBottomUI(List<GameObject> objectList){
@@ -62,7 +82,6 @@ public class BottomBarUI : MonoBehaviour
 
         return ObjectLabel;
     }
-
     private VisualElement makeObjectImage(GameObject item){
         VisualElement ObjectImage = new VisualElement
         {
