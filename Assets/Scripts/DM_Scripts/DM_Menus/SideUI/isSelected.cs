@@ -3,14 +3,16 @@ using UnityEngine.EventSystems;
 
 public class isSelected : MonoBehaviour, IPointerClickHandler
 {
-    private SidebarUI sidebarUI;
+    public SidebarUI sidebarUI;
 
     private float Clicked = 0;
     private float ClickTime = 0;
     private float ClickTimeDelay = 0.75f;
 
-    void Start(){
-        sidebarUI = GameObject.FindGameObjectWithTag("BuildingUI").GetComponent<SidebarUI>();
+    void Awake(){
+        if(sidebarUI == null){
+            sidebarUI = GameObject.FindGameObjectWithTag("BuildingUI").GetComponent<SidebarUI>();
+        }
         //Debug.Log(sidebarUI);
     }
 
