@@ -34,13 +34,13 @@ public class BottomBarUI : MonoBehaviour
     private void mouseObjectPlacing(GameObject item){
         Vector3 IntialPosition = new Vector3 {
             x = 0,
-            y = 10,
+            y = 5,
             z = 0
         };
 
         Quaternion IntialRotation = new Quaternion {
             x = 0,
-            y = 10,
+            y = 0,
             z = 0,
             w = 1
         };
