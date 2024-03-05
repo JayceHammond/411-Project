@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SideChecker : MonoBehaviour
@@ -10,32 +11,56 @@ public class SideChecker : MonoBehaviour
     public static int sharedSideVal;
     private static float timer = 0;
     public static bool allowedToCalculate;
+    private int collisionCount = 0;
     public bool done;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update(){
+        if(IsNotColliding && CompareTag("D4") && timer > 6){
+            sharedSideVal = sideVal;
+            pubSideVal = sharedSideVal.ToString();
+            DiceController.displayText.text = pubSideVal;
+            Debug.Log("I rolled " + sharedSideVal);
+            timer = 0;
+        }else{
+            Debug.Log("not d20");
+        }
+    }
+
+
+    public bool IsNotColliding{
+        get {return collisionCount == 0;}
     }
 
     public static string DisplayText(){
         return pubSideVal;
     }
 
+    private void OnTriggerEnter(Collider col){
+        collisionCount++;
+    }
+
+    private void OnTriggerExit(Collider col){
+        collisionCount--;
+    }
     private void OnTriggerStay(Collider col) {
         GameObject obj = col.gameObject;
         timer += Time.deltaTime;
-        if(obj.CompareTag("Tray") && timer > 3){
-            pubSideVal = sideVal.ToString();
-            allowedToCalculate = true;
-            sharedSideVal = sideVal;
-            timer = 0;
-        }else if(!obj.CompareTag("Tray") && timer > 3){
-            pubSideVal = "reroll";
-            timer = 0;
+
+        if(!CompareTag("D4"))
+        {
+            if(obj.CompareTag("Tray") && timer > 3){
+                pubSideVal = sideVal.ToString();
+                allowedToCalculate = true;
+                sharedSideVal = sideVal;
+                timer = 0;
+            }else if(!obj.CompareTag("Tray") && timer > 3){
+                pubSideVal = "reroll";
+                timer = 0;
+            }
         }
     }
 

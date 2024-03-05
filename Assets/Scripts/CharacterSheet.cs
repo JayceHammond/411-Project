@@ -5,7 +5,10 @@ using System.ComponentModel.Design;
 using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
+using Cinemachine;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Skill = SkillController.Skill;
 
 public class CharacterSheet : MonoBehaviour
@@ -17,6 +20,8 @@ public class CharacterSheet : MonoBehaviour
     public int playerHP;
     public int playerTempHP;
     public List<string> playerConditions;
+    public List<GameObject> dice;
+    public int selectedDie;
     public int playerClassDC;
     public int playerHeroPoint;
     public int playerSpeed;
@@ -29,16 +34,16 @@ public class CharacterSheet : MonoBehaviour
         {"Crafting", "UNTRAINED"},
         {"Deception", "UNTRAINED"},
         {"Diplomacy", "UNTRAINED"},
-        {"Intimidation", "EXPERT"},
-        {"Medicine", "EXPERT"},
-        {"Nature", "TRAINED"},
-        {"Occultism","UNTRAINED"},
-        {"Performance", "TRAINED"},
+        {"Intimidation", "TRAINED"},
+        {"Medicine", "TRAINED"},
+        {"Nature", "UNTRAINED"},
+        {"Occultism","TRAINED"},
+        {"Performance", "UNTRAINED"},
         {"Religion", "UNTRAINED"},
         {"Society", "UNTRAINED"},
-        {"Stealth", "EXPERT"},
-        {"Survival", "TRAINED"},
-        {"Thievery", "TRAINED"}
+        {"Stealth", "TRAINED"},
+        {"Survival", "EXPERT"},
+        {"Thievery", "UNTRAINED"}
     };
 
     
@@ -52,6 +57,11 @@ public class CharacterSheet : MonoBehaviour
     public int CHAR;
 
 
+    public TextMeshProUGUI fpsTMP;
+    public string fpsText;
+	public float deltaTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,29 +71,50 @@ public class CharacterSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K)){
-            rollAcrobatics();
+        Debug.Log(DiceController.displayText.text);
+        if(Input.GetKeyDown(KeyCode.J)){
+            rollFlatDie();
+
         }
-        Debug.Log(finalRoll);
-        Debug.Log(SideChecker.sharedSideVal);
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+		float fps = 1.0f / deltaTime;
+		fpsText = Mathf.Ceil (fps).ToString ();
+        fpsTMP.text = fpsText;
     }
 
     public int calculateStatBonus(int stat){
+        if(stat <= 0){
+            return 0;
+        }
         return (stat - 10)/ 2;
     }
 
 
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
-        DiceController.rollDie(this.transform);
+        DiceController.rollDie(dice[selectedDie],this.transform);
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }
 
     IEnumerator WaitForRoll(int statBonus, int profBon){
+        SideChecker.allowedToCalculate = false;
         yield return new WaitUntil(SideChecker.isDone);
+        //D20 CRIT STATEMENTS
+        if(SideChecker.sharedSideVal == 1){
+            DiceController.displayText.color = Color.red;
+        }
+        else if(SideChecker.sharedSideVal == 20){
+            DiceController.displayText.color = Color.green;
+        }
+        else{
+            DiceController.displayText.color = Color.white;
+        }
         finalRoll = SideChecker.sharedSideVal + statBonus + profBon;
         DiceController.displayText.text = finalRoll.ToString();
-        SideChecker.allowedToCalculate = false;
+    }
+
+    public void rollFlatDie(){
+        calculateRoll(0,0);
     }
 
     //SKILL CHECKS
@@ -150,5 +181,41 @@ public class CharacterSheet : MonoBehaviour
     public void rollThievery(){
         int rankBonus = SkillController.proficiencyRanks[skills["Thievery"]];
         calculateRoll(DEX, rankBonus);
-    }   
+    }
+
+
+    public void updateStr(){
+        GameObject strInput = GameObject.Find("STR Score");
+        STR = int.Parse(strInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateDEX(){
+        GameObject dexInput = GameObject.Find("DEX Score");
+        DEX = int.Parse(dexInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateCON(){
+        GameObject conInput = GameObject.Find("CON Score");
+        CON = int.Parse(conInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateINT(){
+        GameObject intInput = GameObject.Find("INT Score");
+        INT = int.Parse(intInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateWIS(){
+        GameObject wisInput = GameObject.Find("WIS Score");
+        WIS = int.Parse(wisInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateCHA(){
+        GameObject chaInput = GameObject.Find("CHA Score");
+        CHAR = int.Parse(chaInput.GetComponent<TMP_InputField>().text);
+    }
 }

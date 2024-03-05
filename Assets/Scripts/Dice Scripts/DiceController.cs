@@ -25,10 +25,11 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        displayText.text = displayTextOBJ.text;
     }
 
-    public static int rollDie(Transform transform){
-        GameObject roll = Instantiate(twentySided, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
+    public static int rollDie(GameObject dieToRoll,Transform transform){
+        GameObject roll = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
         roll.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
         roll.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
         Destroy(roll, 10);

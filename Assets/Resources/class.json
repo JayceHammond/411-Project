@@ -1,0 +1,563 @@
+{
+  "classData": [
+    {
+      "name": "Alchemist",
+      "ability": ["Intelligence"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in  alchemical bombs",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in medium armor",
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Trained",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Crafting",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Barbarian",
+      "ability": ["Strength"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Athletics",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 12
+    },
+    {
+      "name": "Bard",
+      "ability": ["Charisma"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in the  longsword ,  rapier ,  sap ,  shortbow ,  shortsword , and  whip",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Occultism",
+        "Trained in  Performance",
+        "Trained in a number of additional skills equal to 4 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Champion",
+      "ability": ["Strength", "Dexterity"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in all armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Religion",
+        "Trained in one skill determined by your choice of deity",
+        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+      ],
+      "hp": 10
+    },
+    {
+      "name": "Cleric",
+      "ability": ["Wisdom"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in the favored weapon of your deity. If your deity’s favored weapon is uncommon, you also gain access to that weapon.",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Untrained in all armor, though your doctrine might alter this",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Religion",
+        "Trained in one skill determined by your choice of deity",
+        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Druid",
+      "ability": ["Wisdom"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Nature",
+        "Trained in one skill determined by your druidic order",
+        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Fighter",
+      "ability": ["Strength", "Dexterity"],
+      "attack_proficiency": [
+        "Expert in simple weapons",
+        "Expert in martial weapons",
+        "Trained in advanced weapons",
+        "Expert in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in all armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Trained",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in your choice of  Acrobatics  or  Athletics",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 10
+    },
+    {
+      "name": "Monk",
+      "ability": ["Strength", "Dexterity"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Untrained in all armor",
+        "Expert in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in a number of skills equal to 4 plus your Intelligence modifier"
+      ],
+      "hp": 10
+    },
+    {
+      "name": "Ranger",
+      "ability": ["Strength", "Dexterity"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Trained",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Nature",
+        "Trained in  Survival",
+        "Trained in a number of additional skills equal to 4 plus your Intelligence modifier"
+      ],
+      "hp": 10
+    },
+    {
+      "name": "Rogue",
+      "ability": ["Dexterity", "Other"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in the  rapier ,  sap ,  shortbow , and  shortsword",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Stealth",
+        "Trained in one or more skills determined by your rogue's racket",
+        "Trained in a number of additional skills equal to 7 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Sorcerer",
+      "ability": ["Charisma"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Untrained in all armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in one or more skills determined by your bloodline",
+        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+      ],
+      "hp": 6
+    },
+    {
+      "name": "Wizard",
+      "ability": ["Intelligence"],
+      "attack_proficiency": [
+        "Trained in the  club ,  crossbow ,  dagger ,  heavy crossbow , and  staff",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Untrained in all armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Arcana",
+        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+      ],
+      "hp": 6
+    },
+    {
+      "name": "Investigator",
+      "ability": ["Intelligence"],
+      "attack_proficiency": [
+        "Trained in simple and martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Society",
+        "Trained in one or more skills determined by your methodology",
+        "Trained in a number of additional skills equal to 4 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Oracle",
+      "ability": ["Charisma"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Religion",
+        "Trained in one or more skills determined by your mystery",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Swashbuckler",
+      "ability": ["Dexterity"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Acrobatics",
+        "Trained in one skill determined by your swashbuckler's style",
+        "Trained in a number of additional skills equal to 4 plus your Intelligence modifier"
+      ],
+      "hp": 10
+    },
+    {
+      "name": "Witch",
+      "ability": ["Intelligence"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Untrained in all armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in one skill determined by your patron",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 6
+    },
+    {
+      "name": "Magus",
+      "ability": ["Strength", "Dexterity"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Arcana",
+        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Summoner",
+      "ability": ["Charisma"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": ["Trained in unarmored defense"],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in one or more skills determined by your eidolon",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 10
+    },
+    {
+      "name": "Inventor",
+      "ability": ["Intelligence"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Crafting",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Gunslinger",
+      "ability": ["Dexterity"],
+      "attack_proficiency": [
+        "Expert in simple firearms and crossbows",
+        "Expert in martial firearms and crossbows",
+        "Trained in advanced firearms and crossbows",
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Trained",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in one or more skills determined by your gunslinger's way",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Psychic",
+      "ability": ["Intelligence", "Charisma"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Untrained in all armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Trained",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Occultism",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 6
+    },
+    {
+      "name": "Thaumaturge",
+      "ability": ["Charisma"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in martial weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in medium armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Trained",
+      "will_proficiency": "Expert",
+      "perception_proficiency": "Expert",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Arcana ,  Nature ,  Occultism , and  Religion",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    },
+    {
+      "name": "Kineticist",
+      "ability": ["Constitution"],
+      "attack_proficiency": [
+        "Trained in simple weapons",
+        "Trained in unarmed attacks"
+      ],
+      "defense_proficiency": [
+        "Trained in light armor",
+        "Trained in unarmored defense"
+      ],
+      "fortitude_proficiency": "Expert",
+      "reflex_proficiency": "Expert",
+      "will_proficiency": "Trained",
+      "perception_proficiency": "Trained",
+      "resistance": {},
+      "weakness": {},
+      "skill_proficiency": [
+        "Trained in  Nature",
+        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+      ],
+      "hp": 8
+    }
+  ]
+}
