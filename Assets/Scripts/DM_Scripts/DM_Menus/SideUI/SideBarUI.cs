@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,6 +35,7 @@ public class SidebarUI : MonoBehaviour
         changeSelectLable();
         if (selectedObject != null)
         {
+
             if (lastSelectedObject == selectedObject){
                 
                 root.Q<VisualElement>("Position").Q<Button>("Reset").clickable.clicked += () => resetPosition(selectedObject);
@@ -45,6 +47,7 @@ public class SidebarUI : MonoBehaviour
                 getCurrentPosition(selectedObject);
                 getCurrentRotation(selectedObject);
                 getCurrentScale(selectedObject);
+                changeName();
 
                 lastSelectedObject = selectedObject;
             }
@@ -53,6 +56,7 @@ public class SidebarUI : MonoBehaviour
                 selectedObject.transform.position = setCurrentPosition(selectedObject);
                 selectedObject.transform.rotation = setCurrentRotation(selectedObject);
                 selectedObject.transform.localScale = setCurrentScale(selectedObject);
+                selectedObject.name = setName(selectedObject);
             }
 
         }else{
@@ -73,6 +77,15 @@ public class SidebarUI : MonoBehaviour
         else
         {
             root.Q<Label>("Object_Selected").text= "No Object Selected";
+        }
+    }
+
+    private void changeName(){
+        TextField NameChanger = root.Q<TextField>("ChangeName");
+        if(selectedObject == null){
+            NameChanger.value = "No Object Selected";
+        }else{
+            NameChanger.value = selectedObject.name;
         }
     }
     
@@ -111,7 +124,7 @@ public class SidebarUI : MonoBehaviour
 
     public bool checkForChanges(GameObject selectedObject){
         bool changes = false;
-        changes = changesInPosition(selectedObject) || changesInRotaion(selectedObject) || changesInScale(selectedObject);
+        changes = changesInPosition(selectedObject) || changesInRotaion(selectedObject) || changesInScale(selectedObject) || changesInName(selectedObject);
         return changes;
     }
 
@@ -158,6 +171,20 @@ public class SidebarUI : MonoBehaviour
         return false;
     }
 
+    private bool changesInName(GameObject selectedObject){
+        String name = selectedObject.name;
+
+        String ShowedName;
+        TextField NameChanger = root.Q<TextField>("ChangeName");
+        ShowedName = NameChanger.value;
+
+        if (name.Equals(ShowedName))
+            return true;
+
+        return false;
+        
+    }
+
     public Vector3 setCurrentPosition(GameObject selectedObject){
         if (null != selectedObject){
             Vector3 newPostion;
@@ -200,6 +227,17 @@ public class SidebarUI : MonoBehaviour
         }
 
         return selectedObject.transform.localScale;
+    }
+
+    private String setName(GameObject selectedObject){
+        if(null != selectedObject){
+            String newName;
+            TextField NameChanger = root.Q<TextField>("ChangeName");
+
+            newName = NameChanger.value;
+            return newName;
+        }
+        return selectedObject.name;
     }
 
     public void resetPosition(GameObject selectedObject){
