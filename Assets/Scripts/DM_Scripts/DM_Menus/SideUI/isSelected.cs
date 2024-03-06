@@ -25,6 +25,7 @@ public class isSelected : MonoBehaviour, IPointerClickHandler
         if((Clicked == 2) && (Time.time - ClickTime) < ClickTimeDelay){
             //Debug.Log(this.gameObject + " :Is the clicked object");
             sidebarUI.selectedObject = this.gameObject;
+            //Debug.Log(sidebarUI.selectedObject);
 
             Clicked = 0;
             ClickTime = 0;

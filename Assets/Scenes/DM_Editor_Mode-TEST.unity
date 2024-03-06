@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (3)
@@ -296,6 +300,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7132005214830541277, guid: 822c95823400032479e581daf8b2581d, type: 3}
   m_PrefabInstance: {fileID: 3300000316273970040}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &204249947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}
+  m_PrefabInstance: {fileID: 3300000316273970040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204249945}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77252a1db4fc5f42b0a2130f8c0af39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &318648150
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (4)
@@ -512,6 +531,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (5)
@@ -831,6 +854,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (6)
@@ -853,6 +880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 499519966}
     m_Modifications:
+    - target: {fileID: -5219785899914842724, guid: 2e45b6add39db434fb08793c64b7b365, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 3255522256272675854, guid: 2e45b6add39db434fb08793c64b7b365, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1891043
@@ -955,6 +986,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (7)
@@ -1599,11 +1634,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010873181663, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.020566229
+      value: -0.020566227
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010873181663, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.004583645
+      value: 0.0045836447
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1619,11 +1654,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.02079558
+      value: -0.020795563
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0033945674
+      value: 0.0033945648
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1732,6 +1767,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 499519966}
     m_Modifications:
+    - target: {fileID: -5219785899914842724, guid: 2e45b6add39db434fb08793c64b7b365, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 3255522256272675854, guid: 2e45b6add39db434fb08793c64b7b365, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6160364
@@ -1940,6 +1979,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (8)
@@ -2108,6 +2151,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 499519966}
     m_Modifications:
+    - target: {fileID: -2131174321239405933, guid: f4e25f22db969e74e98f8bca5795c4fb, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 3419214157018719798, guid: f4e25f22db969e74e98f8bca5795c4fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.321741
@@ -2313,6 +2360,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 499519966}
     m_Modifications:
+    - target: {fileID: -7327331630476387615, guid: 6643f932dc8fbca4eaa96e8840475fba, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 1079568871899438936, guid: 6643f932dc8fbca4eaa96e8840475fba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.041529
@@ -2472,6 +2523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (9)
@@ -2539,6 +2594,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree (10)
@@ -2561,6 +2620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 499519966}
     m_Modifications:
+    - target: {fileID: -5219785899914842724, guid: 2e45b6add39db434fb08793c64b7b365, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 3255522256272675854, guid: 2e45b6add39db434fb08793c64b7b365, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.307421
@@ -2663,6 +2726,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020183153114356762, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
+      propertyPath: sidebarUI
+      value: 
+      objectReference: {fileID: 204249947}
     - target: {fileID: 9054102903549180125, guid: 8ff0646f34afb6f408191f651d0ee934, type: 3}
       propertyPath: m_Name
       value: Tall Tree
@@ -2845,6 +2912,10 @@ PrefabInstance:
     - target: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}
+      propertyPath: selectedObject
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7132005214830541277, guid: 822c95823400032479e581daf8b2581d, type: 3}
       propertyPath: m_Name

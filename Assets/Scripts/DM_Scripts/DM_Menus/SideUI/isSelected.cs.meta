@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - sidebarUI: {fileID: 5797202076986547961, guid: 822c95823400032479e581daf8b2581d, type: 3}
+  - sidebarUI: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,5 +1,4 @@
 using System;
-//using System.Numerics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,26 +15,26 @@ public class SidebarUI : MonoBehaviour
 
     void OnEnable(){
         root = GetComponent<UIDocument>().rootVisualElement;
+        //selectedObject = null;
         lastSelectedObject = null;
     }
 
     void Update(){     
-        //Debug.Log(root.Q<Label>("Object_Selected").ToString());   
+        Debug.Log(selectedObject);   
         changeSelectLable();
-        if (selectedObject != null)
-        {
+        if (selectedObject != null){
 
             if (lastSelectedObject == selectedObject){
-                
+                //Debug.Log("The First Part");
                 root.Q<VisualElement>("Position").Q<Button>("Reset").clickable.clicked += () => resetPosition(selectedObject);
                 root.Q<VisualElement>("Rotation").Q<Button>("Reset").clickable.clicked += () => resetRotaion(selectedObject);
                 root.Q<VisualElement>("Scale").Q<Button>("Reset").clickable.clicked += () => resetScale(selectedObject);
 
             }else{
-
-                getCurrentPosition(selectedObject,false);
-                getCurrentRotation(selectedObject,false);
-                getCurrentScale(selectedObject,false);
+                //Debug.Log("Im Here!!");
+                getCurrentPosition(selectedObject, false);
+                getCurrentRotation(selectedObject, false);
+                getCurrentScale(selectedObject, false);
                 changeName();
 
                 lastSelectedObject = selectedObject;
@@ -79,46 +78,41 @@ public class SidebarUI : MonoBehaviour
     }
     
     public void getCurrentPosition(GameObject selectedObject, bool reset){
-        if(null != selectedObject){
-            root.Q<VisualElement>("Position").Q<FloatField>("X").value = selectedObject.transform.position.x;
-            root.Q<VisualElement>("Position").Q<FloatField>("Y").value = selectedObject.transform.position.y;
-            root.Q<VisualElement>("Position").Q<FloatField>("Z").value = selectedObject.transform.position.z;
+        root.Q<VisualElement>("Position").Q<FloatField>("X").value = selectedObject.transform.position.x;
+        root.Q<VisualElement>("Position").Q<FloatField>("Y").value = selectedObject.transform.position.y;
+        root.Q<VisualElement>("Position").Q<FloatField>("Z").value = selectedObject.transform.position.z;
             
-            if(!reset){
-                lastPosition.x = selectedObject.transform.position.x;
-                lastPosition.y = selectedObject.transform.position.y;
-                lastPosition.z = selectedObject.transform.position.z;
-            }
+        if(!reset){
+            lastPosition.x = selectedObject.transform.position.x;
+            lastPosition.y = selectedObject.transform.position.y;
+            lastPosition.z = selectedObject.transform.position.z;
         }
     }
 
     public void getCurrentRotation(GameObject selectedObject, bool reset){
-        if(null != selectedObject){
-            root.Q<VisualElement>("Rotation").Q<FloatField>("X").value = selectedObject.transform.rotation.x;
-            root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value = selectedObject.transform.rotation.y;
-            root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value = selectedObject.transform.rotation.z;
 
-            if(!reset){
-                lastRotaion.x = selectedObject.transform.rotation.x;
-                lastRotaion.y = selectedObject.transform.rotation.y;
-                lastRotaion.z = selectedObject.transform.rotation.z;
-                lastRotaion.w = selectedObject.transform.rotation.w;
-            }
+        root.Q<VisualElement>("Rotation").Q<FloatField>("X").value = selectedObject.transform.rotation.x;
+        root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value = selectedObject.transform.rotation.y;
+        root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value = selectedObject.transform.rotation.z;
 
+        if(!reset){
+            lastRotaion.x = selectedObject.transform.rotation.x;
+            lastRotaion.y = selectedObject.transform.rotation.y;
+            lastRotaion.z = selectedObject.transform.rotation.z;
+            //lastRotaion.w = selectedObject.transform.rotation.w;
         }
     }
 
     public void getCurrentScale(GameObject selectedObject, bool reset){
-        if(null != selectedObject){
-            root.Q<VisualElement>("Scale").Q<FloatField>("X").value = selectedObject.transform.localScale.x;
-            root.Q<VisualElement>("Scale").Q<FloatField>("Y").value = selectedObject.transform.localScale.y;
-            root.Q<VisualElement>("Scale").Q<FloatField>("Z").value = selectedObject.transform.localScale.z;
 
-            if(!reset){
-                lastScale.x = selectedObject.transform.position.x;
-                lastScale.y = selectedObject.transform.position.y;
-                lastScale.z = selectedObject.transform.position.z;
-            }
+        root.Q<VisualElement>("Scale").Q<FloatField>("X").value = selectedObject.transform.localScale.x;
+        root.Q<VisualElement>("Scale").Q<FloatField>("Y").value = selectedObject.transform.localScale.y;
+        root.Q<VisualElement>("Scale").Q<FloatField>("Z").value = selectedObject.transform.localScale.z;
+
+        if(!reset){
+            lastScale.x = selectedObject.transform.localScale.x;
+            lastScale.y = selectedObject.transform.localScale.y;
+            lastScale.z = selectedObject.transform.localScale.z;
         }
     }
 
@@ -186,58 +180,45 @@ public class SidebarUI : MonoBehaviour
     }
 
     public Vector3 setCurrentPosition(GameObject selectedObject){
-        if (null != selectedObject){
-            Vector3 newPostion;
 
-            newPostion.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
-            newPostion.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
-            newPostion.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
+        Vector3 newPostion;
 
-            return newPostion;
-        }
+        newPostion.x = root.Q<VisualElement>("Position").Q<FloatField>("X").value;
+        newPostion.y = root.Q<VisualElement>("Position").Q<FloatField>("Y").value;
+        newPostion.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
 
-        return selectedObject.transform.position;
+        return newPostion;
     }
 
     public Quaternion setCurrentRotation(GameObject selectedObject){
-        if (null != selectedObject){
-            Quaternion newRotation;
 
-            newRotation.x = root.Q<VisualElement>("Rotation").Q<FloatField>("X").value;
-            newRotation.y = root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value;
-            newRotation.z = root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value;
-            newRotation.w = selectedObject.transform.rotation.w;
+        Quaternion newRotation;
 
+        newRotation.x = root.Q<VisualElement>("Rotation").Q<FloatField>("X").value;
+        newRotation.y = root.Q<VisualElement>("Rotation").Q<FloatField>("Y").value;
+        newRotation.z = root.Q<VisualElement>("Rotation").Q<FloatField>("Z").value;
+        newRotation.w = selectedObject.transform.rotation.w;
 
-            return newRotation;
-        }
-
-        return selectedObject.transform.rotation;
+        return newRotation;
     }
 
     public Vector3 setCurrentScale(GameObject selectedObject){
-        if (null != selectedObject){
-            Vector3 newScale;
 
-            newScale.x = root.Q<VisualElement>("Scale").Q<FloatField>("X").value;
-            newScale.y = root.Q<VisualElement>("Scale").Q<FloatField>("Y").value;
-            newScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
+        Vector3 newScale;
 
-            return newScale;
-        }
+        newScale.x = root.Q<VisualElement>("Scale").Q<FloatField>("X").value;
+        newScale.y = root.Q<VisualElement>("Scale").Q<FloatField>("Y").value;
+        newScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
 
-        return selectedObject.transform.localScale;
+        return newScale;
     }
 
     private String setName(GameObject selectedObject){
-        if(null != selectedObject){
-            String newName;
-            TextField NameChanger = root.Q<TextField>("ChangeName");
+        String newName;
+        TextField NameChanger = root.Q<TextField>("ChangeName");
 
-            newName = NameChanger.value;
-            return newName;
-        }
-        return selectedObject.name;
+        newName = NameChanger.value;
+        return newName;
     }
 
     public void resetPosition(GameObject selectedObject){
