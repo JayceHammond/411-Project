@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,6 +7,7 @@ public class AncestriesUIDoc : MonoBehaviour
     public JSONDataLoader dataLoader;
     private VisualElement Ancestries;
     private VisualElement AncestrySummaries;
+    private StyleSheet AncestriesButtons;
     private bool populate = true;
 
     // Start is called before the first frame update
@@ -16,6 +15,7 @@ public class AncestriesUIDoc : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
         Ancestries = root.Q<VisualElement>("Ancestries").Q<VisualElement>("Ancestries-Holder");
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
+        AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
 
         populateAncestries();
 
@@ -29,14 +29,16 @@ public class AncestriesUIDoc : MonoBehaviour
             {
                 if (dataLoader.ancestryList[i].type == "Ancestry")
                 {
-                    Button NewAncestry = new Button
+                    Label NewAncestry = new Label
                     {
                         name = dataLoader.ancestryList[i].name,
                         text = dataLoader.ancestryList[i].name
                     };
-                    
+
                     //NewAncestry.onClick.AddListener(delegate { populateAncestSumry(); });
                     //Debug.Log(NewAncestry);
+                    NewAncestry.styleSheets.Add(AncestriesButtons);
+                    NewAncestry.AddManipulator(new Clickable(click => populateAncestSumry(NewAncestry.name)));
                     Ancestries.Add(NewAncestry);
                 }
             }
@@ -44,7 +46,8 @@ public class AncestriesUIDoc : MonoBehaviour
         populate = false;
     }
 
-    private void populateAncestSumry(){
-
+    private void populateAncestSumry(System.String name2){
+        Debug.Log("IM here!!!");
+        AncestrySummaries.Q<Label>("Summery").text = dataLoader.ancestryList.Find(x => x.name == name2).summary;
     }
 }
