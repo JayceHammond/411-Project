@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Skill = SkillController.Skill;
 
 public class CharacterSheet : MonoBehaviour
@@ -82,7 +83,7 @@ public class CharacterSheet : MonoBehaviour
     }
 
     public int calculateStatBonus(int stat){
-        if(stat == 0){
+        if(stat <= 0){
             return 0;
         }
         return (stat - 10)/ 2;
@@ -180,5 +181,41 @@ public class CharacterSheet : MonoBehaviour
     public void rollThievery(){
         int rankBonus = SkillController.proficiencyRanks[skills["Thievery"]];
         calculateRoll(DEX, rankBonus);
-    }   
+    }
+
+
+    public void updateStr(){
+        GameObject strInput = GameObject.Find("STR Score");
+        STR = int.Parse(strInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateDEX(){
+        GameObject dexInput = GameObject.Find("DEX Score");
+        DEX = int.Parse(dexInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateCON(){
+        GameObject conInput = GameObject.Find("CON Score");
+        CON = int.Parse(conInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateINT(){
+        GameObject intInput = GameObject.Find("INT Score");
+        INT = int.Parse(intInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateWIS(){
+        GameObject wisInput = GameObject.Find("WIS Score");
+        WIS = int.Parse(wisInput.GetComponent<TMP_InputField>().text);
+        
+    }
+
+    public void updateCHA(){
+        GameObject chaInput = GameObject.Find("CHA Score");
+        CHAR = int.Parse(chaInput.GetComponent<TMP_InputField>().text);
+    }
 }

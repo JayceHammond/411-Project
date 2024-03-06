@@ -39,6 +39,7 @@ public class HotKeys : MonoBehaviour
             playerCamera.transform.GetChild(1).gameObject.SetActive(isActive);
             buildMenu.gameObject.SetActive(!isActive);
             buildMenu.GetComponent<SidebarUI>().enabled = !isActive;
+            buildMenu.GetComponent<BottomBarUI>().enabled = !isActive;
         }
     }
 

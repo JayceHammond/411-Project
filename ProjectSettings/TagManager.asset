@@ -7,12 +7,14 @@ TagManager:
   - DM
   - Tray
   - Die
-  - D4
-  - D6
-  - D8
-  - D10
+  - Foilage
   - D12
   - D20
+  - D10
+  - D8
+  - D6
+  - D4
+  - BuildingUI
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - Ground
+  - 
   - 
   - 
   - 
