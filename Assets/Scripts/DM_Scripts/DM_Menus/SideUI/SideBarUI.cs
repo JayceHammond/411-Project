@@ -131,10 +131,8 @@ public class SidebarUI : MonoBehaviour
         showedPosition.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
 
         if (position.Equals(showedPosition))
-        {
-            //Debug.Log("Changed");
             return false;
-        }
+        
 
         return true;
     }
@@ -149,10 +147,8 @@ public class SidebarUI : MonoBehaviour
         showedRotation.w = rotation.w;
 
         if (rotation.Equals(showedRotation))
-        {
-            //Debug.Log("Changed");
             return false;
-        }
+        
         return true;
     }
 
@@ -199,7 +195,7 @@ public class SidebarUI : MonoBehaviour
 
     public Quaternion setCurrentRotation(GameObject selectedObject){
 
-        Debug.Log("Changed Rotation");
+        //Debug.Log("Changed Rotation");
 
         Quaternion newRotation;
 
