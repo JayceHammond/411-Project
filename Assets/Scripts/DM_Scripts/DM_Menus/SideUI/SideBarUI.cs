@@ -20,7 +20,7 @@ public class SidebarUI : MonoBehaviour
     }
 
     void Update(){     
-        Debug.Log(selectedObject);   
+        //Debug.Log(selectedObject);   
         changeSelectLable();
         if (selectedObject != null){
 
@@ -99,7 +99,7 @@ public class SidebarUI : MonoBehaviour
             lastRotaion.x = selectedObject.transform.rotation.x;
             lastRotaion.y = selectedObject.transform.rotation.y;
             lastRotaion.z = selectedObject.transform.rotation.z;
-            //lastRotaion.w = selectedObject.transform.rotation.w;
+            lastRotaion.w = selectedObject.transform.rotation.w;
         }
     }
 
@@ -131,9 +131,12 @@ public class SidebarUI : MonoBehaviour
         showedPosition.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
 
         if (position.Equals(showedPosition))
-            return true;
+        {
+            //Debug.Log("Changed");
+            return false;
+        }
 
-        return false;
+        return true;
     }
 
     private bool changesInRotaion(GameObject selectedObject){
@@ -146,9 +149,11 @@ public class SidebarUI : MonoBehaviour
         showedRotation.w = rotation.w;
 
         if (rotation.Equals(showedRotation))
-            return true;
-
-        return false;
+        {
+            //Debug.Log("Changed");
+            return false;
+        }
+        return true;
     }
 
     private bool changesInScale(GameObject selectedObject){
@@ -160,9 +165,9 @@ public class SidebarUI : MonoBehaviour
         showedScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
 
         if (scale.Equals(showedScale))
-            return true;
+            return false;
 
-        return false;
+        return true;
     }
 
     private bool changesInName(GameObject selectedObject){
@@ -173,13 +178,15 @@ public class SidebarUI : MonoBehaviour
         ShowedName = NameChanger.value;
 
         if (name.Equals(ShowedName))
-            return true;
+            return false;
 
-        return false;
+        return true;
         
     }
 
     public Vector3 setCurrentPosition(GameObject selectedObject){
+
+        //Debug.Log("Changed Position");
 
         Vector3 newPostion;
 
@@ -191,6 +198,8 @@ public class SidebarUI : MonoBehaviour
     }
 
     public Quaternion setCurrentRotation(GameObject selectedObject){
+
+        Debug.Log("Changed Rotation");
 
         Quaternion newRotation;
 
@@ -225,20 +234,17 @@ public class SidebarUI : MonoBehaviour
         selectedObject.transform.position = lastPosition;
         getCurrentPosition(selectedObject,true);
         //Debug.Log(selectedObject.transform.localPosition + " Reset Vals: " + oldPosition);
-
     }
 
     public void resetRotaion(GameObject selectedObject){
+        //Debug.Log("Im Being called");
         selectedObject.transform.rotation = lastRotaion;
         getCurrentRotation(selectedObject,true);
-        //Debug.Log(selectedObject.transform.localRotation + " Reset Vals: " + oldRotation);
-
     }
 
     public void resetScale(GameObject selectedObject){
         selectedObject.transform.localScale = lastScale;
         getCurrentScale(selectedObject,true);
         //Debug.Log(selectedObject.transform.localScale + " Reset Vals: " + oldScale);
-
     }
 }
