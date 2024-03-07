@@ -25,6 +25,8 @@ public class CharacterSheet : MonoBehaviour
     public int playerClassDC;
     public int playerHeroPoint;
     public int playerSpeed;
+    public string ancestry;
+    public static string[] statsGen = {"Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"};
 
     //SKILLS
     public Dictionary<string, string> skills = new Dictionary<string, string>(){
