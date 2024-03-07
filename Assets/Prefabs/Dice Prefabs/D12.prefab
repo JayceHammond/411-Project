@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: -3477701631286355835}
   - component: {fileID: -8927416798681806185}
   m_Layer: 3
-  m_Name: Dice_d12
+  m_Name: D12
   m_TagString: D12
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

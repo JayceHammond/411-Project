@@ -4917,15 +4917,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734009358180934, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.083967015
+      value: 0.08396701
       objectReference: {fileID: 0}
     - target: {fileID: 2556734009358180934, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.03453106
+      value: 0.034531053
       objectReference: {fileID: 0}
     - target: {fileID: 2556734009358180934, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0029115067
+      value: -0.0029115058
       objectReference: {fileID: 0}
     - target: {fileID: 2556734009572077864, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5085,11 +5085,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010873181663, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.03382374
+      value: 0.03382372
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010873181663, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.007538378
+      value: -0.0075383736
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010935536555, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_FollowOffset.y
@@ -5109,11 +5109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.034200914
+      value: 0.034200955
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.005582788
+      value: -0.0055827945
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011261494486, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_FollowOffset.y
@@ -9263,9 +9263,9 @@ RectTransform:
   - {fileID: 1991766038}
   m_Father: {fileID: 836637466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.025, y: 0.78054535}
-  m_AnchorMax: {x: 0.025, y: 0.78054535}
-  m_AnchoredPosition: {x: -40.69995, y: 97}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -20.69989, y: -3.2699585}
   m_SizeDelta: {x: 157.87, y: 313.7312}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1586241112
