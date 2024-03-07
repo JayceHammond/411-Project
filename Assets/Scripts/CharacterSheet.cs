@@ -27,6 +27,12 @@ public class CharacterSheet : MonoBehaviour
     public int playerSpeed;
     public string ancestry;
     public bool updatingStats = false;
+
+
+    //WILL DELETE LATER
+    public TextMeshProUGUI currentDieText;
+
+
     public Dictionary<string, int> statsGen = new Dictionary<string, int>(){
         {"Strength", 0},
         {"Dexterity", 0},
@@ -97,10 +103,28 @@ public class CharacterSheet : MonoBehaviour
             rollFlatDie();
 
         }
+        if(Input.GetKeyDown(KeyCode.RightBracket)){
+            if(selectedDie + 1 <= dice.Count - 1){
+                selectedDie += 1;
+            }else{
+                selectedDie = 0;
+            }
+            currentDieText.text = dice[selectedDie].name;
+        }
+        if(Input.GetKeyDown(KeyCode.LeftBracket)){
+            if(selectedDie - 1 >= 0){
+                selectedDie -= 1;
+            }else{
+                selectedDie = 5;
+            }
+            currentDieText.text = dice[selectedDie].name;
+        }
+        /*
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
 		float fps = 1.0f / deltaTime;
 		fpsText = Mathf.Ceil (fps).ToString ();
         fpsTMP.text = fpsText;
+        */
 
     }
 

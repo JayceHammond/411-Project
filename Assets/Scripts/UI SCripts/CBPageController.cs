@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CBPageController : MonoBehaviour
 {
@@ -30,5 +31,9 @@ public class CBPageController : MonoBehaviour
 
     public void onExitAncestry(){
         selectGameObject.SetActive(false);
+    }
+
+    public void onNextScene(){
+        SceneManager.LoadScene(1);
     }
 }
