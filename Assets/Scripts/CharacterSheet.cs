@@ -26,7 +26,17 @@ public class CharacterSheet : MonoBehaviour
     public int playerHeroPoint;
     public int playerSpeed;
     public string ancestry;
-    public static string[] statsGen = {"Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"};
+    public bool updatingStats = false;
+    public Dictionary<string, int> statsGen = new Dictionary<string, int>(){
+        {"Strength", 0},
+        {"Dexterity", 0},
+        {"Constitution", 0},
+        {"Intelligence", 0},
+        {"Wisdom", 0},
+        {"Charisma", 0}
+    };
+
+    //public JSONDataLoader.AncestryData selectedAncestry;
 
     //SKILLS
     public Dictionary<string, string> skills = new Dictionary<string, string>(){
@@ -58,6 +68,15 @@ public class CharacterSheet : MonoBehaviour
     public int WIS;
     public int CHAR;
 
+    //RAW STATS
+    public int rawSTR;
+    public int rawDEX;
+    public int rawCON;
+    public int rawINT;
+    public int rawWIS;
+    public int rawCHAR;
+    
+
 
     public TextMeshProUGUI fpsTMP;
     public string fpsText;
@@ -82,7 +101,35 @@ public class CharacterSheet : MonoBehaviour
 		float fps = 1.0f / deltaTime;
 		fpsText = Mathf.Ceil (fps).ToString ();
         fpsTMP.text = fpsText;
+
     }
+
+    public void updateStats(){
+        STR += statsGen["Strength"];
+        DEX += statsGen["Dexterity"];
+        CON += statsGen["Constitution"];
+        INT += statsGen["Intelligence"];
+        WIS += statsGen["Wisdom"];
+        CHAR += statsGen["Charisma"];
+    }
+
+    public void resetStats(){
+        STR = rawSTR;
+        DEX = rawDEX;
+        CON = rawCON;
+        INT = rawINT;
+        WIS = rawWIS;
+        CHAR = rawCHAR;
+
+        statsGen["Strength"] = 0;
+        statsGen["Dexterity"] = 0;
+        statsGen["Constitution"] = 0;
+        statsGen["Intelligence"] = 0;
+        statsGen["Wisdom"] = 0;
+        statsGen["Charisma"] = 0;
+    }
+
+
 
     public int calculateStatBonus(int stat){
         if(stat <= 0){
@@ -151,11 +198,11 @@ public class CharacterSheet : MonoBehaviour
     public void rollMedicine(){
         int rankBonus = SkillController.proficiencyRanks[skills["Medicine"]];
         calculateRoll(WIS, rankBonus);
-    }
+        }
     public void rollNature(){
         int rankBonus = SkillController.proficiencyRanks[skills["Nature"]];
         calculateRoll(WIS, rankBonus);
-    }   
+        }   
     public void rollOccultism(){
         int rankBonus = SkillController.proficiencyRanks[skills["Occultism"]];
         calculateRoll(INT, rankBonus);
@@ -167,7 +214,7 @@ public class CharacterSheet : MonoBehaviour
     public void rollReligion(){
         int rankBonus = SkillController.proficiencyRanks[skills["Religion"]];
         calculateRoll(WIS, rankBonus);
-    }
+        }
     public void rollSociety(){
         int rankBonus = SkillController.proficiencyRanks[skills["Society"]];
         calculateRoll(INT, rankBonus);
@@ -189,35 +236,38 @@ public class CharacterSheet : MonoBehaviour
     public void updateStr(){
         GameObject strInput = GameObject.Find("STR Score");
         STR = int.Parse(strInput.GetComponent<TMP_InputField>().text);
+        rawSTR = STR;
         
     }
 
     public void updateDEX(){
         GameObject dexInput = GameObject.Find("DEX Score");
         DEX = int.Parse(dexInput.GetComponent<TMP_InputField>().text);
+        rawDEX = DEX;
         
     }
 
     public void updateCON(){
         GameObject conInput = GameObject.Find("CON Score");
         CON = int.Parse(conInput.GetComponent<TMP_InputField>().text);
-        
+        rawCON = CON;
     }
 
     public void updateINT(){
         GameObject intInput = GameObject.Find("INT Score");
         INT = int.Parse(intInput.GetComponent<TMP_InputField>().text);
-        
+        rawINT = INT;
     }
 
     public void updateWIS(){
         GameObject wisInput = GameObject.Find("WIS Score");
         WIS = int.Parse(wisInput.GetComponent<TMP_InputField>().text);
-        
+        rawWIS = WIS;
     }
 
     public void updateCHA(){
         GameObject chaInput = GameObject.Find("CHA Score");
         CHAR = int.Parse(chaInput.GetComponent<TMP_InputField>().text);
+        rawCHAR = CHAR;
     }
 }
