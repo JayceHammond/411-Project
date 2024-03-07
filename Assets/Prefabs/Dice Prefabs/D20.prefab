@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 151617226941915386}
   - component: {fileID: 151617226941915361}
   m_Layer: 3
-  m_Name: D20 Prefab
+  m_Name: D20
   m_TagString: D20
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

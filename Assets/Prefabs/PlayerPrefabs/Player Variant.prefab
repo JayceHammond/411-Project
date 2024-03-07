@@ -146,12 +146,14 @@ MonoBehaviour:
   playerClassDC: 11
   playerHeroPoint: 1
   playerSpeed: 25
-  STR: 18
-  DEX: 18
-  CON: 14
+  ancestry: 
+  updatingStats: 1
+  STR: 10
+  DEX: 10
+  CON: 10
   INT: 10
-  WIS: 14
-  CHAR: 12
+  WIS: 10
+  CHAR: 10
   fpsTMP: {fileID: 0}
   fpsText: 
   deltaTime: 0
