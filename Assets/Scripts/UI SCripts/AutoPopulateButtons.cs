@@ -33,8 +33,9 @@ public class AutoPopulateButtons : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        Debug.Log(waitForFreeChoice);
         if(populating == true){
             float offset = 0;
             for(int i = 0; i < dataLoader.ancestryList.Count; i++){
@@ -50,9 +51,13 @@ public class AutoPopulateButtons : MonoBehaviour
             }
             populating = false;
         }
+        if(freeStat.options.Count > 0 && freeStat.options[freeStat.value].text != "None Selected"){
+            waitForFreeChoice = true;
+        }
         if(waitForFreeChoice == true){
             Debug.Log(freeStat.options[freeStat.value].text);
             selectedChar.statsGen[freeStat.options[freeStat.value].text] = 2;
+            selectedChar.updateStats();
             waitForFreeChoice = false;
         }
 
@@ -75,7 +80,6 @@ public class AutoPopulateButtons : MonoBehaviour
                 foreach(string stat in selectedChar.statsGen.Keys){
                     if(!selectedAncestry.ability.Contains(stat)){
                         freeStat.options.Add(new TMP_Dropdown.OptionData() {text = stat});
-                        waitForFreeChoice = true;
                     }
                 }
             }
@@ -85,7 +89,7 @@ public class AutoPopulateButtons : MonoBehaviour
             }
             
         }
-        selectedChar.updateStats();
+        //selectedChar.updateStats();
     }
 
 
