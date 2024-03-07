@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 7216991435623953362}
   - component: {fileID: -8817042538242490064}
   m_Layer: 3
-  m_Name: Dice_d8
+  m_Name: D8
   m_TagString: D8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
