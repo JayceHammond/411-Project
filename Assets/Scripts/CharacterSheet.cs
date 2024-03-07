@@ -8,6 +8,8 @@ using System.Runtime.Serialization.Formatters;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Skill = SkillController.Skill;
 
@@ -118,6 +120,11 @@ public class CharacterSheet : MonoBehaviour
                 selectedDie = 5;
             }
             currentDieText.text = dice[selectedDie].name;
+        }
+
+        if(Input.GetKeyDown(KeyCode.H)){
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene(0);
         }
         /*
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
