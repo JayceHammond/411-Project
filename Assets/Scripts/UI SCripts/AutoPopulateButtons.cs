@@ -20,7 +20,12 @@ public class AutoPopulateButtons : MonoBehaviour
     private string fullText;
     private string truncText;
     private TextMeshProUGUI selectedAncestryText;
-    // Start is called before the first frame update
+
+
+    //DELETE AFTER MIDTERM
+    private  bool waitForFreeChoice;
+
+
     void Awake()
     {
         dataLoader.ancestryList.Sort((x, y) => x.name.CompareTo(y.name));
@@ -45,6 +50,12 @@ public class AutoPopulateButtons : MonoBehaviour
             }
             populating = false;
         }
+        if(waitForFreeChoice == true){
+            Debug.Log(freeStat.options[freeStat.value].text);
+            selectedChar.statsGen[freeStat.options[freeStat.value].text] = 2;
+            waitForFreeChoice = false;
+        }
+
     }
 
     public void onAncestryClick(Button button){
@@ -64,6 +75,7 @@ public class AutoPopulateButtons : MonoBehaviour
                 foreach(string stat in selectedChar.statsGen.Keys){
                     if(!selectedAncestry.ability.Contains(stat)){
                         freeStat.options.Add(new TMP_Dropdown.OptionData() {text = stat});
+                        waitForFreeChoice = true;
                     }
                 }
             }
