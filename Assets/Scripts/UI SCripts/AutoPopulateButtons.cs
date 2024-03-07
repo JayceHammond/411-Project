@@ -23,7 +23,8 @@ public class AutoPopulateButtons : MonoBehaviour
 
 
     //DELETE AFTER MIDTERM
-    private  bool waitForFreeChoice;
+    private bool waitForFreeChoice;
+    private bool hasRun = false;
 
 
     void Awake()
@@ -51,14 +52,15 @@ public class AutoPopulateButtons : MonoBehaviour
             }
             populating = false;
         }
-        if(freeStat.options.Count > 0 && freeStat.options[freeStat.value].text != "None Selected"){
+        if(freeStat.options.Count > 0 && freeStat.options[freeStat.value].text != "None Selected" && hasRun == false){
             waitForFreeChoice = true;
         }
         if(waitForFreeChoice == true){
-            Debug.Log(freeStat.options[freeStat.value].text);
+            //Debug.Log(freeStat.options[freeStat.value].text);
             selectedChar.statsGen[freeStat.options[freeStat.value].text] = 2;
             selectedChar.updateStats();
             waitForFreeChoice = false;
+            hasRun = true;
         }
 
     }
