@@ -1,0 +1,39 @@
+IntegerField > IntegerInput {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+TextField > TextInput {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+
+    -unity-align-items: center;
+    -unity-justify-content: center;
+}
+
+#Level-DropDown > VisualElement {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    align-self: auto;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-center;
+}
+
+#Level-DropDown > VisualElement > VisualElement {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
