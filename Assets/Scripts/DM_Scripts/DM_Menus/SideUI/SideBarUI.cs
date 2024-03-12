@@ -131,10 +131,10 @@ public class SidebarUI : MonoBehaviour
         showedPosition.z = root.Q<VisualElement>("Position").Q<FloatField>("Z").value;
 
         if (position.Equals(showedPosition))
-            return false;
+            return true;
         
 
-        return true;
+        return false;
     }
 
     private bool changesInRotaion(GameObject selectedObject){
@@ -147,9 +147,9 @@ public class SidebarUI : MonoBehaviour
         showedRotation.w = rotation.w;
 
         if (rotation.Equals(showedRotation))
-            return false;
+            return true;
         
-        return true;
+        return false;
     }
 
     private bool changesInScale(GameObject selectedObject){
@@ -161,9 +161,9 @@ public class SidebarUI : MonoBehaviour
         showedScale.z = root.Q<VisualElement>("Scale").Q<FloatField>("Z").value;
 
         if (scale.Equals(showedScale))
-            return false;
+            return true;
 
-        return true;
+        return false;
     }
 
     private bool changesInName(GameObject selectedObject){
@@ -174,9 +174,9 @@ public class SidebarUI : MonoBehaviour
         ShowedName = NameChanger.value;
 
         if (name.Equals(ShowedName))
-            return false;
+            return true;
 
-        return true;
+        return false;
         
     }
 
