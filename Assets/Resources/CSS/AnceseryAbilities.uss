@@ -22,6 +22,7 @@ DropdownField > VisualElement {
     align-self: flex-start;
     color: rgb(255, 255, 255);
     -unity-text-align: upper-center;
+    mouse-wheel-scroll-size: 500;
 }
 
 DropdownField > VisualElement > PopupTextElement {
@@ -41,6 +42,37 @@ DropdownField > VisualElement > VisualElement {
     color: rgb(255, 255, 255);
     -unity-background-image-tint-color: rgb(255, 255, 255);
     -unity-text-align: upper-center;
+}
+
+DropdownField > unityscrollviewscroll {
+    mouse-wheel-scroll-size: 500;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#Pickable-Stat-DropDown {
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-center;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 Label {

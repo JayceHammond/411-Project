@@ -9,6 +9,7 @@ public class AncestriesUIDoc : MonoBehaviour
     private VisualElement Ancestries;
     private VisualElement AncestrySummaries;
     private VisualElement AncestryStatIncrease;
+    private VisualElement PlayerStatIncrease;
     private StyleSheet AncestriesButtons;
     private StyleSheet AncestriesAbility;
     private bool populate = true;
@@ -19,6 +20,7 @@ public class AncestriesUIDoc : MonoBehaviour
         Ancestries = root.Q<VisualElement>("Ancestries").Q<VisualElement>("Ancestries-Holder");
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
+        PlayerStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Pickable-Stat");
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
         AncestriesAbility = Resources.Load<StyleSheet>("CSS/AnceseryAbilities");
 
@@ -127,6 +129,19 @@ public class AncestriesUIDoc : MonoBehaviour
                 //Do Nothing
             }
         }
+    
+        if(dataLoader.ancestryList.Find(x => x.name == RaceName).ability.Length == 3){
+            if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") == null){
+                PlayerStatIncrease.Add(makeTraitDropdown("Pickable-Stat-DropDown"));
+            }else{
+                //Do Nothing
+            }
+        }else if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") != null){
+            PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+        }else{
+            //Do Nothing
+        }
+
     }
 
     private DropdownField makeTraitDropdown(String title){
