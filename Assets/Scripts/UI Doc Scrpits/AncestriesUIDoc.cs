@@ -68,47 +68,63 @@ public class AncestriesUIDoc : MonoBehaviour
         String AbilityOne = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[0];
         String AbilityTwo = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[1];
 
-        if (AbilityOne != "Free" || AbilityTwo != "Free"){
-            if((AncestryStatIncrease.Q<Label>("Trait-Increase-one") == null) || (AncestryStatIncrease.Q<Label>("Trait-Increase-two") == null)){
-                if ((AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") != null) || (AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two") != null))
+        if (AbilityOne != "Free"){
+            if(AncestryStatIncrease.Q<Label>("Trait-Increase-one") == null){
+                if (AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") != null)
                 {
                     AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one"));
-                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two"));
                     AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-one"));
-                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
                 }
                 else
                 {
                     AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-one"));
-                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
                 }
             }
 
             AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = AbilityOne;
-            AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = AbilityTwo;
 
-        }else{
+        }
+        else
+        {
 
-            if (AbilityOne != "Free")
-                AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = AbilityOne;
+            if (AncestryStatIncrease.Q<Label>("Trait-Increase-one") != null){
+                AncestryStatIncrease.Remove(AncestryStatIncrease.Q<Label>("Trait-Increase-one"));
+                AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
+            }
+            else if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") == null)
+            {
+                AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
+            }
             else{
-                if (AncestryStatIncrease.Q<Label>("Trait-Increase-one") != null){
-                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<Label>("Trait-Increase-one"));
-                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
+                //Do Nothing
+            }
+
+        }
+
+        if(AbilityTwo != "Free"){
+            if(AncestryStatIncrease.Q<Label>("Trait-Increase-two") == null){
+                if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two") != null){
+                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two"));
+                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
                 }else{
-                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
+                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
                 }
             }
 
-            if (AbilityTwo != "Free")
-                AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = AbilityTwo;
+            AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = AbilityTwo;
+
+        }
+        else
+        {
+            if (AncestryStatIncrease.Q<Label>("Trait-Increase-two") != null){
+                AncestryStatIncrease.Remove(AncestryStatIncrease.Q<Label>("Trait-Increase-two"));
+                AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
+            }
+            else if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two") == null){
+                AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
+            }
             else{
-                if (AncestryStatIncrease.Q<Label>("Trait-Increase-two") != null){
-                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<Label>("Trait-Increase-two"));
-                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
-                }else{
-                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
-                }
+                //Do Nothing
             }
         }
     }
