@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,6 +13,7 @@ public class AncestriesUIDoc : MonoBehaviour
     private VisualElement PlayerStatIncrease;
     private StyleSheet AncestriesButtons;
     private StyleSheet AncestriesAbility;
+    private List<string> TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
     private bool populate = true;
 
     // Start is called before the first frame update
@@ -59,6 +61,7 @@ public class AncestriesUIDoc : MonoBehaviour
 
     private void populateAncestry(String RaceName){
         populateAncestSumry(RaceName);
+        resetTraitList();
         populateStatIncrease(RaceName);
     }
     private void populateAncestSumry(String RaceName){
@@ -84,6 +87,7 @@ public class AncestriesUIDoc : MonoBehaviour
             }
 
             AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = AbilityOne;
+            removeItemFromTraitList(AbilityOne);
 
         }
         else
@@ -98,7 +102,8 @@ public class AncestriesUIDoc : MonoBehaviour
                 AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
             }
             else{
-                //Do Nothing
+                AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one"));
+                AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
             }
 
         }
@@ -108,12 +113,14 @@ public class AncestriesUIDoc : MonoBehaviour
                 if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two") != null){
                     AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two"));
                     AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
+                    
                 }else{
                     AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
                 }
             }
 
             AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = AbilityTwo;
+            removeItemFromTraitList(AbilityTwo);
 
         }
         else
@@ -126,38 +133,42 @@ public class AncestriesUIDoc : MonoBehaviour
                 AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
             }
             else{
-                //Do Nothing
+                AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two"));
+                AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
             }
-        }
-    
-        if(dataLoader.ancestryList.Find(x => x.name == RaceName).ability.Length == 3){
-            if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") == null){
-                PlayerStatIncrease.Add(makeTraitDropdown("Pickable-Stat-DropDown"));
-            }else{
-                //Do Nothing
-            }
-        }else if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") != null){
-            PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
-        }else{
-            //Do Nothing
         }
 
+        if (dataLoader.ancestryList.Find(x => x.name == RaceName).ability.Length == 3)
+        {
+            if (PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") == null)
+            {
+                PlayerStatIncrease.Add(makeTraitDropdown("Pickable-Stat-DropDown"));
+            }
+            else
+            {
+                PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+                PlayerStatIncrease.Add(makeTraitDropdown("Pickable-Stat-DropDown"));
+            }
+        }else{
+            PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+        }
     }
 
     private DropdownField makeTraitDropdown(String title){
 
         DropdownField AbilityChoser = new DropdownField {
             name = title,
-            choices = { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" },
+            choices = getTraitList(),
             label = ""
         };
+
+        AbilityChoser.value = "Select Trait";
 
         AbilityChoser.styleSheets.Add(AncestriesAbility);
 
         return AbilityChoser;
 
     }
-
      private Label makeTraitLabel(String title){
 
         Label AbilityGiven = new Label {
@@ -170,6 +181,15 @@ public class AncestriesUIDoc : MonoBehaviour
 
         return AbilityGiven;
 
+    }
+    private List<string> getTraitList(){
+        return TraitChoices;
+    }
+    private void removeItemFromTraitList(String TraitName){
+        TraitChoices.Remove(TraitName);
+    }
+    private void resetTraitList(){
+        TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
     }
 
 }
