@@ -10,23 +10,29 @@ public class AncestriesUIDoc : MonoBehaviour
     private VisualElement AncestrySummaries;
     private VisualElement AncestryStatIncrease;
     private StyleSheet AncestriesButtons;
+    private StyleSheet AncestriesAbility;
     private bool populate = true;
 
     // Start is called before the first frame update
-    void LateUpdate(){
+    void Start(){
         root = GetComponent<UIDocument>().rootVisualElement;
         Ancestries = root.Q<VisualElement>("Ancestries").Q<VisualElement>("Ancestries-Holder");
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
+        AncestriesAbility = Resources.Load<StyleSheet>("CSS/AnceseryAbilities");
 
+    }
+
+    void LateUpdate(){
+       
         populateAncestries();
 
     }
 
     private void populateAncestries(){
         //Debug.Log("I am here");
-        if (populate)
+        if (populate) //Makessure this runs once
         {
             for (int i = 0; i < dataLoader.ancestryList.Count; i++)
             {
@@ -59,15 +65,80 @@ public class AncestriesUIDoc : MonoBehaviour
     }
     private void populateStatIncrease(String RaceName){
 
-        if (dataLoader.ancestryList.Find(x => x.name == RaceName).ability[0] != "Free")
-            AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[0];
-        else
-            AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = "None";
+        String AbilityOne = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[0];
+        String AbilityTwo = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[1];
 
-        if(dataLoader.ancestryList.Find(x => x.name == RaceName).ability[1] != "Free")
-            AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[1];
-        else
-            AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = "None";
+        if (AbilityOne != "Free" || AbilityTwo != "Free"){
+            if((AncestryStatIncrease.Q<Label>("Trait-Increase-one") == null) || (AncestryStatIncrease.Q<Label>("Trait-Increase-two") == null)){
+                if ((AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") != null) || (AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two") != null))
+                {
+                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one"));
+                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two"));
+                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-one"));
+                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
+                }
+                else
+                {
+                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-one"));
+                    AncestryStatIncrease.Add(makeTraitLabel("Trait-Increase-two"));
+                }
+            }
+
+            AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = AbilityOne;
+            AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = AbilityTwo;
+
+        }else{
+
+            if (AbilityOne != "Free")
+                AncestryStatIncrease.Q<Label>("Trait-Increase-one").text = AbilityOne;
+            else{
+                if (AncestryStatIncrease.Q<Label>("Trait-Increase-one") != null){
+                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<Label>("Trait-Increase-one"));
+                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
+                }else{
+                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-one"));
+                }
+            }
+
+            if (AbilityTwo != "Free")
+                AncestryStatIncrease.Q<Label>("Trait-Increase-two").text = AbilityTwo;
+            else{
+                if (AncestryStatIncrease.Q<Label>("Trait-Increase-two") != null){
+                    AncestryStatIncrease.Remove(AncestryStatIncrease.Q<Label>("Trait-Increase-two"));
+                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
+                }else{
+                    AncestryStatIncrease.Add(makeTraitDropdown("Trait-Increase-two"));
+                }
+            }
+        }
+    }
+
+    private DropdownField makeTraitDropdown(String title){
+
+        DropdownField AbilityChoser = new DropdownField {
+            name = title,
+            choices = { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" },
+            label = ""
+        };
+
+        AbilityChoser.styleSheets.Add(AncestriesAbility);
+
+        return AbilityChoser;
+
+    }
+
+     private Label makeTraitLabel(String title){
+
+        Label AbilityGiven = new Label {
+
+            name = title,
+
+        };
+
+        AbilityGiven.styleSheets.Add(AncestriesAbility);
+
+        return AbilityGiven;
+
     }
 
 }
