@@ -64,6 +64,7 @@ public class JSONDataLoader : MonoBehaviour
                 ancestryList.Add(data);
                 //Debug.Log(JsonUtility.ToJson(data));
             }
+            ancestryList.Sort((x, y) => x.name.CompareTo(y.name));
         }
         else
         {
