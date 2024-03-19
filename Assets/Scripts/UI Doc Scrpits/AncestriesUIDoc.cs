@@ -7,37 +7,45 @@ public class AncestriesUIDoc : MonoBehaviour
 {
     public VisualElement root;
     public JSONDataLoader dataLoader;
+
+    //Setting up UI elements that are going to be used
     private VisualElement Ancestries;
     private VisualElement AncestrySummaries;
     private VisualElement AncestryStatIncrease;
     private VisualElement PlayerStatIncrease;
+
+    //Setting up the CSS the UI Elements being made will follow
     private StyleSheet AncestriesButtons;
     private StyleSheet AncestriesAbility;
+
+    //Varibles and List used in the script
     private List<string> TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
     private bool populate = true;
 
     // Start is called before the first frame update
     void Start(){
+        //Assigning the UI elements to use
         root = GetComponent<UIDocument>().rootVisualElement;
         Ancestries = root.Q<VisualElement>("Ancestries").Q<VisualElement>("Ancestries-Holder");
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
         PlayerStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Pickable-Stat");
+        //Assigning the CSS to use
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
         AncestriesAbility = Resources.Load<StyleSheet>("CSS/AnceseryAbilities");
 
     }
 
     void LateUpdate(){
-       
+       //Calls Once when the ancestry meue pops up. Fills in the Ancesteries
         populateAncestries();
 
     }
 
     private void populateAncestries(){
-        //Debug.Log("I am here");
-        if (populate) //Makessure this runs once
+        if (populate) //Makesure this runs once
         {
+            //Grabs all the Ancestries from the JSON file
             for (int i = 0; i < dataLoader.ancestryList.Count; i++)
             {
                 if (dataLoader.ancestryList[i].type == "Ancestry")
@@ -47,10 +55,8 @@ public class AncestriesUIDoc : MonoBehaviour
                         name = dataLoader.ancestryList[i].name,
                         text = dataLoader.ancestryList[i].name
                     };
-
-                    //NewAncestry.onClick.AddListener(delegate { populateAncestSumry(); });
-                    //Debug.Log(NewAncestry);
                     NewAncestry.styleSheets.Add(AncestriesButtons);
+                    //Lets the element be clickable and calls the function
                     NewAncestry.AddManipulator(new Clickable(click => populateAncestry(NewAncestry.name)));
                     Ancestries.Add(NewAncestry);
                 }
@@ -58,21 +64,23 @@ public class AncestriesUIDoc : MonoBehaviour
         }
         populate = false;
     }
-
+    
+    //The fuction that gets called when someone clicks on an ancestry
     private void populateAncestry(String RaceName){
         populateAncestSumry(RaceName);
         resetTraitList();
         populateStatIncrease(RaceName);
     }
     private void populateAncestSumry(String RaceName){
-        //Debug.Log("IM here!!!");
+        //Grabs the Summery UI element and changes the text to the string gotten by the JSON
         AncestrySummaries.Q<Label>("Summery").text = dataLoader.ancestryList.Find(x => x.name == RaceName).summary;
     }
     private void populateStatIncrease(String RaceName){
-
+        //Grabs the ability that the ancestry increasses
         String AbilityOne = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[0];
         String AbilityTwo = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[1];
 
+        //If the ablity is not free then check to see if there a labal already if not check for a dropdown 
         if (AbilityOne != "Free"){
             if(AncestryStatIncrease.Q<Label>("Trait-Increase-one") == null){
                 if (AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") != null)
@@ -108,6 +116,7 @@ public class AncestriesUIDoc : MonoBehaviour
 
         }
 
+        //If the ablity is not free then check to see if there a labal already if not check for a dropdown 
         if(AbilityTwo != "Free"){
             if(AncestryStatIncrease.Q<Label>("Trait-Increase-two") == null){
                 if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two") != null){
@@ -138,6 +147,7 @@ public class AncestriesUIDoc : MonoBehaviour
             }
         }
 
+        //If there is a third ability then make a drop down for the user to chose an ability to increase
         if (dataLoader.ancestryList.Find(x => x.name == RaceName).ability.Length == 3)
         {
             if (PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") == null)
@@ -149,11 +159,13 @@ public class AncestriesUIDoc : MonoBehaviour
                 PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
                 PlayerStatIncrease.Add(makeTraitDropdown("Pickable-Stat-DropDown"));
             }
-        }else{
+        }
+        else{
             PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
         }
     }
 
+    //Maker of all dropdowns used in Ancestry
     private DropdownField makeTraitDropdown(String title){
 
         DropdownField AbilityChoser = new DropdownField {
@@ -169,6 +181,8 @@ public class AncestriesUIDoc : MonoBehaviour
         return AbilityChoser;
 
     }
+
+    //Maker of all Lables used in Ancestry
      private Label makeTraitLabel(String title){
 
         Label AbilityGiven = new Label {
@@ -182,6 +196,8 @@ public class AncestriesUIDoc : MonoBehaviour
         return AbilityGiven;
 
     }
+
+    //The setter, getter, and the resetter for the list of abilities. Used to make sure that the user can't pick the same abilty twice
     private List<string> getTraitList(){
         return TraitChoices;
     }
