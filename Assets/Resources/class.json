@@ -4,14 +4,18 @@
       "name": "Alchemist",
       "ability": ["Intelligence"],
       "attack_proficiency": [
-        "Trained in simple weapons",
-        "Trained in  alchemical bombs",
-        "Trained in unarmed attacks"
+        {
+          "simple weapons": "Trained",
+          "unarmed attacks": "Trained",
+          "alchemical bombs": "Trained"
+        }
       ],
       "defense_proficiency": [
-        "Trained in medium armor",
-        "Trained in light armor",
-        "Trained in unarmored defense"
+        {
+          "medium armor": "Trained",
+          "light armor": "Trained",
+          "unarmored defense": "Trained"
+        }
       ],
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
@@ -20,8 +24,10 @@
       "resistance": {},
       "weakness": {},
       "skill_proficiency": [
-        "Trained in  Crafting",
-        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+        {
+          "crafting": "Trained",
+          "Free3+IntMod": "Trained"
+        }
       ],
       "hp": 8
     },
@@ -29,14 +35,18 @@
       "name": "Barbarian",
       "ability": ["Strength"],
       "attack_proficiency": [
-        "Trained in simple weapons",
-        "Trained in martial weapons",
-        "Trained in unarmed attacks"
+        {
+          "simple weapons": "Trained",
+          "martial weapons": "Trained",
+          "unarmed attacks": "Trained"
+        }
       ],
       "defense_proficiency": [
-        "Trained in light armor",
-        "Trained in medium armor",
-        "Trained in unarmored defense"
+        {
+          "light armor": "Trained",
+          "medium armor": "Trained",
+          "unarmored defense": "Trained"
+        }
       ],
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
@@ -45,8 +55,10 @@
       "resistance": {},
       "weakness": {},
       "skill_proficiency": [
-        "Trained in  Athletics",
-        "Trained in a number of additional skills equal to 3 plus your Intelligence modifier"
+        {
+          "Athletics": "Trained",
+          "Free3+IntMod": "Trained"
+        }
       ],
       "hp": 12
     },
@@ -54,13 +66,22 @@
       "name": "Bard",
       "ability": ["Charisma"],
       "attack_proficiency": [
-        "Trained in simple weapons",
-        "Trained in the  longsword ,  rapier ,  sap ,  shortbow ,  shortsword , and  whip",
-        "Trained in unarmed attacks"
+        {
+          "simple weapons": "Trained",
+          "unarmed attacks": "Trained",
+          "longsword": "Trained",
+          "rapier": "Trained",
+          "sap": "Trained",
+          "shortbow": "Trained",
+          "shortsword": "Trained",
+          "whip": "Trained"
+        }
       ],
       "defense_proficiency": [
-        "Trained in light armor",
-        "Trained in unarmored defense"
+        {
+          "light armor": "Trained",
+          "unarmored defense": "Trained"
+        }
       ],
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
@@ -69,9 +90,11 @@
       "resistance": {},
       "weakness": {},
       "skill_proficiency": [
-        "Trained in  Occultism",
-        "Trained in  Performance",
-        "Trained in a number of additional skills equal to 4 plus your Intelligence modifier"
+        {
+          "Occultism": "Trained",
+          "Performance": "Trained",
+          "Free3+IntMod": "Trained"
+        }
       ],
       "hp": 8
     },
@@ -79,13 +102,19 @@
       "name": "Champion",
       "ability": ["Strength", "Dexterity"],
       "attack_proficiency": [
-        "Trained in simple weapons",
-        "Trained in martial weapons",
-        "Trained in unarmed attacks"
+        {
+          "simple weapons": "Trained",
+          "martial weapons": "Trained",
+          "unarmed attacks": "Trained"
+        }
       ],
       "defense_proficiency": [
-        "Trained in all armor",
-        "Trained in unarmored defense"
+        {
+          "light armor": "Trained",
+          "medium armor": "Trained",
+          "heavy armor": "Trained",
+          "unarmored defense": "Trained"
+        }
       ],
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
@@ -94,9 +123,11 @@
       "resistance": {},
       "weakness": {},
       "skill_proficiency": [
-        "Trained in  Religion",
-        "Trained in one skill determined by your choice of deity",
-        "Trained in a number of additional skills equal to 2 plus your Intelligence modifier"
+        {
+          "Religion": "Trained",
+          "deity": "Trained",
+          "Free2+IntMod": "Trained"
+        }
       ],
       "hp": 10
     },
