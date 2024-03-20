@@ -38,14 +38,9 @@ public class LobbyController : MonoBehaviour
 
     public void Awake(){
         if(Instance == null){Instance = this;}
-
-        UpdateLobbyName();
         
     }
 
-    public void Update(){
-        CreateHostPlayerItem();
-    }
 
     public void UpdateLobbyName(){
         CurrentLobbyID = Manager.GetComponent<SteamLobby>().CurrentLobbyID;
@@ -65,9 +60,6 @@ public class LobbyController : MonoBehaviour
     }
 
     public void CreateHostPlayerItem(){
-        if(Manager.GamePlayers.Count == 0){
-            Debug.Log("List Empty");
-        }
         foreach(PlayerObjectController player in Manager.GamePlayers){
             GameObject NewPlayerItem = Instantiate(PlayerListItemPrefab) as GameObject;
             PlayerListItem NewPlayerItemScript = NewPlayerItem.GetComponent<PlayerListItem>();
