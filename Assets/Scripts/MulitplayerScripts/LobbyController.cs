@@ -5,6 +5,7 @@ using Mirror.Examples.Basic;
 using Steamworks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LobbyController : MonoBehaviour
 {
@@ -39,6 +40,16 @@ public class LobbyController : MonoBehaviour
     public void Awake(){
         if(Instance == null){Instance = this;}
         
+    }
+
+    public void ReadyPlayer(){
+        LocalPlayerController.ChangeReady();
+    }
+
+    public void UpdateButton(){
+        if(LocalPlayerController.Ready){
+            ReadyButtonText.text = "This Fella Ain't Ready";
+        }
     }
 
 
@@ -129,4 +140,9 @@ public class LobbyController : MonoBehaviour
         }
     }
 
+
+//LOADS MULTIPLAYER TEST SCENE: WILL CHANGE
+    public void StartGame(){
+        SceneManager.LoadScene(2);
+    }
 }
