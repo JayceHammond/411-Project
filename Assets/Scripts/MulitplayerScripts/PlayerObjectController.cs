@@ -49,7 +49,7 @@ public class PlayerObjectController : NetworkBehaviour
         this.PlayerNameUpdate(this.PlayerName, PlayerName);
     }
 
-    public void PlayerNameUpdate(string OldVale, string NewValue){
+    public void PlayerNameUpdate(string OldValue, string NewValue){
         if(isServer){ //HOST
             this.PlayerName = NewValue;
         }

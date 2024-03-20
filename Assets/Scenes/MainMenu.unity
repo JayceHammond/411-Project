@@ -715,11 +715,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9058077552145402259, guid: 9809983680d36634c814c24c74a0056b, type: 3}
+      propertyPath: transport
+      value: 
+      objectReference: {fileID: 1887835520}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9809983680d36634c814c24c74a0056b, type: 3}
+--- !u!114 &1887835520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2112747801994085435, guid: 9809983680d36634c814c24c74a0056b, type: 3}
+  m_PrefabInstance: {fileID: 1887835519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e55fca1f4e4844593a3dd65a3ecb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1977630437
 GameObject:
   m_ObjectHideFlags: 0

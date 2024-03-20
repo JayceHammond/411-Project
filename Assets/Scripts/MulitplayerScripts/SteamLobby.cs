@@ -19,9 +19,6 @@ public class SteamLobby : MonoBehaviour
     private const string HostAddressKey = "HostAddress";
     private CustomNetworkManager manager;
 
-    //Gameobjects
-    public GameObject HostButton;
-    public TextMeshProUGUI LobbyNameText;
 
 
     private void Start(){
@@ -60,10 +57,8 @@ public class SteamLobby : MonoBehaviour
 
     private void OnLobbyEnetered(LobbyEnter_t callback){
         //Everyone
-        HostButton.SetActive(false);
         CurrentLobbyID = callback.m_ulSteamIDLobby;
-        LobbyNameText.gameObject.SetActive(true);
-        LobbyNameText.text = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "name");
+        //Debug.Log(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name"));
 
         //Clients
         if(NetworkServer.active){return; }

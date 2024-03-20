@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Mirror.Examples.Basic;
 using Steamworks;
 using TMPro;
 using UnityEngine;
@@ -37,6 +38,13 @@ public class LobbyController : MonoBehaviour
 
     public void Awake(){
         if(Instance == null){Instance = this;}
+
+        UpdateLobbyName();
+        
+    }
+
+    public void Update(){
+        CreateHostPlayerItem();
     }
 
     public void UpdateLobbyName(){
@@ -57,6 +65,9 @@ public class LobbyController : MonoBehaviour
     }
 
     public void CreateHostPlayerItem(){
+        if(Manager.GamePlayers.Count == 0){
+            Debug.Log("List Empty");
+        }
         foreach(PlayerObjectController player in Manager.GamePlayers){
             GameObject NewPlayerItem = Instantiate(PlayerListItemPrefab) as GameObject;
             PlayerListItem NewPlayerItemScript = NewPlayerItem.GetComponent<PlayerListItem>();
@@ -71,6 +82,7 @@ public class LobbyController : MonoBehaviour
             NewPlayerItem.transform.localScale = Vector3.one;
 
             PlayerListItems.Add(NewPlayerItemScript);
+            Debug.Log(player.name);
         }
         PlayerItemCreated = true;
     }
