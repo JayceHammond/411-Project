@@ -8,6 +8,7 @@ using TMPro;
 
 public class SteamLobby : MonoBehaviour
 {
+    public static SteamLobby Instance;
     //Callbacks
     protected Callback<LobbyCreated_t> LobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> JoinRequest;
@@ -25,6 +26,9 @@ public class SteamLobby : MonoBehaviour
 
     private void Start(){
         if(!SteamManager.Initialized) { return;}
+        
+        if(Instance == null){Instance = this;}
+
         manager = GetComponent<CustomNetworkManager>();
         LobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
         JoinRequest = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequest);
