@@ -332,3 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86283d3211cbb3349abf0b75c56aa9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerName: 
+  ConnectionID: 0
+  PlayerSteamID: 0
+  PlayerNameText: {fileID: 1855204074328412183}
+  PlayerIcon: {fileID: 6719471734433317124}

@@ -23,8 +23,39 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
-    public void PlayerNameUpdate(string OldVale, string NewValue){
+    public override void OnStartAuthority()
+    {
+        CmdSetPlayerName(SteamFriends.GetPersonaName().ToString());
+        gameObject.name = "LocalGamePlayer";
+        LobbyController.Instance.FindLocalPlayer();
+        LobbyController.Instance.UpdateLobbyName();
 
+    }
+    public override void OnStartClient()
+    {
+        Manager.GamePlayers.Add(this);
+        LobbyController.Instance.UpdateLobbyName();
+        LobbyController.Instance.UpdatePlayerList();
+
+    }
+
+    public override void OnStopClient(){
+        Manager.GamePlayers.Remove(this);
+        LobbyController.Instance.UpdatePlayerList();
+    } 
+
+    [Command]
+    private void CmdSetPlayerName(string PlayerName){
+        this.PlayerNameUpdate(this.PlayerName, PlayerName);
+    }
+
+    public void PlayerNameUpdate(string OldVale, string NewValue){
+        if(isServer){ //HOST
+            this.PlayerName = NewValue;
+        }
+        if(isClient){ //CLIENT
+            LobbyController.Instance.UpdatePlayerList();
+        }
     }
 
 }

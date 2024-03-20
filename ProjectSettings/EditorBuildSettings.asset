@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CharacterCreator.unity
     guid: f24263c53c46f5240b588b3f712b55d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DM_Editor_Mode-TEST.unity
     guid: a9e51f5f07ac22844a65aab5392c224a
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 101571c3ccdc9ff4fb2a4cf76e26ce99
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 2cf8b2400d0773148bd988e5207cc3d5
   m_configObjects: {}

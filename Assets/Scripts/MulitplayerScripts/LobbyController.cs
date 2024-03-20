@@ -10,7 +10,7 @@ public class LobbyController : MonoBehaviour
     public static LobbyController Instance;
 
     //UI Elements
-    public TextMeshPro LobbyNameText;
+    public TextMeshProUGUI LobbyNameText;
 
     //Player Data
     public GameObject PlayerListViewContent;
