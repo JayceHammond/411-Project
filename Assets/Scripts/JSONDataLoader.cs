@@ -93,7 +93,7 @@ public class JSONDataLoader : MonoBehaviour
         public string unarmored_defense;
     }
 
-     // Define a class to represent the structure of skill proficiency data
+    // Define a class to represent the structure of skill proficiency data
     //[System.Serializable]
 
     // Define a class to represent the structure of speed data
@@ -129,7 +129,7 @@ public class JSONDataLoader : MonoBehaviour
         makeAncestryList();
         makeClassList();
 
-        Debug.Log(classList[0].attack_proficiency.unarmed_attacks);
+        //Debug.Log(classList[0].attack_proficiency.unarmed_attacks);
     }
 
 
