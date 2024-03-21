@@ -51,8 +51,8 @@ public class LobbyController : MonoBehaviour
         LocalPlayerController.ChangeReady();
     }
 
-    public void UpdateButton(){
-        if(LocalPlayerController.Ready){
+    public void UpdateButton(PlayerObjectController player){
+        if(player.Ready){
             ReadyButtonText.text = "Unready";
         }else{
             ReadyButtonText.text = "Ready";
@@ -151,7 +151,7 @@ public class LobbyController : MonoBehaviour
                    /* if(player == LocalPlayerController){
                         UpdateButton();
                     }*/
-                    UpdateButton();
+                    UpdateButton(player);
                 }
             }
         }
