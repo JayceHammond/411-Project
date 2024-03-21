@@ -148,9 +148,10 @@ public class LobbyController : MonoBehaviour
                     PlayerListItemScript.Ready = player.Ready;
                     PlayerListItemScript.PlayerName = player.PlayerName;
                     PlayerListItemScript.SetPlayerValues();
-                    if(player.ConnectionID == LocalPlayerController.ConnectionID){
+                   /* if(player == LocalPlayerController){
                         UpdateButton();
-                    }
+                    }*/
+                    UpdateButton();
                 }
             }
         }
