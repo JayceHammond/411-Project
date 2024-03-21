@@ -3,731 +3,595 @@
     {
       "name": "Alchemist",
       "ability": ["Intelligence"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained",
-          "alchemical bombs": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "medium armor": "Trained",
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained",
+        "alchemical_bombs": "Trained"
+      },
+      "defense_proficiency": {
+        "medium_armor": "Trained",
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Trained",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "crafting": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "crafting": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Barbarian",
       "ability": ["Strength"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Athletics": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Athletics": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 12
     },
     {
       "name": "Bard",
       "ability": ["Charisma"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained",
-          "longsword": "Trained",
-          "rapier": "Trained",
-          "sap": "Trained",
-          "shortbow": "Trained",
-          "shortsword": "Trained",
-          "whip": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained",
+        "longsword": "Trained",
+        "rapier": "Trained",
+        "sap": "Trained",
+        "shortbow": "Trained",
+        "shortsword": "Trained",
+        "whip": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Occultism": "Trained",
-          "Performance": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Occultism": "Trained",
+        "Performance": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Champion",
       "ability": ["Strength", "Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "heavy armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "heavy_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Religion": "Trained",
-          "deity": "Trained",
-          "Free2+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Religion": "Trained",
+        "deity": "Trained",
+        "Free2+IntMod": "Trained"
+      },
       "hp": 10
     },
     {
       "name": "Cleric",
       "ability": ["Wisdom"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained",
-          "deityWeapon": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "heavy armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained",
+        "deityWeapon": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "heavy_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Religion": "Trained",
-          "deity": "Trained",
-          "Free2+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Religion": "Trained",
+        "deity": "Trained",
+        "Free2+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Druid",
       "ability": ["Wisdom"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Nature": "Trained",
-          "druidicOrder": "Trained",
-          "Free2+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Nature": "Trained",
+        "DruidicOrder": "Trained",
+        "Free2+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Fighter",
       "ability": ["Strength", "Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "advanced weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "heavy armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "advanced_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "heavy_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Trained",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Acrobatics  or  Athletics": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Acrobatics_or_Athletics": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 10
     },
     {
       "name": "Monk",
       "ability": ["Strength", "Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Untrained",
-          "medium armor": "Untrained",
-          "heavy armor": "Untrained",
-          "unarmored defense": "Expert"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Untrained",
+        "medium_armor": "Untrained",
+        "heavy_armor": "Untrained",
+        "unarmored_defense": "Expert"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Free4+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Free4+IntMod": "Trained"
+      },
       "hp": 10
     },
     {
       "name": "Ranger",
       "ability": ["Strength", "Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Trained",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Nature": "Trained",
-          "Survival": "Trained",
-          "Free4+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Nature": "Trained",
+        "Survival": "Trained",
+        "Free4+IntMod": "Trained"
+      },
       "hp": 10
     },
     {
       "name": "Rogue",
       "ability": ["Dexterity", "Other"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained",
-          "rapier": "Trained",
-          "sap": "Trained",
-          "shortbow": "Trained",
-          "shortsword": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained",
+        "rapier": "Trained",
+        "sap": "Trained",
+        "shortbow": "Trained",
+        "shortsword": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Expert",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Stealth": "Trained",
-          "RogueRacket": "Trained",
-          "Free7+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Stealth": "Trained",
+        "RogueRacket": "Trained",
+        "Free7+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Sorcerer",
       "ability": ["Charisma"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Untrained",
-          "medium armor": "Untrained",
-          "heavy armor": "Untrained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Untrained",
+        "medium_armor": "Untrained",
+        "heavy_armor": "Untrained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Bloodline": "Trained",
-          "Free2+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Bloodline": "Trained",
+        "Free2+IntMod": "Trained"
+      },
       "hp": 6
     },
     {
       "name": "Wizard",
       "ability": ["Intelligence"],
-      "attack_proficiency": [
-        {
-          "unarmed attacks": "Trained",
-          "club": "Trained",
-          "crossbow": "Trained",
-          "dagger": "Trained",
-          "heavy crossbow": "Trained",
-          "staff": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Untrained",
-          "medium armor": "Untrained",
-          "heavy armor": "Untrained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "unarmed_attacks": "Trained",
+        "club": "Trained",
+        "crossbow": "Trained",
+        "dagger": "Trained",
+        "heavy_crossbow": "Trained",
+        "staff": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Untrained",
+        "medium_armor": "Untrained",
+        "heavy_armor": "Untrained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Arcana": "Trained",
-          "Free2+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Arcana": "Trained",
+        "Free2+IntMod": "Trained"
+      },
       "hp": 6
     },
     {
       "name": "Investigator",
       "ability": ["Intelligence"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Expert",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Society": "Trained",
-          "OneOrMoreMethodology": "Trained",
-          "Free4+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Society": "Trained",
+        "OneOrMoreMethodology": "Trained",
+        "Free4+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Oracle",
       "ability": ["Charisma"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Religion": "Trained",
-          "OneOrMoreMystery": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Religion": "Trained",
+        "OneOrMoreMystery": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Swashbuckler",
       "ability": ["Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Expert",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Acrobatics": "Trained",
-          "Swashbuckler's Style": "Trained",
-          "Free4+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Acrobatics": "Trained",
+        "Swashbuckler's Style": "Trained",
+        "Free4+IntMod": "Trained"
+      },
       "hp": 10
     },
     {
       "name": "Witch",
       "ability": ["Intelligence"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Untrained",
-          "medium armor": "Untrained",
-          "heavy armor": "Untrained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Untrained",
+        "medium_armor": "Untrained",
+        "heavy_armor": "Untrained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Patron": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Patron": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 6
     },
     {
       "name": "Magus",
       "ability": ["Strength", "Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Arcana": "Trained",
-          "Free2+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Arcana": "Trained",
+        "Free2+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Summoner",
       "ability": ["Charisma"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [{ "unarmored defense": "Trained" }],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": { "unarmored_defense": "Trained" },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "OneOrMoreEidolon": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "OneOrMoreEidolon": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 10
     },
     {
       "name": "Inventor",
       "ability": ["Intelligence"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Crafting": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Crafting": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Gunslinger",
       "ability": ["Dexterity"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained",
-          "advanced firearms": "Trained",
-          "advanced crossbows": "Trained",
-          "simple firearms": "Expert",
-          "simple crossbows": "Expert",
-          "martial firearms": "Expert",
-          "martial crossbows": "Expert"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained",
+        "advanced_firearms": "Trained",
+        "advanced_crossbows": "Trained",
+        "simple_firearms": "Expert",
+        "simple_crossbows": "Expert",
+        "martial_firearms": "Expert",
+        "martial_crossbows": "Expert"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Trained",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "OneOrMoreGunslinger's Way": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "OneOrMoreGunslinger's Way": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Psychic",
       "ability": ["Intelligence", "Charisma"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Untrained",
-          "medium armor": "Untrained",
-          "heavy armor": "Untrained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Untrained",
+        "medium_armor": "Untrained",
+        "heavy_armor": "Untrained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Trained",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Occultism": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Occultism": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 6
     },
     {
       "name": "Thaumaturge",
       "ability": ["Charisma"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "martial weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "medium armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "martial_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "medium_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Trained",
       "will_proficiency": "Expert",
       "perception_proficiency": "Expert",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Arcana": "Trained",
-          "Nature": "Trained",
-          "Occultism": "Trained",
-          "Religion": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Arcana": "Trained",
+        "Nature": "Trained",
+        "Occultism": "Trained",
+        "Religion": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     },
     {
       "name": "Kineticist",
       "ability": ["Constitution"],
-      "attack_proficiency": [
-        {
-          "simple weapons": "Trained",
-          "unarmed attacks": "Trained"
-        }
-      ],
-      "defense_proficiency": [
-        {
-          "light armor": "Trained",
-          "unarmored defense": "Trained"
-        }
-      ],
+      "attack_proficiency": {
+        "simple_weapons": "Trained",
+        "unarmed_attacks": "Trained"
+      },
+      "defense_proficiency": {
+        "light_armor": "Trained",
+        "unarmored_defense": "Trained"
+      },
       "fortitude_proficiency": "Expert",
       "reflex_proficiency": "Expert",
       "will_proficiency": "Trained",
       "perception_proficiency": "Trained",
       "resistance": {},
       "weakness": {},
-      "skill_proficiency": [
-        {
-          "Nature": "Trained",
-          "Free3+IntMod": "Trained"
-        }
-      ],
+      "skill_proficiency": {
+        "Nature": "Trained",
+        "Free3+IntMod": "Trained"
+      },
       "hp": 8
     }
   ]
