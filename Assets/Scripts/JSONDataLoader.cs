@@ -52,9 +52,11 @@ public class JSONDataLoader : MonoBehaviour
         public string hp;
     }
 
+
     // Define a class to represent the structure of attack proficiency data
     [System.Serializable]
     public class AttackProficiency {
+
         //Basic Weapon Groups
         public string simple_weapons;
         public string martial_weapons;
@@ -81,7 +83,7 @@ public class JSONDataLoader : MonoBehaviour
         public string martial_firearms;
         public string martial_crossbows;
     }
-
+    
     // Define a class to represent the structure of defense proficiency data
     [System.Serializable]
     public class DefenseProficiency{
@@ -120,6 +122,7 @@ public class JSONDataLoader : MonoBehaviour
         //Debug.Log(dataArray.ancestryData[1]);
         return new List<ClassData>((IEnumerable<ClassData>)dataArray.classData);
     }
+
 
     void Start()
     {
