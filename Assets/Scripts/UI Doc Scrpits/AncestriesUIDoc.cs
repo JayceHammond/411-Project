@@ -67,10 +67,16 @@ public class AncestriesUIDoc : MonoBehaviour
     
     //The fuction that gets called when someone clicks on an ancestry
     private void populateAncestry(String RaceName){
+        updateNameLabel(RaceName);
         populateAncestSumry(RaceName);
         resetTraitList();
         populateStatIncrease(RaceName);
     }
+
+    private void updateNameLabel(String RaceName){
+        root.Q<VisualElement>("AncestrySummry").Q<Label>("Ancestry_Name").text = RaceName;
+    }
+
     private void populateAncestSumry(String RaceName){
         //Grabs the Summery UI element and changes the text to the string gotten by the JSON
         AncestrySummaries.Q<Label>("Summery").text = dataLoader.ancestryList.Find(x => x.name == RaceName).summary;
