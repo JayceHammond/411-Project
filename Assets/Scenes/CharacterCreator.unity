@@ -2311,7 +2311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: e27fd6a031d84a540b7de5522d9835aa, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: c53b91b9388137e4ea01c6f4a03bdd6b, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 06fa0c1a321f2fc4fa2c1c7fb700f020, type: 3}
   m_SortingOrder: 0
 --- !u!4 &599910248
 Transform:
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599910246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 296acad073b6ff7418b3c2e9a1974273, type: 3}
   m_Name: 
@@ -2361,7 +2361,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599910246}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b52e32002016d1241a5b0047c20e952f, type: 3}
   m_Name: 

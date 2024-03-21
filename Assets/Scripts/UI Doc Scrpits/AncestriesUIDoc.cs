@@ -30,6 +30,7 @@ public class AncestriesUIDoc : MonoBehaviour
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
         PlayerStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Pickable-Stat");
+        
         //Assigning the CSS to use
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
         AncestriesAbility = Resources.Load<StyleSheet>("CSS/AnceseryAbilities");

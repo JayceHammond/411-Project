@@ -16,13 +16,15 @@ public class ClassesUIDoc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Classes = root.Q<VisualElement>("ClassMenu").Q<VisualElement>("Classes").Q<ScrollView>("Classes").Q<VisualElement>("Classes-Holder");
+        root = GetComponent<UIDocument>().rootVisualElement;
+        Classes = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("Classes").Q<VisualElement>("Classes-Holder");
+
+        //Asigning the CSS to use 
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void LateUpdate(){
         if(populate){
             populateClasses();
         }
@@ -34,7 +36,7 @@ public class ClassesUIDoc : MonoBehaviour
             //Grabs all the Ancestries from the JSON file
             for (int i = 0; i < dataLoader.classList.Count; i++)
             {
-                Debug.Log(dataLoader.classList[i].name);
+                //Debug.Log(dataLoader.classList[i].name);
                 Label NewClass = new Label
                 {
                     name = dataLoader.classList[i].name,
