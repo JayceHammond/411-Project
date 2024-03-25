@@ -107,8 +107,65 @@ public class ClassesUIDoc : MonoBehaviour
 
         String[] Abilities = dataLoader.classList.Find(x => x.name == className).ability;
         //Might have to go through all of the dot refences for each class and set it from there
-        Debug.Log(dataLoader.classList.Find(x => x.name == className).attack_proficiency.);
+        gettingAttackProficiency(className);
+        gettingDefenseProficiency(className);
 
     }
 
+    private void gettingAttackProficiency(String ClassName){
+        VisualElement Attack = Attack_Defense.Q<VisualElement>("Attack");
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.advanced_weapons == null){
+            Attack.Q<VisualElement>("Advanced").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Attack.Q<VisualElement>("Advanced").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.advanced_weapons;
+        }
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.simple_weapons == null){
+            Attack.Q<VisualElement>("Simple").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Attack.Q<VisualElement>("Simple").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.simple_weapons;
+        }
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.martial_weapons == null){
+            Attack.Q<VisualElement>("Martial").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Attack.Q<VisualElement>("Martial").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.martial_weapons;
+        }
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.unarmed_attacks == null){
+            Attack.Q<VisualElement>("Unarmed").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Attack.Q<VisualElement>("Unarmed").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).attack_proficiency.unarmed_attacks;
+        }
+    }
+
+    private void gettingDefenseProficiency(String ClassName){
+        VisualElement Defense = Attack_Defense.Q<VisualElement>("Defence");
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.light_armor == null){
+            Defense.Q<VisualElement>("Light-Armor").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Defense.Q<VisualElement>("Light-Armor").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.light_armor;
+        }
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.medium_armor == null){
+            Defense.Q<VisualElement>("Medium-Armor").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Defense.Q<VisualElement>("Medium-Armor").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.medium_armor;
+        }
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.heavy_armor == null){
+            Defense.Q<VisualElement>("Heavy-Armor").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Defense.Q<VisualElement>("Heavy-Armor").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.heavy_armor;
+        }
+
+        if(dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.unarmored_defense == null){
+            Defense.Q<VisualElement>("Unarmored-Defense").Q<Label>("Proficiency").text = "Untrained";
+        }else{
+            Defense.Q<VisualElement>("Unarmored-Defense").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.unarmored_defense;
+        }
+
+    }
 }
