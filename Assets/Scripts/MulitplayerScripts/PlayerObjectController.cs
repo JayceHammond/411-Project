@@ -23,6 +23,9 @@ public class PlayerObjectController : NetworkBehaviour
             return manager = CustomNetworkManager.singleton as CustomNetworkManager;
         }
     }
+    private void Start(){
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void PlayerReadyUpdate(bool oldValue, bool newValue){
         if(isServer){
@@ -77,4 +80,13 @@ public class PlayerObjectController : NetworkBehaviour
         }
     }
 
+    //Start Game
+    public void CanStartGame(string SceneName){
+        CmdCanStartGame(SceneName);
+    }
+
+    [Command]
+    public void CmdCanStartGame(string SceneName){
+        manager.StartGame(SceneName);
+    }
 }

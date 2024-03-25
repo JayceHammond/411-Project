@@ -175,9 +175,7 @@ public class LobbyController : MonoBehaviour
         }
     }
 
-
-//LOADS MULTIPLAYER TEST SCENE: WILL CHANGE
-    public void StartGame(){
-        SceneManager.LoadScene(2);
+    public void StartGame(string SceneName){
+        LocalPlayerController.CanStartGame(SceneName);
     }
 }

@@ -4,8 +4,11 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
+using Mirror;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem.LowLevel;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField]
     private float playerSpeed = 1.0f;
@@ -27,12 +30,15 @@ public class PlayerController : MonoBehaviour
     public GameObject uiCam;
     private Animator animator;
     // Start is called before the first frame update
+
+    public GameObject PlayerModel;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
+        PlayerModel.SetActive(false);
 
         //Need this to trigger the animations
         animator = GetComponent<Animator>();
@@ -58,7 +64,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().name == "MultiplayerTest"){
+            if(PlayerModel.activeSelf == false){
+                SetPosition();
+                PlayerModel.SetActive(true);
+            }
+            if(authority){
+                Movement();
+            }
+            
+        }
         toggleCameraLock();
+    }
+
+    public void Movement(){
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -176,9 +195,13 @@ public class PlayerController : MonoBehaviour
         if(inputManager.PlayerForthAttack()){
             animator.SetTrigger("Attacking4");
         }
-
     }
 
+
+//WILL CHANGE LATER
+    public void SetPosition(){
+        transform.position = new Vector3(UnityEngine.Random.Range(-5,5), 0.8f, UnityEngine.Random.Range(-15, 7));
+    }
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("D20")) {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
