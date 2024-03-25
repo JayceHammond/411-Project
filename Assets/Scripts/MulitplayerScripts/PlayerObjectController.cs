@@ -39,7 +39,10 @@ public class PlayerObjectController : NetworkBehaviour
     }
 
     public void ChangeReady(){
-        if(authority){
+        if(isServer){
+            CmdSetPlayerReady();
+        }
+        if(isClient){
             CmdSetPlayerReady();
         }
     }
