@@ -34,7 +34,6 @@ public class PlayerController : NetworkBehaviour
     public GameObject PlayerModel;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
@@ -68,6 +67,7 @@ public class PlayerController : NetworkBehaviour
             if(PlayerModel.activeSelf == false){
                 SetPosition();
                 PlayerModel.SetActive(true);
+                Cursor.lockState = CursorLockMode.Locked;
             }
             if(authority){
                 Movement();
