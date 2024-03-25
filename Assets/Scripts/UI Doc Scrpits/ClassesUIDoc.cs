@@ -106,19 +106,9 @@ public class ClassesUIDoc : MonoBehaviour
         Saves.Q<VisualElement>("Perception").Q<Label>("Proficiency").text = Perception;
 
         String[] Abilities = dataLoader.classList.Find(x => x.name == className).ability;
-         = dataLoader.classList.Find(x => x.name == className).attack_proficiency;
+        //Might have to go through all of the dot refences for each class and set it from there
+        Debug.Log(dataLoader.classList.Find(x => x.name == className).attack_proficiency.);
 
-
-
-
-    }
-
-    private Color setLabelColor(String Proficiency){
-        if(Proficiency == "Trained" || Proficiency == "Expert" ){
-            return Color.green;
-        }else{
-            return Color.red;
-        }
     }
 
 }
