@@ -51,8 +51,8 @@ public class LobbyController : MonoBehaviour
         LocalPlayerController.ChangeReady();
     }
 
-    public void UpdateButton(PlayerObjectController player){
-        if(player.Ready){
+    public void UpdateButton(){
+        if(LocalPlayerController.Ready){
             ReadyButtonText.text = "Unready";
         }else{
             ReadyButtonText.text = "Ready";
@@ -145,13 +145,12 @@ public class LobbyController : MonoBehaviour
         foreach(PlayerObjectController player in Manager.GamePlayers){
             foreach(PlayerListItem PlayerListItemScript in PlayerListItems){
                 if(PlayerListItemScript.ConnectionID == player.ConnectionID){
-                    PlayerListItemScript.Ready = player.Ready;
                     PlayerListItemScript.PlayerName = player.PlayerName;
+                    PlayerListItemScript.Ready = player.Ready;
                     PlayerListItemScript.SetPlayerValues();
-                   /* if(player == LocalPlayerController){
+                    if(player == LocalPlayerController){
                         UpdateButton();
-                    }*/
-                    UpdateButton(player);
+                    }
                 }
             }
         }
