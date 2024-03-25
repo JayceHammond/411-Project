@@ -1937,7 +1937,7 @@ MonoBehaviour:
   LocalPlayerObject: {fileID: 0}
   CurrentLobbyID: 0
   PlayerItemCreated: 0
-  LocalPlayerController: {fileID: 0}
+  LocalPlayerController: {fileID: 1947873383631922705, guid: ce73e9c1f8422504ca48e310c3e88373, type: 3}
   StartGameButton: {fileID: 824552986}
   ReadyButtonText: {fileID: 1361435549}
 --- !u!4 &2009763601
