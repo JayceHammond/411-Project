@@ -28,6 +28,7 @@ public class PlayerController : NetworkBehaviour
     private Transform cameraTransform;
     public GameObject gameplayCam;
     public GameObject uiCam;
+    public GameObject cameras;
     private Animator animator;
     // Start is called before the first frame update
 
@@ -38,6 +39,7 @@ public class PlayerController : NetworkBehaviour
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
         PlayerModel.SetActive(false);
+        cameras.SetActive(false);
 
         //Need this to trigger the animations
         animator = GetComponent<Animator>();
@@ -63,10 +65,13 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest"){
             if(PlayerModel.activeSelf == false){
                 SetPosition();
-                PlayerModel.SetActive(true);
+                PlayerModel.SetActive(true); //Turn on player
+                cameras.SetActive(true); //Turn on player camera
+                GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;
             }
             if(authority){
