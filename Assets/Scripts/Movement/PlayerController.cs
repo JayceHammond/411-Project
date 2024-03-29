@@ -86,8 +86,9 @@ public class PlayerController : NetworkBehaviour
                 if(cameras.activeSelf == false){
                     cameras.SetActive(true); //Turn on player camera
                 }
-                UpdatedMovement();
+                
             }
+            UpdatedMovement();
             
         }
         toggleCameraLock();
