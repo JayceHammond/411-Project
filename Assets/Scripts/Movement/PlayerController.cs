@@ -272,7 +272,7 @@ public class PlayerController : NetworkBehaviour
 
 //WILL CHANGE LATER
     public void SetPosition(){
-        transform.position = new Vector3(UnityEngine.Random.Range(-1,1), 0.8f, UnityEngine.Random.Range(-1, 1));
+        transform.position = new Vector3(0, 5f, 0);
     }
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("D20")) {
