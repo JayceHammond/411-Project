@@ -542,6 +542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 8147095859913560405, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8243311111768230820, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.68136
@@ -584,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681541259331143493, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.05916756
+      value: 0.059167556
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

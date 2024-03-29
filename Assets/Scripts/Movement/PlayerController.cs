@@ -82,12 +82,6 @@ public class PlayerController : NetworkBehaviour
                 GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            if(authority){
-                if(cameras.activeSelf == false){
-                    cameras.SetActive(true); //Turn on player camera
-                }
-                
-            }
             UpdatedMovement();
             
         }
