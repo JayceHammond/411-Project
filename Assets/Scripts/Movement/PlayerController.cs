@@ -79,11 +79,13 @@ public class PlayerController : NetworkBehaviour
             if(PlayerModel.activeSelf == false){
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
-                cameras.SetActive(true); //Turn on player camera
                 GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;
             }
             if(authority){
+                if(cameras.activeSelf == false){
+                    cameras.SetActive(true); //Turn on player camera
+                }
                 UpdatedMovement();
             }
             
@@ -275,7 +277,7 @@ public class PlayerController : NetworkBehaviour
 
 //WILL CHANGE LATER
     public void SetPosition(){
-        transform.position = new Vector3(UnityEngine.Random.Range(-5,5), 0.8f, UnityEngine.Random.Range(-15, 7));
+        transform.position = new Vector3(UnityEngine.Random.Range(-1,1), 0.8f, UnityEngine.Random.Range(-1, 1));
     }
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("D20")) {
