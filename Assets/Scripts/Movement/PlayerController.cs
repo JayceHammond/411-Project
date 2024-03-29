@@ -7,11 +7,15 @@ using Cinemachine;
 using Mirror;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem.LowLevel;
+using System;
 
 public class PlayerController : NetworkBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 1.0f;
+    private float playerSpeed;
+    private float oldSpeed;
+    [SerializeField]
+    private float sprintSpeed = 5f;
     [SerializeField]
     private float speedLimit = 4f;
     private bool isLeft = false;
@@ -22,6 +26,7 @@ public class PlayerController : NetworkBehaviour
     private float gravityValue = -9.81f;
     //private float yVelocity = 0f;
     private CharacterController controller;
+    private Rigidbody rb;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private InputManager inputManager;
@@ -29,20 +34,24 @@ public class PlayerController : NetworkBehaviour
     public GameObject gameplayCam;
     public GameObject uiCam;
     public GameObject cameras;
-    private Animator animator;
+    public Animator animator;
     // Start is called before the first frame update
 
     public GameObject PlayerModel;
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        inputManager = InputManager.Instance;
+        controller = GetComponent<CharacterController>(); //DEPRECATED
+
+        rb = GetComponent<Rigidbody>(); //Grab rigidbody component to control velocity
+        oldSpeed = playerSpeed; //Set speed value to switch to when not sprinting
+
+        inputManager = InputManager.Instance; //DEPRECATED
+
         cameraTransform = Camera.main.transform;
+
+        //The player loads in during lobby, hide model and cameras until all players enter game
         PlayerModel.SetActive(false);
         cameras.SetActive(false);
-
-        //Need this to trigger the animations
-        animator = GetComponent<Animator>();
     }
 
     void toggleCameraLock(){
@@ -75,7 +84,7 @@ public class PlayerController : NetworkBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
             if(authority){
-                Movement();
+                UpdatedMovement();
             }
             
         }
@@ -202,6 +211,67 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    public void UpdatedMovement(){
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        bool sprinting;
+        bool walking;
+        bool idle;
+
+        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+
+        if((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && (Math.Abs(horizontalInput) > 0 || Math.Abs(verticalInput) > 0)){
+        // Manage animation state
+        // ****************
+            sprinting = true;
+            walking = false;
+            idle = false;
+        // ****************
+            
+
+        }else if(Math.Abs(horizontalInput) > 0 || Math.Abs(verticalInput) > 0){
+        // Manage animation state
+        // ****************
+            sprinting = false;
+            walking = true;
+            idle = false;
+        // ****************
+            
+
+        }else{
+        // Manage animation state
+        // ****************
+            sprinting = false;
+            walking = false;
+            idle = true;
+        // ****************
+        }
+
+        //ANIMATE SPRITE BEFORE MOVEMENT FRAME
+        if(walking){ //WALKING
+            animator.ResetTrigger("Idle");
+            animator.ResetTrigger("Running");
+            animator.SetTrigger("Walking");
+            playerSpeed = oldSpeed; //Apply speed change
+        }
+        if(sprinting){ //SPRINTING
+            animator.ResetTrigger("Idle");
+            animator.ResetTrigger("Walking");
+            animator.SetTrigger("Running");
+            playerSpeed = sprintSpeed; //Apply speed change
+        }
+        if(idle){ //IDLE
+            animator.SetTrigger("Idle");
+            animator.ResetTrigger("Walking");
+            animator.ResetTrigger("Running");
+        }
+
+        rb.velocity = moveDirection * playerSpeed; //Move
+
+
+        
+    }
 
 //WILL CHANGE LATER
     public void SetPosition(){
