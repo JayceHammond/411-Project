@@ -345,14 +345,14 @@ MonoBehaviour:
   syncInterval: 0
   target: {fileID: 1037914431283315092}
   syncPosition: 1
-  syncRotation: 1
+  syncRotation: 0
   syncScale: 0
   onlySyncOnChange: 1
   compressRotation: 1
   interpolatePosition: 1
-  interpolateRotation: 1
+  interpolateRotation: 0
   interpolateScale: 1
-  coordinateSpace: 0
+  coordinateSpace: 1
   sendIntervalMultiplier: 1
   timelineOffset: 0
   showGizmos: 0
@@ -429,12 +429,12 @@ MonoBehaviour:
   syncInterval: 0
   target: {fileID: 1037914431283315092}
   syncPosition: 1
-  syncRotation: 1
+  syncRotation: 0
   syncScale: 0
   onlySyncOnChange: 1
   compressRotation: 1
   interpolatePosition: 1
-  interpolateRotation: 1
+  interpolateRotation: 0
   interpolateScale: 1
   coordinateSpace: 0
   sendIntervalMultiplier: 1
