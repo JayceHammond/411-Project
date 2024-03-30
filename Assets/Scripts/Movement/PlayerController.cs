@@ -38,11 +38,18 @@ public class PlayerController : NetworkBehaviour
     // Start is called before the first frame update
 
     public GameObject PlayerModel;
+
+
+    public override void OnStartAuthority()
+    {
+        cameras.SetActive(true);
+    }
     void Start()
     {
         controller = GetComponent<CharacterController>(); //DEPRECATED
 
         rb = GetComponent<Rigidbody>(); //Grab rigidbody component to control velocity
+        rb.useGravity = false; //Make gravity false until we enter game
         oldSpeed = playerSpeed; //Set speed value to switch to when not sprinting
 
         inputManager = InputManager.Instance; //DEPRECATED
@@ -51,7 +58,6 @@ public class PlayerController : NetworkBehaviour
 
         //The player loads in during lobby, hide model and cameras until all players enter game
         PlayerModel.SetActive(false);
-        cameras.SetActive(false);
     }
 
     void toggleCameraLock(){
@@ -79,6 +85,7 @@ public class PlayerController : NetworkBehaviour
             if(PlayerModel.activeSelf == false){
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
+                rb.useGravity = true;
                 GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;
             }
