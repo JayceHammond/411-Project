@@ -272,7 +272,12 @@ public class PlayerController : NetworkBehaviour
 
 //WILL CHANGE LATER
     public void SetPosition(){
-        transform.position = new Vector3(0, 1f, 0);
+        if(GetComponent<PlayerObjectController>().ConnectionID == 0){ //If this player is the host spawn here
+            transform.position = new Vector3(0, 1f, 0);
+        }else{ //If client spawn here
+            transform.position = new Vector3(3, 1, 0);
+        }
+        
     }
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("D20")) {
