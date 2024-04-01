@@ -86,7 +86,7 @@ public class PlayerController : NetworkBehaviour
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
                 rb.useGravity = true;
-                GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
+                //GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;
             }
             UpdatedMovement();
@@ -218,11 +218,19 @@ public class PlayerController : NetworkBehaviour
     public void UpdatedMovement(){
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        Vector3 forward = gameplayCam.transform.forward;
+        Vector3 right = gameplayCam.transform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
         bool sprinting;
         bool walking;
         bool idle;
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        Vector3 moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        moveDirection.y = 0f;
+        moveDirection.Normalize();
 
 
         if((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && (Math.Abs(horizontalInput) > 0 || Math.Abs(verticalInput) > 0)){
