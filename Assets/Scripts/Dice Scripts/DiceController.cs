@@ -25,7 +25,7 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        displayText.text = displayTextOBJ.text;
+        //displayText.text = displayTextOBJ.text;
     }
 
     public static int rollDie(GameObject dieToRoll,Transform transform){

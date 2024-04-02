@@ -280,11 +280,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375797535568026425}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 162e4a676a832894f92b0f525d56660c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   finalRoll: 0
   playerName: 
   playerLevel: 0
@@ -292,7 +295,13 @@ MonoBehaviour:
   playerHP: 0
   playerTempHP: 0
   playerConditions: []
-  dice: []
+  dice:
+  - {fileID: 1070676665635219059, guid: 72270e60cf8da3b43a5266a101e97b91, type: 3}
+  - {fileID: 4934466853842467482, guid: 3290e97a1eff5ba4888afb360c9c56c2, type: 3}
+  - {fileID: 4590406764288392387, guid: 862888be00d6b15438cd0d6595438365, type: 3}
+  - {fileID: 7983296447845562172, guid: 3be1f75480e55f5438560d52f18275e8, type: 3}
+  - {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
+  - {fileID: 7775085678995213916, guid: ecebc87658eb28348a15e027ac7e537a, type: 3}
   selectedDie: 0
   playerClassDC: 0
   playerHeroPoint: 0

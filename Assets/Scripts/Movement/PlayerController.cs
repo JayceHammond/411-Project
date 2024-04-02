@@ -8,6 +8,7 @@ using Mirror;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem.LowLevel;
 using System;
+using TMPro;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -85,6 +86,7 @@ public class PlayerController : NetworkBehaviour
             if(PlayerModel.activeSelf == false){
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
+                gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
                 rb.useGravity = true;
                 //GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;

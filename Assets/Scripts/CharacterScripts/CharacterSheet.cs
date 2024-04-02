@@ -1,19 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Data.Common;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization.Formatters;
-using Cinemachine;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Skill = SkillController.Skill;
+using Mirror;
 
-public class CharacterSheet : MonoBehaviour
+public class CharacterSheet : NetworkBehaviour
 {
     public int finalRoll = 0;
     public string playerName;
@@ -83,12 +75,6 @@ public class CharacterSheet : MonoBehaviour
     public int rawINT;
     public int rawWIS;
     public int rawCHAR;
-    
-
-
-    public TextMeshProUGUI fpsTMP;
-    public string fpsText;
-	public float deltaTime;
 
 
     // Start is called before the first frame update
@@ -100,8 +86,8 @@ public class CharacterSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(DiceController.displayText.text);
         if(Input.GetKeyDown(KeyCode.J)){
+            Debug.Log("roll");
             rollFlatDie();
 
         }
@@ -126,12 +112,6 @@ public class CharacterSheet : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(0);
         }
-        /*
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-		float fps = 1.0f / deltaTime;
-		fpsText = Mathf.Ceil (fps).ToString ();
-        fpsTMP.text = fpsText;
-        */
 
     }
 
