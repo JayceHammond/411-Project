@@ -86,31 +86,33 @@ public class CharacterSheet : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.J)){
-            Debug.Log("roll");
-            rollFlatDie();
+        if(gameObject.name == "LocalGamePlayer"){
+            if(Input.GetKeyDown(KeyCode.J)){
+                Debug.Log("roll");
+                rollFlatDie();
 
-        }
-        if(Input.GetKeyDown(KeyCode.RightBracket)){
-            if(selectedDie + 1 <= dice.Count - 1){
-                selectedDie += 1;
-            }else{
-                selectedDie = 0;
             }
-            currentDieText.text = dice[selectedDie].name;
-        }
-        if(Input.GetKeyDown(KeyCode.LeftBracket)){
-            if(selectedDie - 1 >= 0){
-                selectedDie -= 1;
-            }else{
-                selectedDie = 5;
+            if(Input.GetKeyDown(KeyCode.RightBracket)){
+                if(selectedDie + 1 <= dice.Count - 1){
+                    selectedDie += 1;
+                }else{
+                    selectedDie = 0;
+                }
+                currentDieText.text = dice[selectedDie].name;
             }
-            currentDieText.text = dice[selectedDie].name;
-        }
+            if(Input.GetKeyDown(KeyCode.LeftBracket)){
+                if(selectedDie - 1 >= 0){
+                    selectedDie -= 1;
+                }else{
+                    selectedDie = 5;
+                }
+                currentDieText.text = dice[selectedDie].name;
+            }
 
-        if(Input.GetKeyDown(KeyCode.H)){
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(0);
+            if(Input.GetKeyDown(KeyCode.H)){
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene(0);
+            }
         }
 
     }
