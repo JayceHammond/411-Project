@@ -25,7 +25,7 @@ public class DiceController : NetworkBehaviour
         //displayText.text = displayTextOBJ.text;
     }
 
-    public static int rollDie(GameObject dieToRoll,Transform transform){
+    public int rollDie(GameObject dieToRoll,Transform transform){
         GameObject roll = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
         roll.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
         roll.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
@@ -34,7 +34,8 @@ public class DiceController : NetworkBehaviour
     }
 
     [Command]
-    public static void cmdRollDie(GameObject dieToRoll, Transform transform){
+    public void cmdRollDie(GameObject dieToRoll, Transform transform){
         rollDie(dieToRoll, transform);
     }
+
 }
