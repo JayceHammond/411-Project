@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using Cinemachine;
+using Mirror;
 
 
-public class DiceController : MonoBehaviour
+public class DiceController : NetworkBehaviour
 {
     public static int dieVal = 0;
     public static GameObject twentySided;
