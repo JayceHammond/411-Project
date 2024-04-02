@@ -89,7 +89,7 @@ public class CharacterSheet : NetworkBehaviour
         if(gameObject.name == "LocalGamePlayer"){
             if(Input.GetKeyDown(KeyCode.J)){
                 Debug.Log("roll");
-                cmdRollFlatDie();
+                rollFlatDie();
 
             }
             if(Input.GetKeyDown(KeyCode.RightBracket)){
@@ -154,7 +154,7 @@ public class CharacterSheet : NetworkBehaviour
 
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
-        DiceController.rollDie(dice[selectedDie],this.transform);
+        DiceController.cmdRollDie(dice[selectedDie],this.transform);
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }
 
@@ -179,10 +179,6 @@ public class CharacterSheet : NetworkBehaviour
         calculateRoll(0,0);
     }
 
-[Command]
-private void cmdRollFlatDie(){
-    rollFlatDie();
-}
     //SKILL CHECKS
     public void rollAcrobatics(){
         int rankBonus = SkillController.proficiencyRanks[skills["Acrobatics"]];

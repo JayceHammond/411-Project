@@ -356,12 +356,12 @@ MonoBehaviour:
   syncInterval: 0
   target: {fileID: 1037914431283315092}
   syncPosition: 1
-  syncRotation: 0
+  syncRotation: 1
   syncScale: 0
   onlySyncOnChange: 1
   compressRotation: 1
   interpolatePosition: 1
-  interpolateRotation: 0
+  interpolateRotation: 1
   interpolateScale: 1
   coordinateSpace: 1
   sendIntervalMultiplier: 1

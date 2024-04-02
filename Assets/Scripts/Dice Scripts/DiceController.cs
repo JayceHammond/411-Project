@@ -32,4 +32,9 @@ public class DiceController : NetworkBehaviour
         Destroy(roll, 10);
         return SideChecker.sharedSideVal;
     }
+
+    [Command]
+    public static void cmdRollDie(GameObject dieToRoll, Transform transform){
+        rollDie(dieToRoll, transform);
+    }
 }
