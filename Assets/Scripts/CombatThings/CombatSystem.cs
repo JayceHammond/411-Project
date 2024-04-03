@@ -12,6 +12,10 @@ public class CombatSystem : MonoBehaviour
 
     public Transform playerCombatPosition;
     public Transform enemyCombatPosition;
+
+    Unit playerUnit;
+    Unit enemyUnit;
+
     public CombatState state;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +26,13 @@ public class CombatSystem : MonoBehaviour
 
     void SetupCombat()
     {
-        
+        GameObject playerGO = Instantiate(playerPrefab, playerCombatPosition);
+        playerUnit = playerGO.GetComponent<Unit>();
+
+        GameObject enemyGO = Instantiate(enemmyPrefab, enemyCombatPosition);
+        enemyUnit = enemyGO.GetComponent<Unit>();
+
+        Debug.Log("you are in combat");
     }
 
 
