@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using Mirror;
+using UnityEngine.SceneManagement;
+using Org.BouncyCastle.Asn1.X509;
 
 
 public class DiceController : NetworkBehaviour
@@ -16,13 +18,15 @@ public class DiceController : NetworkBehaviour
     void Awake()
     {
         twentySided = objD20;
-        displayText = displayTextOBJ;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //displayText.text = displayTextOBJ.text;
+        if(SceneManager.GetActiveScene().name == "MultiplayerTest" && displayTextOBJ == null){
+            displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
+            displayText = displayTextOBJ;
+        }
     }
 
     public int rollDie(GameObject dieToRoll,Transform transform){
@@ -33,9 +37,6 @@ public class DiceController : NetworkBehaviour
         return SideChecker.sharedSideVal;
     }
 
-    [Command]
-    public void cmdRollDie(GameObject dieToRoll, Transform transform){
-        rollDie(dieToRoll, transform);
-    }
+
 
 }

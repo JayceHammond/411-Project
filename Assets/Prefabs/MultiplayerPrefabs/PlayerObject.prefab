@@ -269,7 +269,6 @@ MonoBehaviour:
   playerSpeed: 2
   sprintSpeed: 5
   speedLimit: 4
-  gravityValue: -9.81
   gameplayCam: {fileID: 7836182748157829170, guid: b1486b1590582364197581e65d049cd1, type: 3}
   uiCam: {fileID: 8863162612661560987, guid: 682dd4c3d733bf94c869a0cc71247fab, type: 3}
   cameras: {fileID: 5052261084653987737}
@@ -653,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3430716788231046822, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3557751919230770232, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -692,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 4934676719274175911, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214782711974133966, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382355163202020556, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
       propertyPath: m_Layer

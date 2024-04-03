@@ -22,9 +22,6 @@ public class PlayerController : NetworkBehaviour
     private bool isLeft = false;
     private bool isRight = false;
 
-    //private float jumpHeight = 3.0f;
-    [SerializeField]
-    private float gravityValue = -9.81f;
     //private float yVelocity = 0f;
     private CharacterController controller;
     private Rigidbody rb;
@@ -107,7 +104,6 @@ public class PlayerController : NetworkBehaviour
         //Vectors that grab the movement from the player's input to move the char
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
-        playerVelocity.y += gravityValue * GameTime.deltaTime;
         controller.Move(playerVelocity * GameTime.deltaTime);
 
         //Conditonals for movement to try to keep the movement and the animations in the same place
@@ -222,8 +218,8 @@ public class PlayerController : NetworkBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 forward = gameplayCam.transform.forward;
         Vector3 right = gameplayCam.transform.right;
-        forward.y = 0f;
-        right.y = 0f;
+        //forward.y = 0f;
+        //right.y = 0f;
         forward.Normalize();
         right.Normalize();
         bool sprinting;
@@ -231,7 +227,7 @@ public class PlayerController : NetworkBehaviour
         bool idle;
 
         Vector3 moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
-        moveDirection.y = 0f;
+        //moveDirection.y = 0f;
         moveDirection.Normalize();
 
 
@@ -281,7 +277,7 @@ public class PlayerController : NetworkBehaviour
             animator.ResetTrigger("Running");
         }
 
-        rb.velocity = moveDirection * playerSpeed; //Move
+        rb.velocity = new Vector3(moveDirection.x * playerSpeed, rb.velocity.y, moveDirection.z * playerSpeed); //Move
 
 
         
@@ -299,11 +295,6 @@ public class PlayerController : NetworkBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("D20")) {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
-        }
-        if(other.gameObject.tag == "Tray"){
-            gravityValue = 0;
-        }else{
-            gravityValue = -9.81f;
         }
     }
     

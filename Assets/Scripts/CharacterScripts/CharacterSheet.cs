@@ -154,12 +154,7 @@ public class CharacterSheet : NetworkBehaviour
 
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
-        if(isClient){
-            GameObject.Find("GameplayCam").GetComponent<DiceController>().cmdRollDie(dice[selectedDie],this.transform);
-        }
-        if(isOwned){
-            GameObject.Find("GameplayCam").GetComponent<DiceController>().rollDie(dice[selectedDie],this.transform);
-        }
+        GameObject.Find("GameplayCam").GetComponent<DiceController>().rollDie(dice[selectedDie],this.transform);
         
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }
