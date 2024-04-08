@@ -6,8 +6,8 @@ public class GridCreator : MonoBehaviour
 {
 
     public GameObject hexagonPrefab;
-    public int gridSizeX = 5;
-    public int gridSizeZ = 5;
+    public int gridSizeX = 500;
+    public int gridSizeZ = 500;
     public float hexOffset = 1.1f; //distance between hex centers
     void Start()
     {
