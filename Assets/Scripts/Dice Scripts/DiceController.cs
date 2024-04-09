@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using Mirror;
 using UnityEngine.SceneManagement;
-using Org.BouncyCastle.Asn1.X509;
 
 
 public class DiceController : NetworkBehaviour
@@ -37,18 +36,24 @@ public class DiceController : NetworkBehaviour
          Destroy(spawned);
     }
 */
-    [Server]
-    public void rollDie(GameObject dieToRoll,Transform transform){
-        System.Guid dieAssetId = System.Guid.NewGuid();
-        GameObject die = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
-        NetworkServer.Spawn(die);
-        die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
-        die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
-        
-        Destroy(die, 30);
-        //return SideChecker.sharedSideVal;
+
+    private GameObject SpawnDie(SpawnMessage msg){
+        return Instantiate(twentySided, new Vector3(msg.position.x, msg.position.y, msg.position.z + 2), msg.rotation);
     }
 
+    public void UnSpawnDie(GameObject spawned){
+        Destroy(spawned);
+    }
+    [Client]
+    public void rollDie(GameObject dieToRoll,Transform transform){
+        GameObject die = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
+        NetworkServer.Spawn(die);
+        //die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
+        //die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+        
+        //Destroy(die, 30);
+        //return SideChecker.sharedSideVal;
+    }
 
 
 }
