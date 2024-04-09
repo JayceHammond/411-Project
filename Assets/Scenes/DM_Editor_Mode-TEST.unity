@@ -1643,7 +1643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e12494d6e5a31a43a79217b11ecaf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameplayCamera: {fileID: 0}
+  GameplayCamera: {fileID: 1618062837}
+  SpriteQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &971961435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,15 +1992,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010243699217, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08394012
+      value: 0.0839401
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010243699217, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.04274876
+      value: -0.04274872
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010243699217, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0036043874
+      value: 0.003604383
       objectReference: {fileID: 0}
     - target: {fileID: 2556734010243699220, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_IsActive
@@ -2768,6 +2769,11 @@ Transform:
   - {fileID: 971961436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1618062837 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2556734010243699222, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
+  m_PrefabInstance: {fileID: 1089166889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632590435
 GameObject:
   m_ObjectHideFlags: 0
