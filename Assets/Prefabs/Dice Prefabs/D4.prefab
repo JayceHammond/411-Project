@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 8135290155311509385}
   - component: {fileID: 4893026551134821837}
   - component: {fileID: 3927975451747070538}
+  - component: {fileID: -49030106592156215}
   m_Layer: 3
   m_Name: D4
   m_TagString: D4
@@ -378,6 +379,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-49030106592156215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775085678995213916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2574056379
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &7780497228771949545
 GameObject:
   m_ObjectHideFlags: 0
