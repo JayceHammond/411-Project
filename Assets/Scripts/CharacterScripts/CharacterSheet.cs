@@ -152,11 +152,17 @@ public class CharacterSheet : NetworkBehaviour
     }
 
 
+    
     public void calculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
         GameObject.Find("GameplayCam").GetComponent<DiceController>().rollDie(dice[selectedDie],this.transform);
         
         StartCoroutine(WaitForRoll(statBonus, profBon));
+    }
+
+    [Server]
+    public void cmdCalculateRoll(int stat, int profBon){
+        calculateRoll(stat, profBon);
     }
 
     IEnumerator WaitForRoll(int statBonus, int profBon){
@@ -177,7 +183,7 @@ public class CharacterSheet : NetworkBehaviour
     }
 
     public void rollFlatDie(){
-        calculateRoll(0,0);
+        cmdCalculateRoll(0,0);
     }
 
     //SKILL CHECKS
