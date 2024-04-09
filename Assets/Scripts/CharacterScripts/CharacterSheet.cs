@@ -89,7 +89,12 @@ public class CharacterSheet : NetworkBehaviour
         if(gameObject.name == "LocalGamePlayer"){
             if(Input.GetKeyDown(KeyCode.J)){
                 Debug.Log("roll");
-                rollFlatDie();
+                if(gameObject.GetComponent<PlayerObjectController>().PlayerIdNumber == 1){
+                    hostRollFlatDie();
+                }else{
+                    rollFlatDie();
+                }
+                
 
             }
             if(Input.GetKeyDown(KeyCode.RightBracket)){
@@ -153,16 +158,17 @@ public class CharacterSheet : NetworkBehaviour
 
 
     
-    public void calculateRoll(int stat, int profBon){
+    public void ClientCalculateRoll(int stat, int profBon){
         int statBonus = calculateStatBonus(stat);
         GameObject.Find("GameplayCam").GetComponent<DiceController>().rollDie(dice[selectedDie],this.transform);
         
         StartCoroutine(WaitForRoll(statBonus, profBon));
     }
-
-    [Server]
-    public void cmdCalculateRoll(int stat, int profBon){
-        calculateRoll(stat, profBon);
+    public void HostCalculateRoll(int stat, int profBon){
+        int statBonus = calculateStatBonus(stat);
+        GameObject.Find("GameplayCam").GetComponent<DiceController>().HostRollDie(dice[selectedDie],this.transform);
+        
+        StartCoroutine(WaitForRoll(statBonus, profBon));    
     }
 
     IEnumerator WaitForRoll(int statBonus, int profBon){
@@ -183,73 +189,76 @@ public class CharacterSheet : NetworkBehaviour
     }
 
     public void rollFlatDie(){
-        cmdCalculateRoll(0,0);
+        ClientCalculateRoll(0,0);
+    }
+    public void hostRollFlatDie(){
+        HostCalculateRoll(0,0);
     }
 
     //SKILL CHECKS
     public void rollAcrobatics(){
         int rankBonus = SkillController.proficiencyRanks[skills["Acrobatics"]];
-        calculateRoll(DEX, rankBonus);
+        ClientCalculateRoll(DEX, rankBonus);
     }
     public void rollArcana(){
         int rankBonus = SkillController.proficiencyRanks[skills["Arcana"]];
-        calculateRoll(INT,rankBonus);
+        ClientCalculateRoll(INT,rankBonus);
     }
     public void rollAthletics(){
         int rankBonus = SkillController.proficiencyRanks[skills["Athletics"]];
-        calculateRoll(STR, rankBonus);
+        ClientCalculateRoll(STR, rankBonus);
     }
     public void rollCrafting(){
         int rankBonus = SkillController.proficiencyRanks[skills["Crafting"]];
-        calculateRoll(INT, rankBonus);
+        ClientCalculateRoll(INT, rankBonus);
     }
     public void rollDeception(){
         int rankBonus = SkillController.proficiencyRanks[skills["Deception"]];
-        calculateRoll(CHAR, rankBonus);
+        ClientCalculateRoll(CHAR, rankBonus);
     }
     public void rollDiplomacy(){
         int rankBonus = SkillController.proficiencyRanks[skills["Diplomacy"]];
-        calculateRoll(CHAR, rankBonus);
+        ClientCalculateRoll(CHAR, rankBonus);
     }
     public void rollInitimidation(){
         int rankBonus = SkillController.proficiencyRanks[skills["Intimidation"]];
-        calculateRoll(CHAR, rankBonus);
+        ClientCalculateRoll(CHAR, rankBonus);
     }
     public void rollMedicine(){
         int rankBonus = SkillController.proficiencyRanks[skills["Medicine"]];
-        calculateRoll(WIS, rankBonus);
+        ClientCalculateRoll(WIS, rankBonus);
         }
     public void rollNature(){
         int rankBonus = SkillController.proficiencyRanks[skills["Nature"]];
-        calculateRoll(WIS, rankBonus);
+        ClientCalculateRoll(WIS, rankBonus);
         }   
     public void rollOccultism(){
         int rankBonus = SkillController.proficiencyRanks[skills["Occultism"]];
-        calculateRoll(INT, rankBonus);
+        ClientCalculateRoll(INT, rankBonus);
     }
     public void rollPerformance(){
         int rankBonus = SkillController.proficiencyRanks[skills["Performance"]];
-        calculateRoll(CHAR, rankBonus);
+        ClientCalculateRoll(CHAR, rankBonus);
     }
     public void rollReligion(){
         int rankBonus = SkillController.proficiencyRanks[skills["Religion"]];
-        calculateRoll(WIS, rankBonus);
+        ClientCalculateRoll(WIS, rankBonus);
         }
     public void rollSociety(){
         int rankBonus = SkillController.proficiencyRanks[skills["Society"]];
-        calculateRoll(INT, rankBonus);
+        ClientCalculateRoll(INT, rankBonus);
     }
     public void rollStealth(){
         int rankBonus = SkillController.proficiencyRanks[skills["Stealth"]];
-        calculateRoll(DEX, rankBonus);
+        ClientCalculateRoll(DEX, rankBonus);
     }   
     public void rollSurvival(){
         int rankBonus = SkillController.proficiencyRanks[skills["Survival"]];
-        calculateRoll(WIS, rankBonus);
+        ClientCalculateRoll(WIS, rankBonus);
     }
     public void rollThievery(){
         int rankBonus = SkillController.proficiencyRanks[skills["Thievery"]];
-        calculateRoll(DEX, rankBonus);
+        ClientCalculateRoll(DEX, rankBonus);
     }
 
 
