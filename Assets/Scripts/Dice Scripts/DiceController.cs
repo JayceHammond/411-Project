@@ -18,6 +18,7 @@ public class DiceController : NetworkBehaviour
     void Awake()
     {
         twentySided = objD20;
+        System.Guid dieAssetId = System.Guid.NewGuid();
     }
 
     // Update is called once per frame
@@ -29,11 +30,14 @@ public class DiceController : NetworkBehaviour
         }
     }
 
+    [Command]
     public int rollDie(GameObject dieToRoll,Transform transform){
+        System.Guid dieAssetId = System.Guid.NewGuid();
+        //NetworkClient.RegisterSpawnHandler(dieAssetId, )
         GameObject roll = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
         roll.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
         roll.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
-        Destroy(roll, 10);
+        Destroy(roll, 30);
         return SideChecker.sharedSideVal;
     }
 
