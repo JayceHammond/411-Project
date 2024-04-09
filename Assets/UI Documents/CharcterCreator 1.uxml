@@ -45,7 +45,7 @@
                         </ui:VisualElement>
                         <ui:VisualElement name="Class-Button-Container" style="flex-grow: 1; flex-direction: column; background-color: rgba(0, 0, 0, 0.1);">
                             <ui:VisualElement name="Class-Button" style="flex-grow: 1; align-self: stretch; justify-content: center; align-items: auto; color: rgb(26, 26, 26); margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(65, 195, 151); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
-                                <ui:Label tabindex="-1" text="Choose Class" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; align-self: center; justify-content: center; align-items: center; flex-wrap: wrap;" />
+                                <ui:Label tabindex="-1" text="Choose Class" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UI_ChooseClassButton" style="font-size: 20px; align-self: center; justify-content: center; align-items: center; flex-wrap: wrap;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
