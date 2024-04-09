@@ -29,15 +29,23 @@ public class DiceController : NetworkBehaviour
             displayText = displayTextOBJ;
         }
     }
-
+    /*
+    GameObject SpawnDelegate(Vector3 position, System.Guid assetId){
+        return Instantiate(twentySided, position, twentySided.transform.rotation);
+    }
+    void UnSpawnDelegate(GameObject spawned){
+         Destroy(spawned);
+    }
+*/
     [Server]
     public void rollDie(GameObject dieToRoll,Transform transform){
         System.Guid dieAssetId = System.Guid.NewGuid();
-        //NetworkClient.RegisterSpawnHandler(dieAssetId, )
-        GameObject roll = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
-        roll.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
-        roll.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
-        Destroy(roll, 30);
+        GameObject die = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
+        NetworkServer.Spawn(die);
+        die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
+        die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+        
+        Destroy(die, 30);
         //return SideChecker.sharedSideVal;
     }
 
