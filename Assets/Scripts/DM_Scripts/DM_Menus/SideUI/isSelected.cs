@@ -18,12 +18,13 @@ public class isSelected : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log(this.gameObject + " :Is the clicked object");
         Clicked++;
         if(Clicked == 1){
             ClickTime = Time.time;
         }
         if((Clicked == 2) && (Time.time - ClickTime) < ClickTimeDelay){
-            //Debug.Log(this.gameObject + " :Is the clicked object");
+            Debug.Log(this.gameObject + " :Is the clicked object");
             sidebarUI.selectedObject = this.gameObject;
             //Debug.Log(sidebarUI.selectedObject);
 
