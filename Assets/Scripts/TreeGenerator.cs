@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
  
 public class StartGame : MonoBehaviour {
  
     public GameObject theTree;
     float offset;
+    List<TreeInstance> SavedTrees;
  
     // Use this for initialization
     void Start () {
@@ -25,9 +27,18 @@ public class StartGame : MonoBehaviour {
         }
         
         // Then delete all trees on the island
-        //List<TreeInstance> newTrees = new List<TreeInstance>(0);
-        //theGround.treeInstances = newTrees.ToArray ();
+        List<TreeInstance> newTrees = new List<TreeInstance>(0);
+        SavedTrees = new List<TreeInstance>(theGround.treeInstances.Length);
+        SavedTrees = theGround.treeInstances.ToList();
+        theGround.treeInstances = newTrees.ToArray();
         
+    }
+
+    void OnApplicationQuit(){
+        TerrainData theGround;
+        theGround = GameObject.Find("Ground").GetComponent<Terrain>().terrainData;
+
+        theGround.treeInstances = SavedTrees.ToArray();
     }
 }
  
