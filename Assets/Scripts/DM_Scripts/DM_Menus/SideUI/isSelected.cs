@@ -12,6 +12,8 @@ public class isSelected : MonoBehaviour, IPointerClickHandler
     void Awake(){
         if(sidebarUI == null){
             sidebarUI = GameObject.FindGameObjectWithTag("BuildingUI").GetComponent<SidebarUI>();
+        }else{
+            sidebarUI = null;
         }
         //Debug.Log(sidebarUI);
     }
