@@ -6,6 +6,7 @@ using UnityEngine;
 public class StartGame : MonoBehaviour {
  
     public GameObject theTree;
+    public GameObject theBush;
     float offset;
     List<TreeInstance> SavedTrees;
  
