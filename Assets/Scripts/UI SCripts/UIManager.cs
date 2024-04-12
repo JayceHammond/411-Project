@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     public VisualElement root;
-    public List<VisualTreeAsset> assets;
+    public List<GameObject> assets;
     private VisualElement chooseClassButton;
     public UIDocument doc;
     private AncestriesUIDoc ancesteryScript;
@@ -27,10 +27,13 @@ public class UIManager : MonoBehaviour
     }
 
     public void onClassClick(){
-        doc.visualTreeAsset = assets[3];
+        assets[0].SetActive(true);
         classesScript.enabled = true;
         charBuilderScript.enabled = false;
         ancesteryScript.enabled = false;
+    }
+
+    public void onExit(){
         
     }
 
