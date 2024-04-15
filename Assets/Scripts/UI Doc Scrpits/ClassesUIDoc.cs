@@ -64,10 +64,17 @@ public class ClassesUIDoc : MonoBehaviour
                     name = dataLoader.classList[i].name,
                     text = dataLoader.classList[i].name
                 };
-                NewClass.styleSheets.Add(AncestriesButtons);
+
+                if(AncestriesButtons != null)
+                    NewClass.styleSheets.Add(AncestriesButtons);
+                else
+                    NewClass.styleSheets.Add(Resources.Load<StyleSheet>("CSS/AnceseryButtons"));
+
                 //Lets the element be clickable and calls the function
                 NewClass.AddManipulator(new Clickable(click => populateClass(NewClass.name)));
-                Classes.Add(NewClass);
+
+                if(Classes != null)
+                    Classes.Add(NewClass);
                 
             }
         }
