@@ -28,6 +28,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject uiCam;
     public GameObject cameras;
     public Animator animator;
+    public NetworkAnimator n_animator;
     // Start is called before the first frame update
 
     public GameObject PlayerModel;
@@ -44,6 +45,8 @@ public class PlayerController : NetworkBehaviour
         rb = GetComponent<Rigidbody>(); //Grab rigidbody component to control velocity
         rb.useGravity = false; //Make gravity false until we enter game
         oldSpeed = playerSpeed; //Set speed value to switch to when not sprinting
+
+        n_animator = GetComponent<NetworkAnimator>();
 
         inputManager = InputManager.Instance; //DEPRECATED
 
@@ -106,9 +109,7 @@ public class PlayerController : NetworkBehaviour
         //Idle
         if(math.abs(movement.x) == 0 && math.abs(movement.y) == 0)
         {
-            GetComponent<NetworkAnimator>().animator.SetTrigger("Idle");
-            GetComponent<NetworkAnimator>().animator.ResetTrigger("Walking");
-            GetComponent<NetworkAnimator>().animator.ResetTrigger("Running");
+            IdleAnim();
             
         }
         //Sprinting
@@ -119,9 +120,7 @@ public class PlayerController : NetworkBehaviour
                 playerSpeed = speedLimit;
             }
             
-            GetComponent<NetworkAnimator>().animator.ResetTrigger("Idle");
-            GetComponent<NetworkAnimator>().animator.ResetTrigger("Walking");
-            GetComponent<NetworkAnimator>().animator.SetTrigger("Running");
+            SprintAnim();
             
             //move.y += gravityValue * Time.deltaTime;
 
@@ -149,9 +148,7 @@ public class PlayerController : NetworkBehaviour
         else   
         {
             playerSpeed = 1.0f;
-            GetComponent<NetworkAnimator>().animator.ResetTrigger("Idle");
-            GetComponent<NetworkAnimator>().animator.ResetTrigger("Running");
-            GetComponent<NetworkAnimator>().animator.SetTrigger("Walking");
+            WalkAnim();
 
             //move.y += gravityValue * Time.deltaTime;
 
@@ -206,6 +203,33 @@ public class PlayerController : NetworkBehaviour
         if(inputManager.PlayerForthAttack()){
             animator.SetTrigger("Attacking4");
         }
+    }
+
+    public void IdleAnim(){
+        if(!isLocalPlayer){
+            return;
+        }
+        n_animator.SetTrigger("Idle");
+        n_animator.ResetTrigger("Walking");
+        n_animator.ResetTrigger("Running");
+    }
+
+    public void WalkAnim(){
+        if(!isLocalPlayer){
+            return;
+        }
+        n_animator.ResetTrigger("Idle");
+        n_animator.ResetTrigger("Running");
+        n_animator.SetTrigger("Walking");
+    }
+
+    public void SprintAnim(){
+        if(!isLocalPlayer){
+            return;
+        }
+        n_animator.ResetTrigger("Idle");
+        n_animator.ResetTrigger("Walking");
+        n_animator.SetTrigger("Running");
     }
 
     public void UpdatedMovement(){
