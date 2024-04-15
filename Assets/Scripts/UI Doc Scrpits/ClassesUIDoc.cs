@@ -50,7 +50,7 @@ public class ClassesUIDoc : MonoBehaviour
     // Update is called once per frame
     void LateUpdate(){
         populateClasses(populate);
-        Debug.Log(populate);
+        //Debug.Log(populate);
     }
 
      public void populateClasses(bool populate){
@@ -81,6 +81,7 @@ public class ClassesUIDoc : MonoBehaviour
             }
         }
         populate = false;
+        Debug.Log(populate);
     }
 
     private void populateClass(string className){

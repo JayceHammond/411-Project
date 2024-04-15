@@ -18,9 +18,9 @@ public class UIManager : MonoBehaviour
     private ClassesUIDoc classesScript;
 
     public void Start(){
-        ancesteryScript = GetComponent<AncestriesUIDoc>();
+        ancesteryScript = GetComponent<AncestriesUIDoc>(); //Redo like line 32 so it can update the right UI Doc
         charBuilderScript = GetComponent<CharacterBuilderPT2>();
-        classesScript = GetComponent<ClassesUIDoc>();
+       
         doc = GetComponent<UIDocument>();
         root = doc.rootVisualElement;
         chooseClassButton = root.Q<VisualElement>("Class-Button");
@@ -28,13 +28,14 @@ public class UIManager : MonoBehaviour
     }
 
     public void onClassClick(){
-        classesScript.populate = true;
         assets[0].SetActive(true);
+        classesScript = assets[0].GetComponent<ClassesUIDoc>();
         classesScript.enabled = true;
         charBuilderScript.enabled = false;
-        ancesteryScript.enabled = false;
+        //ancesteryScript.enabled = false;
 
         root = assets[0].GetComponent<UIDocument>().rootVisualElement;
+        classesScript.populate = true;
         ClosePopup = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");
         ClosePopup.AddManipulator(new Clickable(click => onExit()));
     }
