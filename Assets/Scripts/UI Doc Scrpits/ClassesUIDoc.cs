@@ -45,6 +45,9 @@ public class ClassesUIDoc : MonoBehaviour
 
         //Asigning the CSS to use 
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
+
+        //Adding Close Feature to Class Popup
+        CloseClasses.AddManipulator(new Clickable(click => closeClassPopup()));
     }
 
     // Update is called once per frame
@@ -176,5 +179,9 @@ public class ClassesUIDoc : MonoBehaviour
             Defense.Q<VisualElement>("Unarmored-Defense").Q<Label>("Proficiency").text = dataLoader.classList.Find(x => x.name == ClassName).defense_proficiency.unarmored_defense;
         }
 
+    }
+
+    private void closeClassPopup(){
+        
     }
 }

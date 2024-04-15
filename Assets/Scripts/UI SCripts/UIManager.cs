@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public VisualElement root;
     public List<GameObject> assets;
     private VisualElement chooseClassButton;
+    private VisualElement ClosePopup;
     public UIDocument doc;
     private AncestriesUIDoc ancesteryScript;
     private CharacterBuilderPT2 charBuilderScript;
@@ -31,6 +32,9 @@ public class UIManager : MonoBehaviour
         classesScript.enabled = true;
         charBuilderScript.enabled = false;
         ancesteryScript.enabled = false;
+
+        root = assets[0].GetComponent<UIDocument>().rootVisualElement;
+        ClosePopup = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");
     }
 
     public void onExit(){
