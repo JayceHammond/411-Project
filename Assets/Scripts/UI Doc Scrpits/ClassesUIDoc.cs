@@ -18,6 +18,7 @@ public class ClassesUIDoc : MonoBehaviour
     private VisualElement Resistance_Weakness;
     private VisualElement Skills;
     private VisualElement Health;
+    private VisualElement CloseClasses;
     private Label SelectedClassName;
     private StyleSheet AncestriesButtons;
 
@@ -29,6 +30,7 @@ public class ClassesUIDoc : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
         Classes = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("Classes").Q<VisualElement>("Classes-Holder");
         SelectedClassName = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<Label>("ClassName");
+        CloseClasses = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");
 
         Charaistics = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("Chartistics-of-Class");
         Abilities = Charaistics.Q<VisualElement>("Abilities");
