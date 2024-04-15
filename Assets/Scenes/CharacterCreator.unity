@@ -2368,6 +2368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataLoader: {fileID: 1924398497}
+  populate: 0
 --- !u!114 &599910252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3650,6 +3651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataLoader: {fileID: 1924398497}
+  populate: 1
 --- !u!114 &759900414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6828,6 +6830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataLoader: {fileID: 1924398497}
+  populate: 1
 --- !u!114 &1497956872
 MonoBehaviour:
   m_ObjectHideFlags: 0

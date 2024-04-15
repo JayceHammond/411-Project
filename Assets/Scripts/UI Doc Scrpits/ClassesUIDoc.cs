@@ -22,7 +22,7 @@ public class ClassesUIDoc : MonoBehaviour
     private Label SelectedClassName;
     private StyleSheet AncestriesButtons;
 
-    private bool populate = true; 
+    public bool populate = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,21 +45,18 @@ public class ClassesUIDoc : MonoBehaviour
 
         //Asigning the CSS to use 
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
-
-        //Adding Close Feature to Class Popup
-        CloseClasses.AddManipulator(new Clickable(click => closeClassPopup()));
     }
 
     // Update is called once per frame
     void LateUpdate(){
-        if(populate){
-            populateClasses();
-        }
+        populateClasses(populate);
+        Debug.Log(populate);
     }
 
-     private void populateClasses(){
+     public void populateClasses(bool populate){
         if (populate) //Makesure this runs once
         {
+            Debug.Log("HI!!");
             //Grabs all the Classes from the JSON file
             for (int i = 0; i < dataLoader.classList.Count; i++)
             {
@@ -181,7 +178,4 @@ public class ClassesUIDoc : MonoBehaviour
 
     }
 
-    private void closeClassPopup(){
-        
-    }
 }

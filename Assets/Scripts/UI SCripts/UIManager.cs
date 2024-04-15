@@ -23,11 +23,12 @@ public class UIManager : MonoBehaviour
         classesScript = GetComponent<ClassesUIDoc>();
         doc = GetComponent<UIDocument>();
         root = doc.rootVisualElement;
-        chooseClassButton = root.Q<Label>("UI_ChooseClassButton");
+        chooseClassButton = root.Q<VisualElement>("Class-Button");
         chooseClassButton.AddManipulator(new Clickable(click => onClassClick()));
     }
 
     public void onClassClick(){
+        classesScript.populate = true;
         assets[0].SetActive(true);
         classesScript.enabled = true;
         charBuilderScript.enabled = false;
@@ -35,10 +36,15 @@ public class UIManager : MonoBehaviour
 
         root = assets[0].GetComponent<UIDocument>().rootVisualElement;
         ClosePopup = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");
+        ClosePopup.AddManipulator(new Clickable(click => onExit()));
     }
 
+    
+
     public void onExit(){
-        
+        classesScript.populate = false;
+        assets[0].SetActive(false);
+        assets[0].SetActive(false);
     }
 
 }
