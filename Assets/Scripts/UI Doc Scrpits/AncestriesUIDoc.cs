@@ -13,6 +13,7 @@ public class AncestriesUIDoc : MonoBehaviour
     private VisualElement AncestrySummaries;
     private VisualElement AncestryStatIncrease;
     private VisualElement PlayerStatIncrease;
+    private VisualElement CloseAncestriesPopup;
 
     //Setting up the CSS the UI Elements being made will follow
     private StyleSheet AncestriesButtons;
@@ -30,6 +31,8 @@ public class AncestriesUIDoc : MonoBehaviour
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
         PlayerStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Pickable-Stat");
+
+        CloseAncestriesPopup = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");;
         
         //Assigning the CSS to use
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
@@ -75,7 +78,7 @@ public class AncestriesUIDoc : MonoBehaviour
     }
 
     private void updateNameLabel(String RaceName){
-        root.Q<VisualElement>("AncestrySummry").Q<Label>("Ancestry_Name").text = RaceName;
+        root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<Label>("Ancestry_Name").text = RaceName;
     }
 
     private void populateAncestSumry(String RaceName){
