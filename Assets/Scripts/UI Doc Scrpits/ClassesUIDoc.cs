@@ -28,7 +28,7 @@ public class ClassesUIDoc : MonoBehaviour
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         Classes = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("Classes").Q<VisualElement>("Classes-Holder");
-        SelectedClassName = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<Label>("ClassName");
+        SelectedClassName = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<Label>("ClassName");
 
         Charaistics = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("Chartistics-of-Class");
         Abilities = Charaistics.Q<VisualElement>("Abilities");
