@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using Cinemachine;
 using Mirror;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem.LowLevel;
 using System;
 using TMPro;
 
@@ -111,9 +106,9 @@ public class PlayerController : NetworkBehaviour
         //Idle
         if(math.abs(movement.x) == 0 && math.abs(movement.y) == 0)
         {
-            animator.SetTrigger("Idle");
-            animator.ResetTrigger("Walking");
-            animator.ResetTrigger("Running");
+            GetComponent<NetworkAnimator>().animator.SetTrigger("Idle");
+            GetComponent<NetworkAnimator>().animator.ResetTrigger("Walking");
+            GetComponent<NetworkAnimator>().animator.ResetTrigger("Running");
             
         }
         //Sprinting
@@ -124,9 +119,9 @@ public class PlayerController : NetworkBehaviour
                 playerSpeed = speedLimit;
             }
             
-            animator.ResetTrigger("Idle");
-            animator.ResetTrigger("Walking");
-            animator.SetTrigger("Running");
+            GetComponent<NetworkAnimator>().animator.ResetTrigger("Idle");
+            GetComponent<NetworkAnimator>().animator.ResetTrigger("Walking");
+            GetComponent<NetworkAnimator>().animator.SetTrigger("Running");
             
             //move.y += gravityValue * Time.deltaTime;
 
@@ -154,9 +149,9 @@ public class PlayerController : NetworkBehaviour
         else   
         {
             playerSpeed = 1.0f;
-            animator.ResetTrigger("Idle");
-            animator.ResetTrigger("Running");
-            animator.SetTrigger("Walking");
+            GetComponent<NetworkAnimator>().animator.ResetTrigger("Idle");
+            GetComponent<NetworkAnimator>().animator.ResetTrigger("Running");
+            GetComponent<NetworkAnimator>().animator.SetTrigger("Walking");
 
             //move.y += gravityValue * Time.deltaTime;
 
