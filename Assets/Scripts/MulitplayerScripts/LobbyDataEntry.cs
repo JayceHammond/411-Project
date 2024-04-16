@@ -12,7 +12,7 @@ public class LobbyDataEntry : MonoBehaviour
 
     public void SetLobbyData(){
         if(lobbyName == ""){
-            lobbyNameText.text = "Empty";
+            lobbyNameText.text = "Unamed Session";
         }else{
             lobbyNameText.text = lobbyName;
         }

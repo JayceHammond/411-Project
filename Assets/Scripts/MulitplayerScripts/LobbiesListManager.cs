@@ -10,7 +10,7 @@ public class LobbiesListManager : MonoBehaviour
     public GameObject lobbyDataItemPrefab;
     public GameObject lobbyListContent;
 
-    public GameObject lobbiesButton, hostButton;
+    public GameObject lobbiesButton, hostButton, characterCreatorButton;
 
     public List<GameObject> listOfLobbies = new List<GameObject>();
     private Scene lastScene;
@@ -50,10 +50,18 @@ public class LobbiesListManager : MonoBehaviour
     public void GetListOfLobbies(){
         lobbiesButton.SetActive(false);
         hostButton.SetActive(false);
+        characterCreatorButton.SetActive(false);
 
         lobbiesMenu.SetActive(true);
 
         SteamLobby.Instance.GetLobbiesList();
+    }
+
+    public void CloseListOfLobbies(){
+        lobbiesMenu.SetActive(false);
+        lobbiesButton.SetActive(true);
+        hostButton.SetActive(true);
+        characterCreatorButton.SetActive(true);
     }
 
     //QUICK CODE WILL DELETE IN FUTURE

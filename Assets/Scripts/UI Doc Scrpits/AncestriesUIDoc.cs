@@ -21,7 +21,7 @@ public class AncestriesUIDoc : MonoBehaviour
 
     //Varibles and List used in the script
     private List<string> TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
-    private bool populate = true;
+    public bool populate = true;
 
     // Start is called before the first frame update
     void Start(){
@@ -42,11 +42,11 @@ public class AncestriesUIDoc : MonoBehaviour
 
     void LateUpdate(){
        //Calls Once when the ancestry meue pops up. Fills in the Ancesteries
-        populateAncestries();
+        //populateAncestries(populate);
 
     }
 
-    private void populateAncestries(){
+    public void populateAncestries(bool populate){
         if (populate) //Makesure this runs once
         {
             //Grabs all the Ancestries from the JSON file
