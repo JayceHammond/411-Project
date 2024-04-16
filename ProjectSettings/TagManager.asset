@@ -8,6 +8,14 @@ TagManager:
   - Tray
   - Die
   - Foilage
+  - D12
+  - D20
+  - D10
+  - D8
+  - D6
+  - D4
+  - BuildingUI
+  - Rocks
   layers:
   - Default
   - TransparentFX
