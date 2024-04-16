@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
  
 public class StartGame : MonoBehaviour {
@@ -28,8 +29,12 @@ public class StartGame : MonoBehaviour {
             // Find its local position scaled by the terrain size (to find the real world position)
             Vector3 worldTreePos = Vector3.Scale(tree.position, theGround.size) + Terrain.activeTerrain.transform.position;
             worldTreePos.y = worldTreePos.y + offset;
-            var Tree = Instantiate (theTree, worldTreePos, Quaternion.identity); // Create a prefab tree on its pos
-            Tree.transform.parent = GameObject.Find("TreeGenerator").transform;
+            if (theTree != null){
+                var Tree = Instantiate(theTree, worldTreePos, Quaternion.identity); // Create a prefab tree on its pos
+                Tree.transform.parent = GameObject.Find("TreeGenerator").transform;
+            }else{
+                Debug.Log("Tree Does Not Exist");
+            }
         }
         
         // Then delete all trees on the ground
