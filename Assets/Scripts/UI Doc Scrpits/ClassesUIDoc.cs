@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -49,14 +47,13 @@ public class ClassesUIDoc : MonoBehaviour
 
     // Update is called once per frame
     void LateUpdate(){
-        populateClasses(populate);
+        //populateClasses(populate);
         //Debug.Log(populate);
     }
 
      public void populateClasses(bool populate){
         if (populate) //Makesure this runs once
         {
-            Debug.Log("HI!!");
             //Grabs all the Classes from the JSON file
             for (int i = 0; i < dataLoader.classList.Count; i++)
             {
@@ -80,8 +77,7 @@ public class ClassesUIDoc : MonoBehaviour
                 
             }
         }
-        populate = false;
-        Debug.Log(populate);
+        //populate = false;
     }
 
     private void populateClass(string className){

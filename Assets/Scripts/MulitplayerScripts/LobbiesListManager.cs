@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Steamworks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LobbiesListManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class LobbiesListManager : MonoBehaviour
     public GameObject lobbiesButton, hostButton;
 
     public List<GameObject> listOfLobbies = new List<GameObject>();
+    private Scene lastScene;
 
 
     private void Awake(){
@@ -52,5 +54,17 @@ public class LobbiesListManager : MonoBehaviour
         lobbiesMenu.SetActive(true);
 
         SteamLobby.Instance.GetLobbiesList();
+    }
+
+    //QUICK CODE WILL DELETE IN FUTURE
+    public void LoadCharacterCreator(){
+        lastScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene("CharacterCreator");
+    }
+
+    public void LoadLastScene(){
+        if(lastScene != null){
+            SceneManager.LoadScene(lastScene.name);
+        }
     }
 }
