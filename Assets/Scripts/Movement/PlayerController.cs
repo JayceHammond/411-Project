@@ -27,7 +27,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject gameplayCam;
     public GameObject uiCam;
     public GameObject cameras;
-    public Animator animator;
+    //public Animator animator;
     public NetworkAnimator n_animator;
     // Start is called before the first frame update
 
@@ -140,7 +140,7 @@ public class PlayerController : NetworkBehaviour
             }
 
             if(inputManager.PlayerBaseAttack()){
-                animator.SetTrigger("RunningAttack");
+                n_animator.SetTrigger("RunningAttack");
             }
 
         }
@@ -177,31 +177,31 @@ public class PlayerController : NetworkBehaviour
             playerVelocity.y += gravityValue * GameTime.deltaTime;
             controller.Move(playerVelocity * GameTime.deltaTime);
 
-            animator.SetTrigger("Jumping");
+            n_animator.SetTrigger("Jumping");
         }
         */
         //Conditonals for Defend movement and Animation
         if(inputManager.PlayerDefended()){
-            animator.SetTrigger("Defending");
+            n_animator.SetTrigger("Defending");
         }
 
         //Conditonals for Base Attack action and Animation
         if(inputManager.PlayerBaseAttack() && !inputManager.PlayerRunning()){
-            animator.SetTrigger("Attacking1");
+            n_animator.SetTrigger("Attacking1");
         }
 
         //Conditonals for Attack 2 action and Animation
         if(inputManager.PlayerSecondAttack()){
-            animator.SetTrigger("Attacking2");
+            n_animator.SetTrigger("Attacking2");
         }
 
         //Conditonals for Attack 3 action and Animation
         if(inputManager.PlayerThirdAttack()){
-            animator.SetTrigger("Attacking3");
+            n_animator.SetTrigger("Attacking3");
         }
 
         if(inputManager.PlayerForthAttack()){
-            animator.SetTrigger("Attacking4");
+            n_animator.SetTrigger("Attacking4");
         }
     }
 
@@ -279,21 +279,21 @@ public class PlayerController : NetworkBehaviour
 
         //ANIMATE SPRITE BEFORE MOVEMENT FRAME
         if(walking){ //WALKING
-            animator.ResetTrigger("Idle");
-            animator.ResetTrigger("Running");
-            animator.SetTrigger("Walking");
+            n_animator.ResetTrigger("Idle");
+            n_animator.ResetTrigger("Running");
+            n_animator.SetTrigger("Walking");
             playerSpeed = oldSpeed; //Apply speed change
         }
         if(sprinting){ //SPRINTING
-            animator.ResetTrigger("Idle");
-            animator.ResetTrigger("Walking");
-            animator.SetTrigger("Running");
+            n_animator.ResetTrigger("Idle");
+            n_animator.ResetTrigger("Walking");
+            n_animator.SetTrigger("Running");
             playerSpeed = sprintSpeed; //Apply speed change
         }
         if(idle){ //IDLE
-            animator.SetTrigger("Idle");
-            animator.ResetTrigger("Walking");
-            animator.ResetTrigger("Running");
+            n_animator.SetTrigger("Idle");
+            n_animator.ResetTrigger("Walking");
+            n_animator.ResetTrigger("Running");
         }
 
         rb.velocity = new Vector3(moveDirection.x * playerSpeed, rb.velocity.y, moveDirection.z * playerSpeed); //Move
