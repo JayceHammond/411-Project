@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ebb2325c5556bb42b92cbb8afdcf2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theTree: {fileID: 0}
+  theTallTree: {fileID: 0}
+  theMediumTree: {fileID: 0}
 --- !u!4 &518028412
 Transform:
   m_ObjectHideFlags: 0
@@ -318,15 +319,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25328046
+      value: 0.2532805
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.21888384
+      value: 0.21888389
       objectReference: {fileID: 0}
     - target: {fileID: 2556734011197489348, guid: a0b758aa1d90a1d46989068ad21efe20, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.058948852
+      value: -0.058948863
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
