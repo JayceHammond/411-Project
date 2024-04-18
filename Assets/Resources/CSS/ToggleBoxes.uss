@@ -1,0 +1,9 @@
+.unity-toggle {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    -unity-text-align: upper-center;
+}
