@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class BottomBarUI : MonoBehaviour
@@ -23,7 +24,8 @@ public class BottomBarUI : MonoBehaviour
     private GameObject spawnedObject;
     private String path = "Prefabs";
     private String LastToggled;
-    private bool breaker = false;
+    private int OldSelectedLenght = 0;
+
 
     void OnEnable(){
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -43,7 +45,9 @@ public class BottomBarUI : MonoBehaviour
 
     void Update(){
         checkToggles();
-        displayObjects(sortList(SelectedTags));
+        if(SelectedTags.Count != OldSelectedLenght){
+            displayObjects(sortList(SelectedTags));
+        }
     }
 
     private void mouseObjectPlacing(GameObject item){
@@ -61,7 +65,7 @@ public class BottomBarUI : MonoBehaviour
         };
 
         spawnedObject = Resources.Load<GameObject>(path + "/" + item.name);
-        Debug.Log(spawnedObject);
+        //Debug.Log(spawnedObject);
 
         spawnedObject.transform.position = IntialPosition;
         spawnedObject.transform.rotation = IntialRotation;
@@ -105,12 +109,16 @@ public class BottomBarUI : MonoBehaviour
     }
 
     private void checkToggles(){
+         OldSelectedLenght = SelectedTags.Count;
         foreach(String toggle in ToggleNames){
             if(ToggleHolder.Q<Toggle>(toggle).value){
-                if(!SelectedTags.Contains(toggle))
+                if (!SelectedTags.Contains(toggle)){
                     SelectedTags.Add(toggle);
+                    //changed = true;
+                }
             }else{
                 SelectedTags.Remove(toggle);
+                //changed = false;
             }
         }
     }
@@ -124,6 +132,7 @@ public class BottomBarUI : MonoBehaviour
     }
 
     private void displayObjects(List<GameObject> objectList){
+        Debug.Log("Count");
         ObjectListHolder.Clear();
         foreach(GameObject item in objectList){
             //Debug.Log(item);
@@ -135,7 +144,7 @@ public class BottomBarUI : MonoBehaviour
             newObject.Add(makeObjectLabel(item));
             newObject.Add(makeObjectImage(item));
 
-
+            Debug.Log(newObject);
             newObject.AddManipulator(new Clickable(click => mouseObjectPlacing(item)));
             newObject.styleSheets.Add(ObjectVisEleStyle);
 
