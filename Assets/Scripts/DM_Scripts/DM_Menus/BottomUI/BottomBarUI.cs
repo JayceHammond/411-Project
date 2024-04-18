@@ -18,7 +18,7 @@ public class BottomBarUI : MonoBehaviour
 
     private List<GameObject> ObjectList;
     private List<String> ToggleNames;
-    private List<String> SelectedTags; 
+    public List<String> SelectedTags; 
 
     private GameObject spawnedObject;
     private String path = "Prefabs";
@@ -107,7 +107,10 @@ public class BottomBarUI : MonoBehaviour
     private void checkToggles(){
         foreach(String toggle in ToggleNames){
             if(ToggleHolder.Q<Toggle>(toggle).value){
-                SelectedTags.Add(toggle);
+                if(!SelectedTags.Contains(toggle))
+                    SelectedTags.Add(toggle);
+            }else{
+                SelectedTags.Remove(toggle);
             }
         }
     }
@@ -145,8 +148,8 @@ public class BottomBarUI : MonoBehaviour
         List<GameObject> SelectedObjects = new List<GameObject>();
         foreach(String Tag in SelectedTags){
             foreach(GameObject item in ObjectList){
-                //Debug.Log(item);
-                if(item.tag == tag){
+                if(item.tag == Tag){
+                    //Debug.Log(item);
                     SelectedObjects.Add(item);
                 }
             }
