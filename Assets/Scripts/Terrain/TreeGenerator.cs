@@ -19,6 +19,7 @@ public class StartGame : MonoBehaviour {
         TerrainData theGround;
         theGround = GameObject.Find("Ground").GetComponent<Terrain>().terrainData;
 
+
         // For every tree on the ground
         foreach (TreeInstance tree in theGround.treeInstances) {
 

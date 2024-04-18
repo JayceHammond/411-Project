@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1909716870478884623}
   - component: {fileID: 4353558004403940050}
   m_Layer: 0
-  m_Name: TerrainBush
+  m_Name: TerrainFoilage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
