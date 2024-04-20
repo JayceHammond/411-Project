@@ -12,6 +12,7 @@ public class PlayerObjectController : NetworkBehaviour
     [SyncVar] public ulong PlayerSteamID;
     [SyncVar(hook = nameof(PlayerNameUpdate))] public string PlayerName;
     [SyncVar(hook = nameof(PlayerReadyUpdate))] public bool Ready;
+    public static Camera GameplayCamera;
 
     private CustomNetworkManager manager;
 
@@ -22,6 +23,10 @@ public class PlayerObjectController : NetworkBehaviour
             }
             return manager = CustomNetworkManager.singleton as CustomNetworkManager;
         }
+    }
+    
+    private void OnEnable(){
+        GameplayCamera = GameObject.Find("GameplayCamera").GetComponent<Camera>();
     }
     private void Start(){
         DontDestroyOnLoad(this.gameObject);

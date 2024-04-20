@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Org.BouncyCastle.Security;
 using Unity.Collections;
@@ -7,15 +8,12 @@ public class SpriteBillboard : MonoBehaviour
 {
     public Camera GameplayCamera;
     public Quaternion SpriteQuat;
-    private GameObject dontDestroyPointer;
 
     void OnEnable(){
         GameplayCamera = GameObject.Find("GameplayCamera").GetComponent<Camera>();
     }
 
     void Awake(){
-        dontDestroyPointer = new GameObject("ptr");
-        dontDestroyPointer.scene.GetRootGameObjects();
         GameplayCamera = GameObject.Find("GameplayCamera").GetComponent<Camera>();
     }
 
