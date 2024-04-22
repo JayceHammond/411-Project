@@ -25,6 +25,11 @@ public class LobbiesListManager : MonoBehaviour
             Destroy(lobbyItem);
         }
         listOfLobbies.Clear();
+        lobbiesButton.SetActive(true);
+        hostButton.SetActive(true);
+        characterCreatorButton.SetActive(true);
+        lobbiesMenu.SetActive(false);
+        
     }
 
     public void DisplayLobbies(List<CSteamID> lobbyIDs, LobbyDataUpdate_t result){
