@@ -73,4 +73,12 @@ public class UIManager : MonoBehaviour
         Destroy(instantiatedUI);
     }
 
+    public void openNethys(){
+        Application.OpenURL("https://2e.aonprd.com/");
+    }
+
+    public void closeGame(){
+        Application.Quit();
+    }
+
 }

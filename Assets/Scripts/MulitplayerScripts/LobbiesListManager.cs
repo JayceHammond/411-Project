@@ -10,7 +10,7 @@ public class LobbiesListManager : MonoBehaviour
     public GameObject lobbyDataItemPrefab;
     public GameObject lobbyListContent;
 
-    public GameObject lobbiesButton, hostButton, characterCreatorButton;
+    public GameObject lobbiesButton, hostButton, characterCreatorButton, settingsButton, quitButton;
 
     public List<GameObject> listOfLobbies = new List<GameObject>();
     private Scene lastScene;
@@ -28,6 +28,9 @@ public class LobbiesListManager : MonoBehaviour
         lobbiesButton.SetActive(true);
         hostButton.SetActive(true);
         characterCreatorButton.SetActive(true);
+        settingsButton.SetActive(true);
+        quitButton.SetActive(true);
+
         lobbiesMenu.SetActive(false);
         
     }
@@ -56,6 +59,9 @@ public class LobbiesListManager : MonoBehaviour
         lobbiesButton.SetActive(false);
         hostButton.SetActive(false);
         characterCreatorButton.SetActive(false);
+        settingsButton.SetActive(false);
+        quitButton.SetActive(false);
+
 
         lobbiesMenu.SetActive(true);
 
