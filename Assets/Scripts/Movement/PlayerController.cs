@@ -307,9 +307,9 @@ public class PlayerController : NetworkBehaviour
 //WILL CHANGE LATER
     public void SetPosition(){
         if(GetComponent<PlayerObjectController>().ConnectionID == 0){ //If this player is the host spawn here
-            transform.position = new Vector3(0, 1f, 0);
+            transform.position = new Vector3(50, 30f, 30);
         }else{ //If client spawn here
-            transform.position = new Vector3(3, 1, 0);
+            transform.position = new Vector3(50, 30f, 30);
         }
         
     }

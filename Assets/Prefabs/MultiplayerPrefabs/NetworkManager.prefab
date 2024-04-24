@@ -83,6 +83,7 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   GamePlayerPrefab: {fileID: 1947873383631922705, guid: ce73e9c1f8422504ca48e310c3e88373, type: 3}
+  steamLobby: {fileID: 7489783624927504351}
 --- !u!114 &2112747801994085435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ed56b20ea13184b821789e3cfc9aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lobbyIDs: []
   CurrentLobbyID: 0
-  HostButton: {fileID: 0}
-  LobbyNameText: {fileID: 0}

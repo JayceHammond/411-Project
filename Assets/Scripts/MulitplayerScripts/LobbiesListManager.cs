@@ -9,6 +9,7 @@ public class LobbiesListManager : MonoBehaviour
     public GameObject lobbiesMenu;
     public GameObject lobbyDataItemPrefab;
     public GameObject lobbyListContent;
+    public CustomNetworkManager networkManager;
 
     public GameObject lobbiesButton, hostButton, characterCreatorButton, settingsButton, quitButton;
 
@@ -19,6 +20,15 @@ public class LobbiesListManager : MonoBehaviour
     private void Awake(){
         if(instance == null) {instance = this;}
     } 
+
+    public void Update(){
+        if(SceneManager.GetActiveScene().name == "MainMenu"){
+            if(!GameObject.Find("NetworkManager(Clone)")){
+                Instantiate(networkManager);
+                Debug.Log("printed");
+            }
+        }
+    }
 
     public void DestroyLobbies(){
         foreach(GameObject lobbyItem in listOfLobbies){

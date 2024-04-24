@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 
 
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     private CharacterBuilderPT2 charBuilderScript;
     private ClassesUIDoc classesScript;
     private GameObject instantiatedUI;
+    public GameObject escMenu;
 
     public void Start(){
         ancesteryScript = GetComponent<AncestriesUIDoc>(); //Redo like line 32 so it can update the right UI Doc
@@ -30,6 +32,11 @@ public class UIManager : MonoBehaviour
     }
 
     public void LateUpdate(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            escMenu.SetActive(true);
+        }
+
+
         if(instantiatedUI == null){ return; }
         if(instantiatedUI.GetComponent<ClassesUIDoc>().populate == true){
             instantiatedUI.GetComponent<ClassesUIDoc>().populateClasses(instantiatedUI.GetComponent<ClassesUIDoc>().populate);
@@ -79,6 +86,14 @@ public class UIManager : MonoBehaviour
 
     public void closeGame(){
         Application.Quit();
+    }
+
+    public void onMainMenuPress(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void onContinuePress(){
+        escMenu.SetActive(false);
     }
 
 }

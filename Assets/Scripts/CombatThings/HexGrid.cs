@@ -38,7 +38,7 @@ private void DrawHexGrid()
     //Camera activeCam = Camera.current;
 
     Vector3 cameraPos = activeCam.transform.position;
-    float maxDistance = 100f; //will adjust later
+    float maxDistance = 50f; //will adjust later
 
     for (int z = 0; z < Height; z++)
     {
