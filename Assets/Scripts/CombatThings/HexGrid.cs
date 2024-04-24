@@ -74,21 +74,32 @@ private void DrawChunk(Vector3 centerPosition)
     lineRenderer.transform.SetParent(gameObject.transform);
     lineRenderer.positionCount = 7; // Number of vertices per hexagon
 
+    Terrain terrain = Terrain.activeTerrain;
+    TerrainData terrainData = terrain.terrainData;
+
     Vector3[] corners = HexMetrics.Corners(HexSize, Orientation);
 
     for (int i = 0; i < corners.Length; i++)
     {
-        lineRenderer.SetPosition(i, centerPosition + corners[i]);
-    }
+        Vector3 cornerPosition = centerPosition + corners[i];
+        float normalizedX = Mathf.InverseLerp(0, terrainData.size.x, cornerPosition.x);
+        float normalizedZ = Mathf.InverseLerp(0, terrainData.size.z, cornerPosition.z);
+        float terrainHeight = terrainData.GetHeight(Mathf.RoundToInt(normalizedX * (terrainData.heightmapResolution - 1)), Mathf.RoundToInt(normalizedZ * (terrainData.heightmapResolution - 1)));
 
-    // Connect the last corner to the first to complete the hexagon
-    lineRenderer.SetPosition(6, centerPosition + corners[0]);
+        cornerPosition.y = terrainHeight + terrain.transform.position.y; // Adjust Y-coordinate based on terrain height
+        lineRenderer.SetPosition(i, cornerPosition);
+    }
 
     lineRenderer.startWidth = 0.1f; // Adjust line width as needed
     lineRenderer.endWidth = 0.1f;
     lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
     lineRenderer.material.color = Color.white;
+
+    // Connect the last corner to the first to complete the hexagon
+    lineRenderer.SetPosition(6, lineRenderer.GetPosition(0)); // Set the last position to match the first position
 }
+
+
 
 private void ClearGridLines()
 {

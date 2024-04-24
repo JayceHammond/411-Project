@@ -6,7 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(HexGrid))]
 public class HexGridEditor : Editor
 {
-    /*
+    
     void OnSceneGUI()
     {
         HexGrid hexGrid = (HexGrid)target;
@@ -26,6 +26,6 @@ public class HexGridEditor : Editor
             }
         }
     }
-*/
+
     
 }
