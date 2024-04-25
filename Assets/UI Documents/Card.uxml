@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="TopInfo" style="flex-grow: 1; flex-direction: column;">
+        <ui:VisualElement name="FirstLayer" style="flex-grow: 1; align-items: flex-start; align-self: flex-start; justify-content: center; flex-direction: row;">
+            <ui:VisualElement name="Actions" style="flex-grow: 1; align-self: flex-start; align-items: center;" />
+            <ui:VisualElement name="Damage" style="flex-grow: 1;">
+                <ui:Label tabindex="-1" text="6D6" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: center; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ElementType" style="flex-grow: 1;">
+                <ui:Label tabindex="-1" text="Fire" parse-escape-sequences="true" display-tooltip-when-elided="true" view-data-key="Type" style="-unity-text-align: upper-right; align-self: center; align-items: flex-end; justify-content: center;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="SecondLayer" style="flex-grow: 1; align-items: center; align-self: stretch; justify-content: center; flex-direction: row;">
+            <ui:Label tabindex="-1" text="Fireball" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Image" style="flex-grow: 1; height: 50%; top: auto; bottom: 10px;" />
+    <ui:VisualElement name="Description" style="flex-grow: 1; align-self: stretch; justify-content: flex-start; align-items: flex-end;">
+        <ui:Label tabindex="-1" text="A roaring blast of fire appears at a spot you designate, dealing 6d6 fire damage." parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: stretch; flex-wrap: wrap; justify-content: space-around; text-overflow: ellipsis;" />
+    </ui:VisualElement>
+</ui:UXML>
