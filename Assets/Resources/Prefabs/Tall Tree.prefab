@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 630778505970726860}
   - component: {fileID: 4912519593668098434}
-  - component: {fileID: 8879405154033224461}
   - component: {fileID: 7266221326166663037}
   - component: {fileID: 2412512917527233113}
   - component: {fileID: 3020183153114356762}
+  - component: {fileID: 5389647240889266905}
   m_Layer: 0
   m_Name: Tall Tree
   m_TagString: Foilage
@@ -88,18 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8879405154033224461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9054102903549180125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e12494d6e5a31a43a79217b11ecaf22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &7266221326166663037
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -148,3 +136,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sidebarUI: {fileID: 0}
+--- !u!114 &5389647240889266905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054102903549180125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e12494d6e5a31a43a79217b11ecaf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameplayCamera: {fileID: 0}
+  SpriteQuat: {x: 0, y: 0, z: 0, w: 0}

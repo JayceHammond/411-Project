@@ -15,7 +15,7 @@ TagManager:
   - D6
   - D4
   - BuildingUI
-  - planeObjects
+  - Rocks
   layers:
   - Default
   - TransparentFX
