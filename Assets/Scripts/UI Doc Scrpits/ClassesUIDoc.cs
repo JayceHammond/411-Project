@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -18,17 +16,19 @@ public class ClassesUIDoc : MonoBehaviour
     private VisualElement Resistance_Weakness;
     private VisualElement Skills;
     private VisualElement Health;
+    private VisualElement CloseClasses;
     private Label SelectedClassName;
     private StyleSheet AncestriesButtons;
 
-    private bool populate = true; 
+    public bool populate = false;
 
     // Start is called before the first frame update
     void Start()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         Classes = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("Classes").Q<VisualElement>("Classes-Holder");
-        SelectedClassName = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<Label>("ClassName");
+        SelectedClassName = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<Label>("ClassName");
+        CloseClasses = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("ClassNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");
 
         Charaistics = root.Q<VisualElement>("Main").Q<VisualElement>("ClassMenu").Q<VisualElement>("ClassSummry").Q<VisualElement>("Chartistics-of-Class");
         Abilities = Charaistics.Q<VisualElement>("Abilities");
@@ -47,12 +47,11 @@ public class ClassesUIDoc : MonoBehaviour
 
     // Update is called once per frame
     void LateUpdate(){
-        if(populate){
-            populateClasses();
-        }
+        //populateClasses(populate);
+        //Debug.Log(populate);
     }
 
-     private void populateClasses(){
+     public void populateClasses(bool populate){
         if (populate) //Makesure this runs once
         {
             //Grabs all the Classes from the JSON file
@@ -64,14 +63,21 @@ public class ClassesUIDoc : MonoBehaviour
                     name = dataLoader.classList[i].name,
                     text = dataLoader.classList[i].name
                 };
-                NewClass.styleSheets.Add(AncestriesButtons);
+
+                if(AncestriesButtons != null)
+                    NewClass.styleSheets.Add(AncestriesButtons);
+                else
+                    NewClass.styleSheets.Add(Resources.Load<StyleSheet>("CSS/AnceseryButtons"));
+
                 //Lets the element be clickable and calls the function
                 NewClass.AddManipulator(new Clickable(click => populateClass(NewClass.name)));
-                Classes.Add(NewClass);
+
+                if(Classes != null)
+                    Classes.Add(NewClass);
                 
             }
         }
-        populate = false;
+        //populate = false;
     }
 
     private void populateClass(string className){
@@ -168,4 +174,5 @@ public class ClassesUIDoc : MonoBehaviour
         }
 
     }
+
 }

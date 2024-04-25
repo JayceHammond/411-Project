@@ -13,6 +13,7 @@ public class AncestriesUIDoc : MonoBehaviour
     private VisualElement AncestrySummaries;
     private VisualElement AncestryStatIncrease;
     private VisualElement PlayerStatIncrease;
+    private VisualElement CloseAncestriesPopup;
 
     //Setting up the CSS the UI Elements being made will follow
     private StyleSheet AncestriesButtons;
@@ -20,7 +21,7 @@ public class AncestriesUIDoc : MonoBehaviour
 
     //Varibles and List used in the script
     private List<string> TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
-    private bool populate = true;
+    public bool populate = true;
 
     // Start is called before the first frame update
     void Start(){
@@ -30,6 +31,8 @@ public class AncestriesUIDoc : MonoBehaviour
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
         PlayerStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Pickable-Stat");
+
+        CloseAncestriesPopup = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");;
         
         //Assigning the CSS to use
         AncestriesButtons = Resources.Load<StyleSheet>("CSS/AnceseryButtons");
@@ -39,11 +42,11 @@ public class AncestriesUIDoc : MonoBehaviour
 
     void LateUpdate(){
        //Calls Once when the ancestry meue pops up. Fills in the Ancesteries
-        populateAncestries();
+        //populateAncestries(populate);
 
     }
 
-    private void populateAncestries(){
+    public void populateAncestries(bool populate){
         if (populate) //Makesure this runs once
         {
             //Grabs all the Ancestries from the JSON file
@@ -75,7 +78,7 @@ public class AncestriesUIDoc : MonoBehaviour
     }
 
     private void updateNameLabel(String RaceName){
-        root.Q<VisualElement>("AncestrySummry").Q<Label>("Ancestry_Name").text = RaceName;
+        root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<Label>("Ancestry_Name").text = RaceName;
     }
 
     private void populateAncestSumry(String RaceName){

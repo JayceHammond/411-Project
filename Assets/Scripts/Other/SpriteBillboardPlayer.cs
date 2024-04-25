@@ -1,17 +1,15 @@
 using Unity.Collections;
 using UnityEngine;
+using Mirror;
 
 public class SpriteBillboardPlayer : MonoBehaviour
 {
     public Camera GameplayCamera;
     //public Quaternion SpriteQuat;
 
-    void OnEnable(){
-        GameplayCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-    }
 
     void Awake(){
-        GameplayCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        //GameplayCamera = GameObject.Find("GameplayCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
