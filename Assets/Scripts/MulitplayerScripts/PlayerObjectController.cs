@@ -32,7 +32,7 @@ public class PlayerObjectController : NetworkBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
     public void Update(){
-        GameObject.Find("ChunkCamera").transform.position = new Vector3(transform.position.x, 25, transform.position.z - 10);
+        GameObject.Find("ChunkCamera").transform.position = new Vector3(transform.position.x, 25, transform.position.z);
     }
 
     private void PlayerReadyUpdate(bool oldValue, bool newValue){

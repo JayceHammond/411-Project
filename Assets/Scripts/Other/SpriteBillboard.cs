@@ -9,20 +9,17 @@ public class SpriteBillboard : MonoBehaviour
     public Camera GameplayCamera;
     public Quaternion SpriteQuat;
 
-    void OnEnable(){
-        GameplayCamera = GameObject.Find("GameplayCamera").GetComponent<Camera>();
+    void Start(){
+        GameplayCamera = Camera.main;
     }
 
-    void Awake(){
-        GameplayCamera = GameObject.Find("GameplayCamera").GetComponent<Camera>();
-    }
 
     // Update is called once per frame
     void Update()
     {
         SpriteQuat = new Quaternion{
             x = transform.localRotation.x,
-            y = Quaternion.Euler(0,GameplayCamera.transform.rotation.eulerAngles.y,0).y,
+            y = GameplayCamera.transform.rotation.y,
             z = transform.localRotation.z,
             w = transform.localRotation.w,
         };

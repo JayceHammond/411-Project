@@ -12,6 +12,7 @@ public class HexGrid : MonoBehaviour
         [field:SerializeField] public GameObject HexPrefab { get; private set; }
         public GameObject activeCam;
         private Vector3 lastCamPosition;
+        public float maxDistance;
 
 
         //TODO: Create a grid of hexes
@@ -38,7 +39,7 @@ private void DrawHexGrid()
     //Camera activeCam = Camera.current;
 
     Vector3 cameraPos = activeCam.transform.position;
-    float maxDistance = 50f; //will adjust later
+    //float maxDistance = 10f; //will adjust later
 
     for (int z = 0; z < Height; z++)
     {
