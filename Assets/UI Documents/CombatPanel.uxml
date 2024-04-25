@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/CSS/DeckButtons.uss?fileID=7433441132597879392&amp;guid=c66ff377d19fb1045bc7d12ad4d4198d&amp;type=3#DeckButtons" />
+    <ui:VisualElement name="Main" style="flex-grow: 1; justify-content: flex-end; align-items: auto; align-self: flex-end; flex-direction: row;">
+        <ui:VisualElement name="Deck" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.41); flex-direction: column; flex-wrap: nowrap; align-self: auto; align-items: auto; justify-content: flex-start; bottom: 0; height: 25%; width: auto; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+            <ui:VisualElement name="Title" style="flex-grow: 1; align-self: center; flex-direction: column; justify-content: center;">
+                <ui:Label tabindex="-1" text="Deck Types" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeckTypes" style="align-items: flex-start; justify-content: space-between; align-self: stretch;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="DeckTypes" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.25); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: auto; align-self: auto; justify-content: space-between; flex-direction: row; flex-wrap: nowrap; bottom: auto; left: auto; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+                <ui:VisualElement name="Movement" style="align-self: center; align-items: stretch; justify-content: center; flex-direction: column; width: auto; background-color: rgba(0, 0, 0, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                    <ui:Label tabindex="-1" text="Movement" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" style="background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; align-self: stretch; justify-content: center; align-items: center; -unity-text-align: upper-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Spells" style="align-self: center; align-items: stretch; justify-content: center; flex-direction: column; width: 10%;">
+                    <ui:Label tabindex="-1" text="Spells" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="Label" style="background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; align-self: stretch; -unity-text-align: upper-center; justify-content: center; align-items: center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Movement" style="align-self: center; align-items: stretch; justify-content: center; flex-direction: column; width: 10%;">
+                    <ui:Label tabindex="-1" text="Attacks" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" style="background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; align-self: stretch; align-items: center; justify-content: center; -unity-text-align: upper-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="CardStack" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.25); flex-direction: row; align-self: stretch;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
