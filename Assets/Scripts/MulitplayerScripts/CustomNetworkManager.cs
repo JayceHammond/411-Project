@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.SceneManagement;
 using Steamworks;
+using UnityEngine.UI;
 
 public class CustomNetworkManager : NetworkManager
 {

@@ -23,7 +23,7 @@ public class SteamLobby : MonoBehaviour
     //Variables
     public ulong CurrentLobbyID;
     private const string HostAddressKey = "HostAddress";
-    private CustomNetworkManager manager;
+    public static CustomNetworkManager manager;
 
 
 
@@ -43,6 +43,7 @@ public class SteamLobby : MonoBehaviour
 
 
     public void HostLobby(){
+        manager.dontDestroyOnLoad = true;
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, manager.maxConnections);
     } 
 

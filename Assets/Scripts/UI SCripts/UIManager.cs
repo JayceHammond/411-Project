@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using TMPro;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
-using UnityEngine.UI;
-using UnityEngine.Assertions.Must;
+using Button = UnityEngine.UI.Button;
+using Steamworks;
 
 
 
@@ -22,7 +20,9 @@ public class UIManager : MonoBehaviour
     private ClassesUIDoc classesScript;
     private GameObject instantiatedUI;
     public GameObject escMenu;
-    public GameObject networkManager;
+    public GameObject characterCreatorUI;
+    public GameObject mainMenuCanvas;
+  
 
     public void Start(){
         ancesteryScript = GetComponent<AncestriesUIDoc>(); //Redo like line 32 so it can update the right UI Doc
@@ -34,16 +34,11 @@ public class UIManager : MonoBehaviour
         chooseAncestryButton = root.Q<VisualElement>("UI_ChooseAncestryButton");
         chooseClassButton.AddManipulator(new Clickable(click => onClassClick()));
         chooseAncestryButton.AddManipulator(new Clickable(click => onAncestryClick()));
+
     }
 
     public void LateUpdate(){
-        if(SceneManager.GetSceneByName("DoNotDestroy") == null){
-            GameObject spawnedManager = Instantiate(networkManager);
-            if(GameObject.Find("HostButton") != null){Debug.Log("Found button");}
-            GameObject.Find("HostButton").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(spawnedManager.GetComponent<SteamLobby>().HostLobby);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Escape) && characterCreatorUI.activeSelf == true){
             escMenu.SetActive(true);
         }
 
@@ -100,7 +95,14 @@ public class UIManager : MonoBehaviour
     }
 
     public void onMainMenuPress(){
-        SceneManager.LoadScene("MainMenu");
+        mainMenuCanvas.SetActive(true);
+        characterCreatorUI.SetActive(false);
+        escMenu.SetActive(false);
+    }
+
+    public void onOpenCharacterCreator(){
+        mainMenuCanvas.SetActive(false);
+        characterCreatorUI.SetActive(true);
     }
 
     public void onContinuePress(){

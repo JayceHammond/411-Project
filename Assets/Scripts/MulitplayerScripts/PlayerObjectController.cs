@@ -31,6 +31,9 @@ public class PlayerObjectController : NetworkBehaviour
     private void Start(){
         DontDestroyOnLoad(this.gameObject);
     }
+    public void Update(){
+        GameObject.Find("ChunkCamera").transform.position = new Vector3(transform.position.x, 25, transform.position.z - 10);
+    }
 
     private void PlayerReadyUpdate(bool oldValue, bool newValue){
         if(isServer){

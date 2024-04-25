@@ -10,7 +10,7 @@ public class HexGrid : MonoBehaviour
         [field:SerializeField] public int Height { get; private set; }
         [field:SerializeField] public float HexSize { get; private set; }
         [field:SerializeField] public GameObject HexPrefab { get; private set; }
-        public Camera activeCam;
+        public GameObject activeCam;
         private Vector3 lastCamPosition;
 
 

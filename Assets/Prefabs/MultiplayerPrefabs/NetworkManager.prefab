@@ -56,17 +56,23 @@ MonoBehaviour:
   autoConnectClientBuild: 0
   offlineScene: Assets/Scenes/MainMenu.unity
   onlineScene: Assets/Scenes/Lobby.unity
-  transport: {fileID: 0}
+  transport: {fileID: 2112747801994085435}
   networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 640366636999538522, guid: 0224f30d7d24c1048aadc939882b90c0, type: 3}
-  autoCreatePlayer: 0
+  autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 4375797535568026425, guid: ce73e9c1f8422504ca48e310c3e88373, type: 3}
+  - {fileID: 1070676665635219059, guid: 72270e60cf8da3b43a5266a101e97b91, type: 3}
+  - {fileID: 4934466853842467482, guid: 3290e97a1eff5ba4888afb360c9c56c2, type: 3}
+  - {fileID: 4590406764288392387, guid: 862888be00d6b15438cd0d6595438365, type: 3}
+  - {fileID: 7983296447845562172, guid: 3be1f75480e55f5438560d52f18275e8, type: 3}
+  - {fileID: 7480525804154556286, guid: cc2e145304a0b1e44aa1567da9218354, type: 3}
+  - {fileID: 7775085678995213916, guid: ecebc87658eb28348a15e027ac7e537a, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -83,7 +89,6 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   GamePlayerPrefab: {fileID: 1947873383631922705, guid: ce73e9c1f8422504ca48e310c3e88373, type: 3}
-  steamLobby: {fileID: 7489783624927504351}
 --- !u!114 &2112747801994085435
 MonoBehaviour:
   m_ObjectHideFlags: 0

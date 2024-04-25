@@ -9,9 +9,8 @@ public class LobbiesListManager : MonoBehaviour
     public GameObject lobbiesMenu;
     public GameObject lobbyDataItemPrefab;
     public GameObject lobbyListContent;
-    public CustomNetworkManager networkManager;
 
-    public GameObject lobbiesButton, hostButton, characterCreatorButton, settingsButton, quitButton;
+    public GameObject mainMenuUI, archivesLink, creditsButton;
 
     public List<GameObject> listOfLobbies = new List<GameObject>();
     private Scene lastScene;
@@ -21,25 +20,14 @@ public class LobbiesListManager : MonoBehaviour
         if(instance == null) {instance = this;}
     } 
 
-    public void Update(){
-        if(SceneManager.GetActiveScene().name == "MainMenu"){
-            if(!GameObject.Find("NetworkManager(Clone)")){
-                Instantiate(networkManager);
-                Debug.Log("printed");
-            }
-        }
-    }
-
     public void DestroyLobbies(){
         foreach(GameObject lobbyItem in listOfLobbies){
             Destroy(lobbyItem);
         }
         listOfLobbies.Clear();
-        lobbiesButton.SetActive(true);
-        hostButton.SetActive(true);
-        characterCreatorButton.SetActive(true);
-        settingsButton.SetActive(true);
-        quitButton.SetActive(true);
+        mainMenuUI.SetActive(true);
+        archivesLink.SetActive(true);
+        creditsButton.SetActive(true);
 
         lobbiesMenu.SetActive(false);
         
@@ -66,11 +54,9 @@ public class LobbiesListManager : MonoBehaviour
 
 
     public void GetListOfLobbies(){
-        lobbiesButton.SetActive(false);
-        hostButton.SetActive(false);
-        characterCreatorButton.SetActive(false);
-        settingsButton.SetActive(false);
-        quitButton.SetActive(false);
+        mainMenuUI.SetActive(false);
+        archivesLink.SetActive(false);
+        creditsButton.SetActive(false);
 
 
         lobbiesMenu.SetActive(true);
@@ -79,21 +65,9 @@ public class LobbiesListManager : MonoBehaviour
     }
 
     public void CloseListOfLobbies(){
-        lobbiesMenu.SetActive(false);
-        lobbiesButton.SetActive(true);
-        hostButton.SetActive(true);
-        characterCreatorButton.SetActive(true);
+        mainMenuUI.SetActive(false);
+        archivesLink.SetActive(false);
+        creditsButton.SetActive(false);
     }
 
-    //QUICK CODE WILL DELETE IN FUTURE
-    public void LoadCharacterCreator(){
-        lastScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene("CharacterCreator");
-    }
-
-    public void LoadLastScene(){
-        if(lastScene != null){
-            SceneManager.LoadScene(lastScene.name);
-        }
-    }
 }
