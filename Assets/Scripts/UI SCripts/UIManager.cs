@@ -109,4 +109,8 @@ public class UIManager : MonoBehaviour
         escMenu.SetActive(false);
     }
 
+    public void onCreateWorldPress(){
+        SceneManager.LoadScene("MultiplayerTest");
+    }
+
 }
