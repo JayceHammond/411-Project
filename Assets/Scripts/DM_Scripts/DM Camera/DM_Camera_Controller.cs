@@ -18,10 +18,10 @@ public class DMCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //newCameraMovement();
+        newCameraMovement();
     }
 
-    public void newCameraMovement(){
+    private void newCameraMovement(){
         Vector3 inputDir = Vector3.zero;
         Vector3 movementDir;
         if (mouseInputs.rightClick()) {

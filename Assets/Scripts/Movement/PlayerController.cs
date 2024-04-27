@@ -33,11 +33,7 @@ public class PlayerController : NetworkBehaviour
     // Start is called before the first frame update
 
     public GameObject PlayerModel;
-    public HotKeys hotKeyController; 
-    public DMCameraController dmControls;
-    public bool buildMode = false;
-    private GameObject buildMenu;
-    public bool isActive = false;
+
 
     public override void OnStartAuthority()
     {
@@ -59,8 +55,6 @@ public class PlayerController : NetworkBehaviour
 
         //The player loads in during lobby, hide model and cameras until all players enter game
         PlayerModel.SetActive(false);
-
-        hotKeyController = GameObject.Find("Building Hotkeys").GetComponent<HotKeys>();
     }
 
     void toggleCameraLock(){
@@ -94,17 +88,7 @@ public class PlayerController : NetworkBehaviour
                 //GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            if(Input.GetKeyDown(KeyCode.V)){
-                buildMode = true;
-            }
-            if(buildMode == true){ //SWITCH TO DM_CAM CONTROLS HERE
-                buildMenu.gameObject.SetActive(!isActive);
-                buildMenu.GetComponent<SidebarUI>().enabled = !isActive;
-                buildMenu.GetComponent<BottomBarUI>().enabled = !isActive;
-            }else{
-                UpdatedMovement();
-            }
-
+            UpdatedMovement();
             
         }
         toggleCameraLock();
