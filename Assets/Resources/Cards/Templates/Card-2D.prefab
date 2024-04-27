@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1491882325824238242}
-  - component: {fileID: 4272758675217039897}
   - component: {fileID: 911750450074166418}
   - component: {fileID: 2073342351305812857}
+  - component: {fileID: -4726742355103945175}
   m_Layer: 0
   m_Name: Card-2D
   m_TagString: Untagged
@@ -36,24 +36,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18.9, y: -121}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 15, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4272758675217039897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940676732242560208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 18d21a312b7eab1428bfaf8f80b59b25, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: ea67de99dbc68654cad2fadeceaf1301, type: 3}
-  m_SortingOrder: 0
 --- !u!222 &911750450074166418
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -82,10 +66,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 277ccffeec95794429bb045b63d45296, type: 2}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
+--- !u!114 &-4726742355103945175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940676732242560208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2578d6ca96a5bc48be753c2fa6ad15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Card
+  m_Name: Test
   m_EditorClassIdentifier: 
   themeUss: {fileID: -4733365628477956816, guid: aeaa0d6557db7804481c9554a17097d7, type: 3}
-  m_TargetTexture: {fileID: 8400000, guid: 277ccffeec95794429bb045b63d45296, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_ScaleMode: 1
   m_ReferenceSpritePixelsPerUnit: 100
   m_Scale: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
   m_ReferenceResolution: {x: 300, y: 500}
   m_ScreenMatchMode: 1
   m_Match: 0.5
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
   m_ClearDepthStencil: 1
   m_ClearColor: 0

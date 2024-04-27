@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1419920299606073099}
   m_Layer: 0
   m_Name: Card-3D
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8723277359233138949}
   - component: {fileID: 2034141965705282028}
   - component: {fileID: 3165011746525972923}
+  - component: {fileID: 8655608593369471701}
   m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
@@ -138,6 +139,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8655608593369471701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155790394474928134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 18d21a312b7eab1428bfaf8f80b59b25, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: ea67de99dbc68654cad2fadeceaf1301, type: 3}
+  m_SortingOrder: 0
 --- !u!1 &6099979865509108551
 GameObject:
   m_ObjectHideFlags: 0
