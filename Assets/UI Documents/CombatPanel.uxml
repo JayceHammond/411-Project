@@ -16,7 +16,11 @@
                     <ui:Label tabindex="-1" text="Attacks" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" style="background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; align-self: stretch; align-items: center; justify-content: center; -unity-text-align: upper-center;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="CardStack" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.25); flex-direction: row; align-self: stretch;" />
+            <ui:VisualElement name="CardStack" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.25); flex-direction: row; align-self: stretch;">
+                <ui:ScrollView name="CardViewer" style="flex-direction: column; flex-wrap: nowrap; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; align-self: center; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="Deck" style="flex-grow: 1; flex-direction: row; justify-content: center; align-self: stretch; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
+                </ui:ScrollView>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
