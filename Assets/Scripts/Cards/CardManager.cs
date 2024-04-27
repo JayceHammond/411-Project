@@ -57,11 +57,15 @@ public class CardManager : MonoBehaviour{
         foreach(GameObject card in Cards){
             //Change the Card
             change3DCard(card);
-            //Grab the Texture From the 3DCard and copy it to a new texture for the 2DCard
+            //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
             savedTexture = getCardTexture(Card3D);
 
-            //Instantiate the 2DCard Template and give it the saved texture
-            
+            //Instantiate the 2DCard Template and set it's parent to PlayerHand
+            GameObject Card2D = (GameObject)Instantiate(Resources.Load("Cards/Templates/Card-2D"));
+            Card2D.transform.parent = GameObject.Find("PlayerHand").transform;
+
+            //Change the texture of the 2DCard the be the one that is saved
+            Card2D.GetComponent<RawImage>().texture = savedTexture;
         }
     }
 

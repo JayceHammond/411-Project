@@ -132,7 +132,7 @@ public class BottomBarUI : MonoBehaviour
     }
 
     private void displayObjects(List<GameObject> objectList){
-        Debug.Log("Count");
+        //Debug.Log("Count");
         ObjectListHolder.Clear();
         foreach(GameObject item in objectList){
             //Debug.Log(item);
