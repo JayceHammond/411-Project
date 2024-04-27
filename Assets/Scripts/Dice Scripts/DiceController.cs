@@ -33,7 +33,7 @@ public class DiceController : NetworkBehaviour
     public void rollDie(GameObject dieToRoll,Transform transform){
         GameObject die = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
         NetworkServer.Spawn(die);
-        die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
+        die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 15), ForceMode.Impulse);
         die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
         
         Destroy(die, 30);
@@ -42,14 +42,15 @@ public class DiceController : NetworkBehaviour
 
     [Server]
         public void HostRollDie(GameObject dieToRoll,Transform transform){
-        GameObject die = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
-        NetworkServer.Spawn(die);
-        die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 40), ForceMode.Impulse);
-        die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+            GameObject die = Instantiate(dieToRoll, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), transform.rotation);
+            NetworkServer.Spawn(die);
+            die.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(10, 15), ForceMode.Impulse);
+            die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
         
-        Destroy(die, 30);
+            Destroy(die, 15);
+            //NetworkServer.Destroy(die);
         //return SideChecker.sharedSideVal;
-    }
+        }
 
 
 }

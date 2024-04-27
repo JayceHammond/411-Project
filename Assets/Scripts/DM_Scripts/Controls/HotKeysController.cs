@@ -19,12 +19,14 @@ public class HotKeys : MonoBehaviour
 
     [SerializeReference]
     private GameObject buildMenu;
+    public static bool canEdit = false;
 
     // Start is called before the first frame update
     void Start()
     {
         inputManager = DMInputManager.Instance;
         playerInputManagerScript = playerInputManager.GetComponent<InputManager>();
+        canEdit = false;
     }
 
     // Update is called once per frame
@@ -35,8 +37,7 @@ public class HotKeys : MonoBehaviour
             playerInputManagerScript.enabled = !playerInputManagerScript.enabled;
             isActive = playerInputManagerScript.enabled;
 
-            playerCamera.transform.GetChild(0).gameObject.SetActive(isActive);
-            playerCamera.transform.GetChild(1).gameObject.SetActive(isActive);
+            canEdit = !canEdit;
             buildMenu.gameObject.SetActive(!isActive);
             buildMenu.GetComponent<SidebarUI>().enabled = !isActive;
             buildMenu.GetComponent<BottomBarUI>().enabled = !isActive;
