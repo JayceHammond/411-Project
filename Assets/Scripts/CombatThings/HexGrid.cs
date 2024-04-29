@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class HexGrid : MonoBehaviour
@@ -12,6 +13,7 @@ public class HexGrid : MonoBehaviour
         [field:SerializeField] public GameObject HexPrefab { get; private set; }
         public GameObject activeCam;
         private Vector3 lastCamPosition;
+        private TurnManager turnManager;
 
 
         //TODO: Create a grid of hexes
@@ -109,12 +111,28 @@ private void ClearGridLines()
         Destroy(lineRenderer.gameObject);
     }
 }
-
-
-
 public enum HexOrientation
 {
     FlatTop,
     PointyTop
 }
+
+//this is where shit might get weird stay with me now
+
+public void Init(TurnManager manager)
+{
+    turnManager = manager;
+}
+
+public void UnitMovementComplete()
+{
+    if(turnManager.IsPlayerTurn())
+    {
+        //PlayerMovement is complete, move to next turn
+        turnManager.NextTurn();
+    }
+    //need additional logic here, too tired to move
+}
+
+
 }
