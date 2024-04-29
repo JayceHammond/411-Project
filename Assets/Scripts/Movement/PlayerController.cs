@@ -78,8 +78,11 @@ public class PlayerController : NetworkBehaviour
     void Update()
     {
         //Check if we are in Multiplayer Scene
-        if(SceneManager.GetActiveScene().name == "MultiplayerTest"){
+        if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
             if(PlayerModel.activeSelf == false){
+                GameObject.Find("BuildingUI").SetActive(false);
+                GameObject.Find("Building Hotkeys").SetActive(false);
+                GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
                 

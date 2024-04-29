@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
 using Steamworks;
+using System.Linq;
 
 
 
@@ -22,6 +23,9 @@ public class UIManager : MonoBehaviour
     public GameObject escMenu;
     public GameObject characterCreatorUI;
     public GameObject mainMenuCanvas;
+    public GameObject dmCam;
+    private Scene mainMenuScene;
+    private Scene multiplayerScene;
   
 
     public void Start(){
@@ -38,9 +42,24 @@ public class UIManager : MonoBehaviour
     }
 
     public void LateUpdate(){
-        if(Input.GetKeyDown(KeyCode.Escape) && characterCreatorUI.activeSelf == true){
-            escMenu.SetActive(true);
+        if(characterCreatorUI != null){
+            if(Input.GetKeyDown(KeyCode.Escape) && characterCreatorUI.activeSelf == true){
+                escMenu.SetActive(true);
+            }
+        }else{
+            for(int i = 0; i < SceneManager.sceneCount; i++){
+                if(SceneManager.GetSceneAt(i).name == "MainMenu"){
+                    mainMenuScene = SceneManager.GetSceneAt(i);
+                }
+                if(SceneManager.GetSceneAt(i).name == "MultiplayerScene"){
+                    multiplayerScene = SceneManager.GetSceneAt(i);
+                }
+            }
+            if(Input.GetKeyDown(KeyCode.Escape) && mainMenuScene.isLoaded){
+                escMenu.SetActive(true);
+            }
         }
+
 
 
         if(instantiatedUI == null){ return; }
@@ -99,6 +118,9 @@ public class UIManager : MonoBehaviour
         characterCreatorUI.SetActive(false);
         escMenu.SetActive(false);
     }
+    public void onMainMenuSceneChange(){
+        SceneManager.UnloadSceneAsync(multiplayerScene);
+    }
 
     public void onOpenCharacterCreator(){
         mainMenuCanvas.SetActive(false);
@@ -110,7 +132,10 @@ public class UIManager : MonoBehaviour
     }
 
     public void onCreateWorldPress(){
-        SceneManager.LoadScene("MultiplayerTest");
+        GameObject.Find("MainMenuCam").SetActive(false);
+        GameObject.Find("CanvasMainMenu").SetActive(false);
+        GameObject.Find("MainMenuEventSystem").SetActive(false);
+        SceneManager.LoadScene("MultiplayerTest",LoadSceneMode.Additive);
     }
 
 }
