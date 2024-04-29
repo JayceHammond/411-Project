@@ -1,0 +1,5 @@
+Label {
+    -unity-font-style: bold;
+    -unity-align-self: flex-start;
+    color: white;
+}
