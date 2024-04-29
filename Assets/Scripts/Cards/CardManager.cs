@@ -1,21 +1,19 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class CardManager : MonoBehaviour{
 
+    public CardData myCardData;
 
-    public List<GameObject> AllCards = new List<GameObject>();
+    public List<CardData> AllCards = new List<CardData>();
 
     //Each Deck that we will have
-    public List<Card> MovementDeck = new List<Card>();
-    public List<Card> AttackDeck = new List<Card>();
-    public List<Card> SpellDeck = new List<Card>();
+    public List<CardData> MovementDeck = new List<CardData>();
+    public List<CardData> AttackDeck = new List<CardData>();
+    public List<CardData> SpellDeck = new List<CardData>();
 
     //The Front of the Card
     private GameObject FrontOfCard;
@@ -31,6 +29,10 @@ public class CardManager : MonoBehaviour{
 
 
     void Start(){
+        //Making a Card
+        myCardData.Initialize("FireBall ", 1, "Launch a fiery projectile", 3, "Fire", "2d6 damage");
+
+
         //Getting the Front of the Card
         FrontOfCard = GameObject.Find("Front");
 

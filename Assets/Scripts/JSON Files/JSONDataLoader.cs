@@ -96,6 +96,21 @@ public class JSONDataLoader : MonoBehaviour
     // Define a class to represent the structure of skill proficiency data
     //[System.Serializable]
 
+    // Define a class to represent the structure of feat data
+    //[System.Serializable]
+
+    // Define a class to represent the structure of action data
+    [System.Serializable]
+    public class Actions{
+        public string name;
+        public int amountOfActions;
+        public string damage;
+        public int range;
+        public string element;
+        public string description;
+
+    }
+
     // Define a class to represent the structure of speed data
     [System.Serializable]
     public class SpeedData

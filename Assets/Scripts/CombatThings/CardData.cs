@@ -34,9 +34,7 @@ public class CardData : MonoBehaviour
 
     void Start()
     {
-        CardData myCardData = new CardData();
-        myCardData.Initialize("FireBall ", 1, "Launch a fiery projectile", 3, "Fire", "2d6 damage");
-
-        myCardData.DisplayData();
+        
+        //myCardData.DisplayData();
     }
 }
