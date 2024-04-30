@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -101,7 +102,7 @@ public class JSONDataLoader : MonoBehaviour
 
     // Define a class to represent the structure of action data
     [System.Serializable]
-    public class Actions{
+    public class ActionData{
         public string name;
         public int amountOfActions;
         public string damage;
@@ -122,7 +123,7 @@ public class JSONDataLoader : MonoBehaviour
 
     // Create a list to store all ancestry data
     public List<AncestryData> ancestryList;
-    public List<AncestryData> ParseJsonArray(string json){
+    public List<AncestryData> ParseJsonArrayAncestry(string json){
         // Use JsonUtility to directly deserialize the JSON array into a list of AncestryData objects
         AncestryDataArrayWrapper dataArray = JsonUtility.FromJson<AncestryDataArrayWrapper>(json);
         //Debug.Log(dataArray.ancestryData[1]);
@@ -138,6 +139,16 @@ public class JSONDataLoader : MonoBehaviour
         return new List<ClassData>((IEnumerable<ClassData>)dataArray.classData);
     }
 
+   // Create a list to store all action data
+    /*
+    public List<ActionData> actionList;
+    public List<ActionData> ParseJsonArrayAction(string json){
+        // Use JsonUtility to directly deserialize the JSON array into a list of AncestryData objects
+        ActionDataArrayWrapper dataArray = JsonUtility.FromJson<ActionDataArrayWrapper>(json);
+        //Debug.Log(dataArray.ancestryData[1]);
+        return new List<ClassData>((IEnumerable<ClassData>)dataArray.classData);
+    }
+    */
 
     void Start()
     {
@@ -159,7 +170,7 @@ public class JSONDataLoader : MonoBehaviour
             ancestryList = new List<AncestryData>();
             string jsonString = jsonFile.ToString();
             //ancestryList.AddRange((IEnumerable<AncestryData>)JsonUtility.FromJson<AncestryData>(jsonString));
-            List<AncestryData> ancestryDataList = ParseJsonArray(jsonString);
+            List<AncestryData> ancestryDataList = ParseJsonArrayAncestry(jsonString);
             foreach(AncestryData data in ancestryDataList){
                 ancestryList.Add(data);
                 //Debug.Log(JsonUtility.ToJson(data));
