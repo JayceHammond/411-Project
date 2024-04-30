@@ -4,7 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager :  MonoBehaviour
 {
     private static InputManager _instance;
     public static InputManager Instance{

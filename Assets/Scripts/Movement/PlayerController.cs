@@ -8,6 +8,7 @@ using Mirror.Examples.Basic;
 
 public class PlayerController : NetworkBehaviour
 {
+    public ParticleSystem dust;
     [SerializeField]
     private float playerSpeed;
     private float oldSpeed;
@@ -287,6 +288,7 @@ public class PlayerController : NetworkBehaviour
             playerSpeed = oldSpeed; //Apply speed change
         }
         if(sprinting){ //SPRINTING
+            CreateDust();
             n_animator.ResetTrigger("Idle");
             n_animator.ResetTrigger("Walking");
             n_animator.SetTrigger("Running");
@@ -317,6 +319,11 @@ public class PlayerController : NetworkBehaviour
         if (other.gameObject.CompareTag("D20")) {
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
         }
+    }
+
+    public void CreateDust()
+    {
+        dust.Play();
     }
     
 }

@@ -91,7 +91,7 @@ public class CardManager : MonoBehaviour{
     }
 
     private void change3DCard(GameObject SelectedCard){
-        //Set the 3DCards to what the selected card is
+        //Get the position and rotation of the selected card
 
     }
 
