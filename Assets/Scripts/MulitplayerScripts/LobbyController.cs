@@ -95,6 +95,7 @@ public class LobbyController : MonoBehaviour
 
     public void FindLocalPlayer(){
         LocalPlayerObject = GameObject.Find("LocalGamePlayer");
+        LocalPlayerObject.transform.position = new Vector3(50 + Random.Range(1, 6), 30, 30 + Random.Range(1,6));
         LocalPlayerController = LocalPlayerObject.GetComponent<PlayerObjectController>();
     }
 

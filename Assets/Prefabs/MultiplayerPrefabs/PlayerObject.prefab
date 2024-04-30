@@ -665,6 +665,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1037914431283315092}
+    - target: {fileID: 4133513439245219779, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4451574846295096936, guid: 90fc72b27e1ddb54ca3d883c7a529a33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000009536743

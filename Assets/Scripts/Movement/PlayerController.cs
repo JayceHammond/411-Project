@@ -8,7 +8,6 @@ using Mirror.Examples.Basic;
 
 public class PlayerController : NetworkBehaviour
 {
-    public ParticleSystem dust;
     [SerializeField]
     private float playerSpeed;
     private float oldSpeed;
@@ -29,6 +28,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject gameplayCam;
     public GameObject uiCam;
     public GameObject cameras;
+    public GameObject combatUI;
     //public Animator animator;
     public NetworkAnimator n_animator;
     // Start is called before the first frame update
@@ -79,8 +79,11 @@ public class PlayerController : NetworkBehaviour
     void Update()
     {
         //Check if we are in Multiplayer Scene
-        if(SceneManager.GetActiveScene().name == "MultiplayerTest"){
+        if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
             if(PlayerModel.activeSelf == false){
+                GameObject.Find("BuildingUI").SetActive(false);
+                GameObject.Find("Building Hotkeys").SetActive(false);
+                GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
                 
@@ -90,8 +93,10 @@ public class PlayerController : NetworkBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
             UpdatedMovement();
+            enterCombatMode();
             
         }
+        enterCombatMode();
         toggleCameraLock();
     }
 
@@ -288,7 +293,6 @@ public class PlayerController : NetworkBehaviour
             playerSpeed = oldSpeed; //Apply speed change
         }
         if(sprinting){ //SPRINTING
-            CreateDust();
             n_animator.ResetTrigger("Idle");
             n_animator.ResetTrigger("Walking");
             n_animator.SetTrigger("Running");
@@ -321,13 +325,18 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    public void CreateDust()
-    {
-        dust.Play();
+    private void enterCombatMode(){
+        if (Input.GetKey(KeyCode.C)){
+            //combatUI = GameObject.Find("Combat Stuff");
+            Debug.Log(combatUI);
+            
+            bool isActive = combatUI.activeInHierarchy;
+            Debug.Log(isActive);
+           
+            combatUI.SetActive(!isActive);
+        }
     }
-    
 }
-
 
 
 public static class GameTime{

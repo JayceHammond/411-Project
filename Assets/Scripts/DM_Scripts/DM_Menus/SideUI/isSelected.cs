@@ -7,7 +7,7 @@ public class isSelected : MonoBehaviour, IPointerClickHandler
 
     private float Clicked = 0;
     private float ClickTime = 0;
-    private float ClickTimeDelay = 0.75f;
+    private float ClickTimeDelay = 2f;
 
     void Awake(){
         if(sidebarUI == null){
