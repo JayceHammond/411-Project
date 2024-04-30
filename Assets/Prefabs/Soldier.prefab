@@ -178,6 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1152935d47022524abd32ed4f8f15959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   playerSpeed: 1
-  jumpHeight: 1
+  speedLimit: 4
   gravityValue: -1
+  gameplayCam: {fileID: 0}
+  uiCam: {fileID: 0}
+  PlayerModel: {fileID: 0}
