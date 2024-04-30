@@ -24,6 +24,7 @@ public class AncestriesUIDoc : MonoBehaviour
     //Varibles and List used in the script
     private List<string> TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
     public bool populate = true;
+    string prevPickableSelection, prevTraitOneSelection, prevTraitTwoSelection = "Select Trait";
 
     // Start is called before the first frame update
     void Start(){
@@ -46,19 +47,49 @@ public class AncestriesUIDoc : MonoBehaviour
     void LateUpdate(){
        //Calls Once when the ancestry meue pops up. Fills in the Ancesteries
         //populateAncestries(populate);
+        if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") != null){
+            string currentPickableSelection = PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown").value;
+            if(prevPickableSelection != currentPickableSelection){
+                Debug.Log("Help");
+                if(TraitChoices.Contains(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown").value)){
+                    statsListRoot.Q<VisualElement>(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown").value).Q<IntegerField>("Stat-Value").value += 2;
+                }
+                prevPickableSelection = currentPickableSelection;
+            }
+        }
+        if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") != null){
+            string currentTraitOneSelection = AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value;
+            if(prevTraitOneSelection != currentTraitOneSelection){
+                if(TraitChoices.Contains(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value)){
+                    statsListRoot.Q<VisualElement>(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value).Q<IntegerField>("Stat-Value").value += 2;
+                }
+            prevTraitOneSelection = currentTraitOneSelection;
 
-        if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value != "Select Trait"){
-            statsListRoot.Q<VisualElement>(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value).Q<IntegerField>("Stat-Value").value +=2;
+            }
         }
-        if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value != "Select Trait"){
-            statsListRoot.Q<VisualElement>(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value).Q<IntegerField>("Stat-Value").value +=2;
+        if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two")!= null){
+            string currentTraitTwoSelection = AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value;
+            if(prevTraitTwoSelection != currentTraitTwoSelection){
+                if(TraitChoices.Contains(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value)){
+                    statsListRoot.Q<VisualElement>(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value).Q<IntegerField>("Stat-Value").value += 2;
+                }
+                prevTraitTwoSelection = currentTraitTwoSelection;
+            }
         }
+
+    }
+
+    public void dropdownUpdateStat(string value){
 
     }
 
     public void populateAncestries(bool populate){
         if (populate) //Makesure this runs once
         {
+            if(GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("NextMenu").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("UI_ChooseAncestryButton").Q<Label>("UI_ChooseAncestryLabel").text != "Choose Ancestry"){
+                populateAncestry(GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("NextMenu").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("UI_ChooseAncestryButton").Q<Label>("UI_ChooseAncestryLabel").text);
+            
+            }
             //Grabs all the Ancestries from the JSON file
             for (int i = 0; i < dataLoader.ancestryList.Count; i++)
             {
@@ -91,6 +122,7 @@ public class AncestriesUIDoc : MonoBehaviour
         root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<Label>("Ancestry_Name").text = RaceName;
 
         GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("NextMenu").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("UI_ChooseAncestryButton").Q<Label>("UI_ChooseAncestryLabel").text = RaceName;
+
     }
 
     private void populateAncestSumry(String RaceName){
@@ -109,8 +141,12 @@ public class AncestriesUIDoc : MonoBehaviour
         statsListRoot.Q<VisualElement>("Wisdom").Q<IntegerField>("Stat-Value").value = 10;
         statsListRoot.Q<VisualElement>("Charisma").Q<IntegerField>("Stat-Value").value = 10;
 
-        statsListRoot.Q<VisualElement>(AbilityOne).Q<IntegerField>("Stat-Value").value += 2;
-        statsListRoot.Q<VisualElement>(AbilityTwo).Q<IntegerField>("Stat-Value").value += 2;
+        if(TraitChoices.Contains(AbilityOne)){
+            statsListRoot.Q<VisualElement>(AbilityOne).Q<IntegerField>("Stat-Value").value += 2;
+        }
+        if(TraitChoices.Contains(AbilityTwo)){
+            statsListRoot.Q<VisualElement>(AbilityTwo).Q<IntegerField>("Stat-Value").value += 2;
+        }
             
 
         //If the ablity is not free then check to see if there a labal already if not check for a dropdown 
@@ -194,7 +230,9 @@ public class AncestriesUIDoc : MonoBehaviour
             }
         }
         else{
-            PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+            if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") != null){
+                PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+            }
         }
     }
 

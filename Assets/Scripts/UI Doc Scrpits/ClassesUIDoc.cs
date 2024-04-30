@@ -54,6 +54,10 @@ public class ClassesUIDoc : MonoBehaviour
      public void populateClasses(bool populate){
         if (populate) //Makesure this runs once
         {
+
+            if(GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("Character-Info").Q<VisualElement>("InnerCharacter-Info").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("Class-Button").Q<Label>("UI_ChooseClassButton").text != "Choose Class"){
+                populateClass(GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("Character-Info").Q<VisualElement>("InnerCharacter-Info").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("Class-Button").Q<Label>("UI_ChooseClassButton").text);
+            }
             //Grabs all the Classes from the JSON file
             for (int i = 0; i < dataLoader.classList.Count; i++)
             {
