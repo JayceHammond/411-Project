@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7327331630476387615}
   m_Layer: 0
   m_Name: Small Stone
-  m_TagString: Foilage
+  m_TagString: Rocks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e12494d6e5a31a43a79217b11ecaf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameplayCamera: {fileID: 0}
+  SpriteQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &433326455364969188
 BoxCollider:
   m_ObjectHideFlags: 0

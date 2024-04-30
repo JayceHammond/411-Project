@@ -16,6 +16,7 @@ TagManager:
   - D4
   - BuildingUI
   - Rocks
+  - Card
   layers:
   - Default
   - TransparentFX
