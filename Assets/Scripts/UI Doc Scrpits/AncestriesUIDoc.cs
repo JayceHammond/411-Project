@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +15,7 @@ public class AncestriesUIDoc : MonoBehaviour
     private VisualElement AncestryStatIncrease;
     private VisualElement PlayerStatIncrease;
     private VisualElement CloseAncestriesPopup;
+    private VisualElement statsListRoot;
 
     //Setting up the CSS the UI Elements being made will follow
     private StyleSheet AncestriesButtons;
@@ -22,6 +24,7 @@ public class AncestriesUIDoc : MonoBehaviour
     //Varibles and List used in the script
     private List<string> TraitChoices = new List<string> { "Select Trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
     public bool populate = true;
+    string prevPickableSelection, prevTraitOneSelection, prevTraitTwoSelection = "Select Trait";
 
     // Start is called before the first frame update
     void Start(){
@@ -31,6 +34,7 @@ public class AncestriesUIDoc : MonoBehaviour
         AncestrySummaries = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestrySummry");
         AncestryStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Preset-Stat");
         PlayerStatIncrease = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("Stat-Increase").Q<VisualElement>("Pickable-Stat");
+        statsListRoot = GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Left-Menu");
 
         CloseAncestriesPopup = root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<VisualElement>("ExitElement").Q<VisualElement>("Icon");;
         
@@ -43,12 +47,49 @@ public class AncestriesUIDoc : MonoBehaviour
     void LateUpdate(){
        //Calls Once when the ancestry meue pops up. Fills in the Ancesteries
         //populateAncestries(populate);
+        if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") != null){
+            string currentPickableSelection = PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown").value;
+            if(prevPickableSelection != currentPickableSelection){
+                Debug.Log("Help");
+                if(TraitChoices.Contains(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown").value)){
+                    statsListRoot.Q<VisualElement>(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown").value).Q<IntegerField>("Stat-Value").value += 2;
+                }
+                prevPickableSelection = currentPickableSelection;
+            }
+        }
+        if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one") != null){
+            string currentTraitOneSelection = AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value;
+            if(prevTraitOneSelection != currentTraitOneSelection){
+                if(TraitChoices.Contains(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value)){
+                    statsListRoot.Q<VisualElement>(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-one").value).Q<IntegerField>("Stat-Value").value += 2;
+                }
+            prevTraitOneSelection = currentTraitOneSelection;
+
+            }
+        }
+        if(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two")!= null){
+            string currentTraitTwoSelection = AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value;
+            if(prevTraitTwoSelection != currentTraitTwoSelection){
+                if(TraitChoices.Contains(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value)){
+                    statsListRoot.Q<VisualElement>(AncestryStatIncrease.Q<DropdownField>("Trait-Increase-two").value).Q<IntegerField>("Stat-Value").value += 2;
+                }
+                prevTraitTwoSelection = currentTraitTwoSelection;
+            }
+        }
+
+    }
+
+    public void dropdownUpdateStat(string value){
 
     }
 
     public void populateAncestries(bool populate){
         if (populate) //Makesure this runs once
         {
+            if(GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("NextMenu").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("UI_ChooseAncestryButton").Q<Label>("UI_ChooseAncestryLabel").text != "Choose Ancestry"){
+                populateAncestry(GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("NextMenu").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("UI_ChooseAncestryButton").Q<Label>("UI_ChooseAncestryLabel").text);
+            
+            }
             //Grabs all the Ancestries from the JSON file
             for (int i = 0; i < dataLoader.ancestryList.Count; i++)
             {
@@ -79,6 +120,9 @@ public class AncestriesUIDoc : MonoBehaviour
 
     private void updateNameLabel(String RaceName){
         root.Q<VisualElement>("AncestrySummry").Q<VisualElement>("AncestryNameANDClose").Q<Label>("Ancestry_Name").text = RaceName;
+
+        GameObject.Find("Character Builder Part 2").GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Main").Q<VisualElement>("Character-Stats").Q<VisualElement>("Middle-Menu").Q<VisualElement>("NextMenu").Q<VisualElement>("Class-Button-Container").Q<VisualElement>("UI_ChooseAncestryButton").Q<Label>("UI_ChooseAncestryLabel").text = RaceName;
+
     }
 
     private void populateAncestSumry(String RaceName){
@@ -89,6 +133,21 @@ public class AncestriesUIDoc : MonoBehaviour
         //Grabs the ability that the ancestry increasses
         String AbilityOne = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[0];
         String AbilityTwo = dataLoader.ancestryList.Find(x => x.name == RaceName).ability[1];
+
+        statsListRoot.Q<VisualElement>("Strength").Q<IntegerField>("Stat-Value").value = 10;
+        statsListRoot.Q<VisualElement>("Dexterity").Q<IntegerField>("Stat-Value").value = 10;
+        statsListRoot.Q<VisualElement>("Constitution").Q<IntegerField>("Stat-Value").value = 10;
+        statsListRoot.Q<VisualElement>("Intelligence").Q<IntegerField>("Stat-Value").value = 10;
+        statsListRoot.Q<VisualElement>("Wisdom").Q<IntegerField>("Stat-Value").value = 10;
+        statsListRoot.Q<VisualElement>("Charisma").Q<IntegerField>("Stat-Value").value = 10;
+
+        if(TraitChoices.Contains(AbilityOne)){
+            statsListRoot.Q<VisualElement>(AbilityOne).Q<IntegerField>("Stat-Value").value += 2;
+        }
+        if(TraitChoices.Contains(AbilityTwo)){
+            statsListRoot.Q<VisualElement>(AbilityTwo).Q<IntegerField>("Stat-Value").value += 2;
+        }
+            
 
         //If the ablity is not free then check to see if there a labal already if not check for a dropdown 
         if (AbilityOne != "Free"){
@@ -171,7 +230,9 @@ public class AncestriesUIDoc : MonoBehaviour
             }
         }
         else{
-            PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+            if(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown") != null){
+                PlayerStatIncrease.Remove(PlayerStatIncrease.Q<DropdownField>("Pickable-Stat-DropDown"));
+            }
         }
     }
 
@@ -185,6 +246,8 @@ public class AncestriesUIDoc : MonoBehaviour
         };
 
         AbilityChoser.value = "Select Trait";
+
+        
 
         AbilityChoser.styleSheets.Add(AncestriesAbility);
 
