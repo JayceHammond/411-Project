@@ -35,8 +35,9 @@ public class CardManager : MonoBehaviour{
     void Start(){
         //Making a Card and Adding it to all Cards
         AllCards.Add(makeNewCard("FireBall", "Launch a fiery projectile", "Fire", "2d6", 1, 3));
-        AllCards.Add(makeNewCard("Master Archer", "A skilled archer renowned for accuracy and deadly precision with a bow.", "Piercing", "1d8+4", 1, 120));
-
+        //AllCards.Add(makeNewCard("Master Archer", "A skilled archer renowned for accuracy and deadly precision with a bow.", "Piercing", "1d8+4", 1, 120));
+        //AllCards.Add(makeNewCard("Baliff, Send Him Away!", "Push away a creature", "2d4 bludgeoning", 1, 4));
+        
         //Getting the Front of the Card
         FrontOfCard = GameObject.Find("Front");
 
@@ -62,30 +63,33 @@ public class CardManager : MonoBehaviour{
 
     //Change UDoc for the card. When done changing grab the textrue from the 3D Card, save it as a new texture for the UI Card. Repeat this for every Card in List
     private void Create2DCard(List<Card> Cards){
+
+        Texture savedTexture;
+
         //Get each card
         foreach(Card card in Cards){
-            Texture savedTexture;
             //Change the Card
             change3DCard(card);
             //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
-            savedTexture = getCardTexture();
+            savedTexture = getFrontOfCard();
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
             GameObject Card2D = (GameObject)Resources.Load("Cards/Templates/Card-2D");
             //Card2D.transform.name = card.name;
             GameObject SpawnedCard = Instantiate(Card2D);
-            SpawnedCard.transform.parent = GameObject.Find("Content").transform;
+            SpawnedCard.transform.SetParent(GameObject.Find("Content").transform);
 
             //Change the texture of the 2DCard the be the one that is saved
             SpawnedCard.GetComponent<RawImage>().texture = savedTexture;
         }
     }
 
-    private Texture getCardTexture(){
+    private Texture getFrontOfCard(){
         //Get texture from the 3D card and send it back
         Texture save3DTexture;
 
         save3DTexture = FrontOfCard.GetComponent<Renderer>().material.mainTexture;
+        //save3DTexture = Texture.Instantiate(FrontOfCard.GetComponent<Renderer>().material.mainTexture);
 
         return save3DTexture;
     }

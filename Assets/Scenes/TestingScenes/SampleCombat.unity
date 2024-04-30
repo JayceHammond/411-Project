@@ -1196,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6400856633854117234, guid: 26a7759e901f8f74fae575ef715c36d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1571,7 +1575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -117.00093}
+  m_AnchoredPosition: {x: 0, y: -117.00049}
   m_SizeDelta: {x: 1140, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &533896020
@@ -1964,11 +1968,11 @@ RectTransform:
   - {fileID: 150762265}
   - {fileID: 98633311}
   - {fileID: 794913090}
-  m_Father: {fileID: 2143099899}
+  m_Father: {fileID: 1534636935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -247.3, y: 160.47202}
+  m_AnchorMin: {x: 0.023404846, y: 0.3155694}
+  m_AnchorMax: {x: 0.023404846, y: 0.3155694}
+  m_AnchoredPosition: {x: 49.299957, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691671272
@@ -2768,7 +2772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963201608357835401, guid: 18028615e026e39498b62ebc35318341, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5685427409203480204, guid: 18028615e026e39498b62ebc35318341, type: 3}
       propertyPath: m_LocalScale.x
@@ -4140,6 +4144,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 691671271}
   - {fileID: 2143099899}
   m_Father: {fileID: 380949545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4364,8 +4369,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1125562966}
   m_HandleRect: {fileID: 1125562965}
   m_Direction: 2
-  m_Value: 1.0000079
-  m_Size: 0.6099269
+  m_Value: 1.0000042
+  m_Size: 0.60260814
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5362,7 +5367,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 691671271}
   - {fileID: 522526233}
   - {fileID: 774272188}
   - {fileID: 1555934995}
