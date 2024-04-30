@@ -28,7 +28,7 @@ public class Unit : MonoBehaviour
             if(transform.position == targetPosition)
             {
                 isMoving = false;
-                hexGrid.UnitMovementComplete();
+                //hexGrid.UnitMovementComplete();
             }
         }
     }
