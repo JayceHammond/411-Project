@@ -37,7 +37,17 @@ public class CardManager : MonoBehaviour{
         FrontOfCard = GameObject.Find("Front");
 
         //Getting all the cards in resources
-        AllCards = Resources.LoadAll<GameObject>("Cards").ToList<GameObject>();
+        GameObject[] cardObjects = Resources.LoadAll<GameObject>("Cards");
+
+        //convert gameObjects to CardData instances
+        foreach(GameObject cardObject in cardObjects)
+        {
+            CardData cardData = Instantiate(cardObject).GetComponent<CardData>();
+            if(cardData != null)
+            {
+                AllCards.Add(cardData);
+            }
+        }
 
         //Vars to Quick Change the Card
         FrontOfCardUI = GameObject.Find("Card-3D").GetComponentInChildren<UIDocument>().rootVisualElement;
