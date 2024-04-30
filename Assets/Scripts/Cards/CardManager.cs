@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -24,6 +25,7 @@ public class CardManager : MonoBehaviour{
     private VisualElement FrontOfCardUI;
     private VisualElement Actions;
     private Label Damage;
+    private Label Range;
     private Label Element;
     private Label Title;
     private VisualElement Picture;
@@ -31,8 +33,9 @@ public class CardManager : MonoBehaviour{
 
 
     void Start(){
-        //Making a Card
-        AllCards.Add(makeNewCard("FireBall ", "Launch a fiery projectile", "Fire", "2d6 damage", 1, 3));
+        //Making a Card and Adding it to all Cards
+        AllCards.Add(makeNewCard("FireBall", "Launch a fiery projectile", "Fire", "2d6", 1, 3));
+        AllCards.Add(makeNewCard("Master Archer", "A skilled archer renowned for accuracy and deadly precision with a bow.", "Piercing", "1d8+4", 1, 120));
 
         //Getting the Front of the Card
         FrontOfCard = GameObject.Find("Front");
@@ -48,6 +51,7 @@ public class CardManager : MonoBehaviour{
         Title = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("TopInfo").Q<VisualElement>("SecondLayer").Q<Label>("Title");
         Picture = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("Image");
         Description = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("Description").Q<Label>("Descrip");
+        Range = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("TopInfo").Q<VisualElement>("SecondLayer").Q<VisualElement>("RangeHolder").Q<Label>("Range");
         
         Create2DCard(AllCards);
     }
@@ -58,22 +62,22 @@ public class CardManager : MonoBehaviour{
 
     //Change UDoc for the card. When done changing grab the textrue from the 3D Card, save it as a new texture for the UI Card. Repeat this for every Card in List
     private void Create2DCard(List<Card> Cards){
-
-        Texture savedTexture;
-
         //Get each card
         foreach(Card card in Cards){
+            Texture savedTexture;
             //Change the Card
             change3DCard(card);
             //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
             savedTexture = getCardTexture();
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
-            GameObject Card2D = (GameObject)Instantiate(Resources.Load("Cards/Templates/Card-2D"));
-            Card2D.transform.parent = GameObject.Find("PlayerHand").transform;
+            GameObject Card2D = (GameObject)Resources.Load("Cards/Templates/Card-2D");
+            //Card2D.transform.name = card.name;
+            GameObject SpawnedCard = Instantiate(Card2D);
+            SpawnedCard.transform.parent = GameObject.Find("Content").transform;
 
             //Change the texture of the 2DCard the be the one that is saved
-            Card2D.GetComponent<RawImage>().texture = savedTexture;
+            SpawnedCard.GetComponent<RawImage>().texture = savedTexture;
         }
     }
 
@@ -89,6 +93,37 @@ public class CardManager : MonoBehaviour{
     private void change3DCard(Card SelectedCard){
         //Set the 3DCards to what the selected card is
         Title.text = SelectedCard.title;
+        Description.text = SelectedCard.description;
+        
+        Element.text = SelectedCard.element;
+        if(SelectedCard.element.ToLower() == "fire"){
+            Element.style.color = new Color(235, 64, 52);
+        }else if(SelectedCard.element.ToLower() == "water"){
+            Element.style.color = new Color(9, 138, 237);
+        }else if(SelectedCard.element.ToLower() == "wind"){
+            Element.style.color = new Color(173, 222, 11);
+        }else if(SelectedCard.element.ToLower() == "poison"){
+            Element.style.color = new Color(232, 9, 232);
+        }else if(SelectedCard.element.ToLower() == "piercing"){
+            Element.style.color = new Color(156, 6, 24);
+        }
+
+        Damage.text = SelectedCard.damage;
+        Range.text = SelectedCard.range.ToString();
+
+        if(SelectedCard.actions == 1){
+            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/SingleAction-removebg-preview");
+        }else if(SelectedCard.actions == 2){
+            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/DoubleAction-removebg-preview");
+        }else if(SelectedCard.actions >= 3){
+            Label ActionCount = new Label
+            {
+                name = "ActionAmount",
+                text = SelectedCard.actions.ToString(),
+            };
+
+            Actions.Add(ActionCount);
+        }
 
     }
 
