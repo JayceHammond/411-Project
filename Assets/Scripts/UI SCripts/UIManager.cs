@@ -26,12 +26,15 @@ public class UIManager : MonoBehaviour
     public GameObject dmCam;
     private Scene mainMenuScene;
     private Scene multiplayerScene;
+
+    public GameObject canvasMainMenu;
+    
   
 
     public void Start(){
         ancesteryScript = GetComponent<AncestriesUIDoc>(); //Redo like line 32 so it can update the right UI Doc
         charBuilderScript = GetComponent<CharacterBuilderPT2>();
-       
+       //canvasMainMenu = GameObject.Find("CanvasMainMenu");
         doc = GetComponent<UIDocument>();
         root = doc.rootVisualElement;
         chooseClassButton = root.Q<VisualElement>("Class-Button");
@@ -119,7 +122,8 @@ public class UIManager : MonoBehaviour
         escMenu.SetActive(false);
     }
     public void onMainMenuSceneChange(){
-        SceneManager.UnloadSceneAsync(multiplayerScene);
+        SceneManager.UnloadSceneAsync("MultiplayerTest");
+        GameObject.Find("CanvasMainMenu").SetActive(true);
     }
 
     public void onOpenCharacterCreator(){
@@ -132,9 +136,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void onCreateWorldPress(){
-        GameObject.Find("MainMenuCam").SetActive(false);
-        GameObject.Find("CanvasMainMenu").SetActive(false);
-        GameObject.Find("MainMenuEventSystem").SetActive(false);
+        canvasMainMenu.SetActive(false);
         SceneManager.LoadScene("MultiplayerTest",LoadSceneMode.Additive);
     }
 
