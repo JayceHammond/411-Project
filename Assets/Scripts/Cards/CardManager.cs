@@ -37,6 +37,9 @@ public class CardManager : MonoBehaviour{
         AllCards.Add(makeNewCard("FireBall", "Launch a fiery projectile", "Fire", "2d6", 1, 3));
         //AllCards.Add(makeNewCard("Master Archer", "A skilled archer renowned for accuracy and deadly precision with a bow.", "Piercing", "1d8+4", 1, 120));
         //AllCards.Add(makeNewCard("Baliff, Send Him Away!", "Push away a creature", "2d4 bludgeoning", 1, 4));
+        //AllCards.Add(makeNewCard("Brain Rot", "Target creature within range has their mind flooded with cringe TikToks","Necrotic", "4d6", 1, 30));
+        //AllCards.Add(makeNewCard("Lightning grenade", "Hurl a ball of lightning that explodes on contact","Lightning", "2d6", 2, 3));
+        
         
         //Getting the Front of the Card
         FrontOfCard = GameObject.Find("Front");
@@ -53,8 +56,9 @@ public class CardManager : MonoBehaviour{
         Picture = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("Image");
         Description = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("Description").Q<Label>("Descrip");
         Range = FrontOfCardUI.Q<VisualElement>("CardBase").Q<VisualElement>("InnerCard").Q<VisualElement>("TopInfo").Q<VisualElement>("SecondLayer").Q<VisualElement>("RangeHolder").Q<Label>("Range");
-        
+
         Create2DCard(AllCards);
+        //Debug.Log(((Texture2D)Resources.Load("Cards/DoubleAction-removebg-preview")).name);
     }
 
     public void OnEnable(){
@@ -66,12 +70,31 @@ public class CardManager : MonoBehaviour{
 
         Texture savedTexture;
 
+        List<Texture2D> savedCards = new List<Texture2D>();
+        savedCards = Resources.LoadAll<Texture2D>("Cards").ToList();
+
         //Get each card
         foreach(Card card in Cards){
             //Change the Card
             change3DCard(card);
-            //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
-            savedTexture = getFrontOfCard();
+
+            bool saved = false;
+            foreach(Texture2D SavedCard in savedCards){
+                if(card.title == SavedCard.name){
+                    savedTexture = SavedCard.GetComponent<Renderer>().material.mainTexture;
+                    saved = true;
+                }
+            }
+
+            if (!saved){
+                //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
+                savedTexture = getFrontOfCard();
+                SaveTextureToFileUtility.SaveTexture2DToFile((Texture2D)getFrontOfCard(), "Assets/Resources/Cards/"+ card.name.ToLower(), SaveTextureToFileUtility.SaveTextureFileFormat.PNG);
+                savedTexture = Resources.Load<GameObject>("Assets/Resources/Cards/" + card.name.ToLower()).GetComponent<Renderer>().material.mainTexture;
+            }else{
+                savedTexture = null;
+                Debug.Log("Can not make or find texture");
+            }
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
             GameObject Card2D = (GameObject)Resources.Load("Cards/Templates/Card-2D");
