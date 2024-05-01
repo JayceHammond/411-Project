@@ -455,6 +455,14 @@ PrefabInstance:
       value: NetworkManager
       objectReference: {fileID: 0}
     - target: {fileID: 9058077552145402259, guid: 375e51d5bc231c649a71c63165e3e6a5, type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/BuildScenes/Lobby.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058077552145402259, guid: 375e51d5bc231c649a71c63165e3e6a5, type: 3}
+      propertyPath: offlineScene
+      value: Assets/Scenes/BuildScenes/MainMenu.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058077552145402259, guid: 375e51d5bc231c649a71c63165e3e6a5, type: 3}
       propertyPath: dontDestroyOnLoad
       value: 1
       objectReference: {fileID: 0}

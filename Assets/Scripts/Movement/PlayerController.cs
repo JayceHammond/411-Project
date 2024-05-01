@@ -96,7 +96,7 @@ public class PlayerController : NetworkBehaviour
             enterCombatMode();
             
         }
-        enterCombatMode();
+        //enterCombatMode();
         toggleCameraLock();
     }
 
@@ -326,7 +326,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     private void enterCombatMode(){
-        if (Input.GetKey(KeyCode.C)){
+        if (Input.GetKeyDown(KeyCode.C)){
             //combatUI = GameObject.Find("Combat Stuff");
             Debug.Log(combatUI);
             
