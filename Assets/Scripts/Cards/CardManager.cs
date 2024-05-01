@@ -35,10 +35,10 @@ public class CardManager : MonoBehaviour{
     void Start(){
         //Making a Card and Adding it to all Cards
         AllCards.Add(makeNewCard("FireBall", "Launch a fiery projectile", "Fire", "2d6", 1, 3));
-        //AllCards.Add(makeNewCard("Master Archer", "A skilled archer renowned for accuracy and deadly precision with a bow.", "Piercing", "1d8+4", 1, 120));
-        //AllCards.Add(makeNewCard("Baliff, Send Him Away!", "Push away a creature", "2d4 bludgeoning", 1, 4));
-        //AllCards.Add(makeNewCard("Brain Rot", "Target creature within range has their mind flooded with cringe TikToks","Necrotic", "4d6", 1, 30));
-        //AllCards.Add(makeNewCard("Lightning grenade", "Hurl a ball of lightning that explodes on contact","Lightning", "2d6", 2, 3));
+        AllCards.Add(makeNewCard("Master Archer", "A skilled archer renowned for accuracy and deadly precision with a bow.", "Piercing", "1d8+4", 1, 120));
+        AllCards.Add(makeNewCard("Baliff, Send Him Away!", "Push away a creature", "bludgeoning", "2d4", 1, 4));
+        AllCards.Add(makeNewCard("Brain Rot", "Target creature within range has their mind flooded with cringe TikToks","Necrotic", "4d6", 1, 30));
+        AllCards.Add(makeNewCard("Lightning grenade", "Hurl a ball of lightning that explodes on contact","Lightning", "2d6", 2, 3));
         
         
         //Getting the Front of the Card
@@ -69,6 +69,7 @@ public class CardManager : MonoBehaviour{
     private void Create2DCard(List<Card> Cards){
 
         Texture savedTexture;
+        bool saved;
         //Debug.Log(getFrontOfCard());
 
         List<Texture2D> savedCards = new List<Texture2D>();
@@ -78,28 +79,24 @@ public class CardManager : MonoBehaviour{
         foreach(Card card in Cards){
             //Change the Card
             change3DCard(card);
+            saved = false;
 
-            bool saved = false;
             foreach(Texture2D SavedCard in savedCards){
-                if(card.title.ToLower() == SavedCard.name){
+                if(card.title.ToLower() == SavedCard.name.ToLower()){
                     savedTexture = SavedCard;
                     saved = true;
                 }
             }
 
 
-            if (saved){
+            if (!saved){
                 string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower();
 
                 //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
                 savedTexture = getFrontOfCard();
-
-                SaveTextureToFileUtility.SaveRenderTextureToFile(getFrontOfCard() as RenderTexture, PathToSave, SaveTextureToFileUtility.SaveTextureFileFormat.PNG);
+                SaveTextureToFileUtility.SaveRenderTextureToFile(savedTexture as RenderTexture, PathToSave, SaveTextureToFileUtility.SaveTextureFileFormat.PNG);
                 
                 savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
-            }else{
-                savedTexture = null;
-                Debug.Log("Can not make or find texture");
             }
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
@@ -110,7 +107,7 @@ public class CardManager : MonoBehaviour{
             SpawnedCard.transform.name = card.title;
 
             //Change the texture of the 2DCard the be the one that is saved
-            SpawnedCard.GetComponent<Material>().SetTexture(card.title, savedTexture) ;
+            GameObject.Find(card.title).GetComponent<RawImage>().texture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
         }
     }
 
