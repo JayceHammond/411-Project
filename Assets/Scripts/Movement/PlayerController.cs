@@ -80,7 +80,7 @@ public class PlayerController : NetworkBehaviour
     {
         //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
-            if(PlayerModel.activeSelf == false){
+            if(PlayerModel.activeSelf == false && isLocalPlayer){
                 GameObject.Find("BuildingUI").SetActive(false);
                 GameObject.Find("Building Hotkeys").SetActive(false);
                 GameObject.Find("DM Camera").SetActive(false);
@@ -313,9 +313,9 @@ public class PlayerController : NetworkBehaviour
 //WILL CHANGE LATER
     public void SetPosition(){
         if(GetComponent<PlayerObjectController>().ConnectionID == 0){ //If this player is the host spawn here
-            transform.position = new Vector3(50, 30f, 30);
+            transform.position = new Vector3(50 , 30f, 50);
         }else{ //If client spawn here
-            transform.position = new Vector3(50, 30f, 30);
+            transform.position = new Vector3(50 + GetComponent<PlayerObjectController>().ConnectionID, 30f, 50);
         }
         
     }
