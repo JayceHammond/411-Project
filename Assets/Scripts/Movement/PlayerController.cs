@@ -28,6 +28,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject gameplayCam;
     public GameObject uiCam;
     public GameObject cameras;
+    public GameObject combatUI;
     //public Animator animator;
     public NetworkAnimator n_animator;
     // Start is called before the first frame update
@@ -92,8 +93,10 @@ public class PlayerController : NetworkBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
             UpdatedMovement();
+            enterCombatMode();
             
         }
+        enterCombatMode();
         toggleCameraLock();
     }
 
@@ -321,9 +324,19 @@ public class PlayerController : NetworkBehaviour
             Physics.IgnoreCollision(other.collider, transform.GetComponent<Collider>());
         }
     }
-    
-}
 
+    private void enterCombatMode(){
+        if (Input.GetKey(KeyCode.C)){
+            //combatUI = GameObject.Find("Combat Stuff");
+            Debug.Log(combatUI);
+            
+            bool isActive = combatUI.activeInHierarchy;
+            Debug.Log(isActive);
+           
+            combatUI.SetActive(!isActive);
+        }
+    }
+}
 
 
 public static class GameTime{
