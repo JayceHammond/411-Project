@@ -88,6 +88,7 @@ public class CardManager : MonoBehaviour{
 
 
             if (!saved){
+                //This function might have to be Synchronous
                 string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower() + ".png";
 
                 //Change the Card
@@ -95,9 +96,9 @@ public class CardManager : MonoBehaviour{
                 //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
                 savedTexture = getFrontOfCard();
                 
-                SaveTextureToFileUtility.SaveTextureToFile(savedTexture as RenderTexture, PathToSave, -1, -1, SaveTextureToFileUtility.SaveTextureFileFormat.PNG,0,true);
+                SaveTextureToFileUtility.SaveTextureToFile(savedTexture as RenderTexture, PathToSave, -1, -1, SaveTextureToFileUtility.SaveTextureFileFormat.PNG,0,false);
                 
-                savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
+                savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower() + ".png") as Texture2D;
             }
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
@@ -108,7 +109,7 @@ public class CardManager : MonoBehaviour{
             SpawnedCard.transform.name = card.title;
 
             //Change the texture of the 2DCard the be the one that is saved
-            GameObject.Find(card.title).GetComponent<RawImage>().texture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
+            GameObject.Find(card.title).GetComponent<RawImage>().texture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()  + ".png") as Texture2D;
         }
     }
 
@@ -123,6 +124,7 @@ public class CardManager : MonoBehaviour{
     }
 
     private void change3DCard(Card SelectedCard){
+        Debug.Log("Been Here");
         //Set the 3DCards to what the selected card is
         Title.text = SelectedCard.title;
         Description.text = SelectedCard.description;
@@ -144,9 +146,9 @@ public class CardManager : MonoBehaviour{
         Range.text = SelectedCard.range.ToString();
 
         if(SelectedCard.actions == 1){
-            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/SingleAction-removebg-preview");
+            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/SingleAction-removebg-preview.png");
         }else if(SelectedCard.actions == 2){
-            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/DoubleAction-removebg-preview");
+            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/DoubleAction-removebg-preview.png");
         }else if(SelectedCard.actions >= 3){
             Label ActionCount = new Label
             {
