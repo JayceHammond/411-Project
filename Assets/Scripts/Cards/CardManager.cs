@@ -77,8 +77,6 @@ public class CardManager : MonoBehaviour{
 
         //Get each card
         foreach(Card card in Cards){
-            //Change the Card
-            change3DCard(card);
             saved = false;
 
             foreach(Texture2D SavedCard in savedCards){
@@ -91,10 +89,12 @@ public class CardManager : MonoBehaviour{
 
             if (!saved){
                 string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower() + ".png";
-                change3DCard(card);
 
+                //Change the Card
+                change3DCard(card);
                 //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
                 savedTexture = getFrontOfCard();
+                
                 SaveTextureToFileUtility.SaveTextureToFile(savedTexture as RenderTexture, PathToSave, -1, -1, SaveTextureToFileUtility.SaveTextureFileFormat.PNG,0,true);
                 
                 savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
