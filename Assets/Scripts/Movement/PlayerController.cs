@@ -86,6 +86,9 @@ public class PlayerController : NetworkBehaviour
                 GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
+                foreach(GameObject sprite in GameObject.FindGameObjectsWithTag("Sprite")){
+                    sprite.SetActive(true);
+                }
                 
                 gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
                 rb.useGravity = true;
