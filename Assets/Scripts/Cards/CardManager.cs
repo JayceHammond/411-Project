@@ -95,7 +95,7 @@ public class CardManager : MonoBehaviour{
 
                 //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
                 savedTexture = getFrontOfCard();
-                SaveTextureToFileUtility.SaveTextureToFile(savedTexture, PathToSave, 100, 175, SaveTextureToFileUtility.SaveTextureFileFormat.PNG, 95,true);
+                SaveTextureToFileUtility.SaveTextureToFile(savedTexture as Texture2D, PathToSave, -1, -1, SaveTextureToFileUtility.SaveTextureFileFormat.PNG,0,false);
                 
                 savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
             }

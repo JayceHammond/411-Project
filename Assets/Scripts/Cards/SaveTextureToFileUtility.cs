@@ -116,7 +116,6 @@ public class SaveTextureToFileUtility
                     case SaveTextureFileFormat.PNG:
                         encoded = ImageConversion.EncodeNativeArrayToTGA(narray, resizeRT.graphicsFormat, (uint)width, (uint)height);
                         break;
-
                     default:
                         encoded = ImageConversion.EncodeNativeArrayToPNG(narray, resizeRT.graphicsFormat, (uint)width, (uint)height);
                         break;
