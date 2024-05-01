@@ -69,6 +69,7 @@ public class CardManager : MonoBehaviour{
     private void Create2DCard(List<Card> Cards){
 
         Texture savedTexture;
+        //Debug.Log(getFrontOfCard());
 
         List<Texture2D> savedCards = new List<Texture2D>();
         savedCards = Resources.LoadAll<Texture2D>("Cards").ToList();
@@ -80,17 +81,22 @@ public class CardManager : MonoBehaviour{
 
             bool saved = false;
             foreach(Texture2D SavedCard in savedCards){
-                if(card.title == SavedCard.name){
-                    savedTexture = SavedCard.GetComponent<Renderer>().material.mainTexture;
+                if(card.title.ToLower() == SavedCard.name){
+                    savedTexture = SavedCard;
                     saved = true;
                 }
             }
 
-            if (!saved){
+
+            if (saved){
+                string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower();
+
                 //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
                 savedTexture = getFrontOfCard();
-                SaveTextureToFileUtility.SaveTexture2DToFile((Texture2D)getFrontOfCard(), "Assets/Resources/Cards/"+ card.name.ToLower(), SaveTextureToFileUtility.SaveTextureFileFormat.PNG);
-                savedTexture = Resources.Load<GameObject>("Assets/Resources/Cards/" + card.name.ToLower()).GetComponent<Renderer>().material.mainTexture;
+
+                SaveTextureToFileUtility.SaveRenderTextureToFile(getFrontOfCard() as RenderTexture, PathToSave, SaveTextureToFileUtility.SaveTextureFileFormat.PNG);
+                
+                savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()) as Texture2D;
             }else{
                 savedTexture = null;
                 Debug.Log("Can not make or find texture");
@@ -98,12 +104,13 @@ public class CardManager : MonoBehaviour{
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
             GameObject Card2D = (GameObject)Resources.Load("Cards/Templates/Card-2D");
-            //Card2D.transform.name = card.name;
+
             GameObject SpawnedCard = Instantiate(Card2D);
             SpawnedCard.transform.SetParent(GameObject.Find("Content").transform);
+            SpawnedCard.transform.name = card.title;
 
             //Change the texture of the 2DCard the be the one that is saved
-            SpawnedCard.GetComponent<RawImage>().texture = savedTexture;
+            SpawnedCard.GetComponent<Material>().SetTexture(card.title, savedTexture) ;
         }
     }
 
