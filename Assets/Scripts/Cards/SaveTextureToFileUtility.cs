@@ -100,7 +100,7 @@ public class SaveTextureToFileUtility
             // if the readback was successful, encode and write the results to disk
             if (!request.hasError)
             {
-                NativeArray<byte> encoded;
+                NativeArray<byte> encoded = new NativeArray<byte>();
  
                 switch (fileFormat)
                 {
