@@ -36,7 +36,10 @@ public class UIManager : MonoBehaviour
         charBuilderScript = GetComponent<CharacterBuilderPT2>();
        //canvasMainMenu = GameObject.Find("CanvasMainMenu");
         doc = GetComponent<UIDocument>();
-        root = doc.rootVisualElement;
+        if(doc != null){
+            root = doc.rootVisualElement;
+        }
+
         chooseClassButton = root.Q<VisualElement>("Class-Button");
         chooseAncestryButton = root.Q<VisualElement>("UI_ChooseAncestryButton");
         chooseClassButton.AddManipulator(new Clickable(click => onClassClick()));
@@ -123,7 +126,7 @@ public class UIManager : MonoBehaviour
     }
     public void onMainMenuSceneChange(){
         SceneManager.UnloadSceneAsync("MultiplayerTest");
-        GameObject.Find("CanvasMainMenu").SetActive(true);
+        GameObject.Find("CanvasMainMenu").GetComponent<Canvas>().enabled = true;
     }
 
     public void onOpenCharacterCreator(){
@@ -136,7 +139,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void onCreateWorldPress(){
-        canvasMainMenu.SetActive(false);
+        GameObject.Find("CanvasMainMenu").GetComponent<Canvas>().enabled = false;
         SceneManager.LoadScene("MultiplayerTest",LoadSceneMode.Additive);
     }
 
