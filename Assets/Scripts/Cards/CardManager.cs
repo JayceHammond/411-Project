@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -20,6 +21,7 @@ public class CardManager : MonoBehaviour{
 
     //The Front of the Card
     private GameObject FrontOfCard;
+    public Texture savedTexture;
 
 
     private VisualElement FrontOfCardUI;
@@ -68,7 +70,6 @@ public class CardManager : MonoBehaviour{
     //Change UDoc for the card. When done changing grab the textrue from the 3D Card, save it as a new texture for the UI Card. Repeat this for every Card in List
     private void Create2DCard(List<Card> Cards){
 
-        Texture savedTexture;
         bool saved;
         //Debug.Log(getFrontOfCard());
 
@@ -86,19 +87,8 @@ public class CardManager : MonoBehaviour{
                 }
             }
 
-
             if (!saved){
-                //This function might have to be Synchronous
-                string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower() + ".png";
-
-                //Change the Card
-                change3DCard(card);
-                //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
-                savedTexture = getFrontOfCard();
-                
-                SaveTextureToFileUtility.SaveTextureToFile(savedTexture as RenderTexture, PathToSave, -1, -1, SaveTextureToFileUtility.SaveTextureFileFormat.PNG,0,false);
-                
-                savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower() + ".png") as Texture2D;
+                StartCoroutine(saveAsPhoto(card));
             }
 
             //Instantiate the 2DCard Template and set it's parent to PlayerHand
@@ -109,22 +99,23 @@ public class CardManager : MonoBehaviour{
             SpawnedCard.transform.name = card.title;
 
             //Change the texture of the 2DCard the be the one that is saved
-            GameObject.Find(card.title).GetComponent<RawImage>().texture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower()  + ".png") as Texture2D;
+            GameObject.Find(card.title).GetComponent<RawImage>().material.mainTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower() + ".png") as Texture2D;
         }
     }
 
-    private Texture getFrontOfCard(){
+    private RenderTexture getFrontOfCard(){
         //Get texture from the 3D card and send it back
-        Texture save3DTexture;
+        RenderTexture save3DTexture;
 
-        save3DTexture = FrontOfCard.GetComponent<Renderer>().material.mainTexture;
+        Debug.Log(FrontOfCard.GetComponent<Renderer>().material.mainTexture);
+        save3DTexture = FrontOfCard.GetComponent<Renderer>().material.mainTexture as RenderTexture;
         //save3DTexture = Texture.Instantiate(FrontOfCard.GetComponent<Renderer>().material.mainTexture);
 
         return save3DTexture;
     }
 
     private void change3DCard(Card SelectedCard){
-        Debug.Log("Been Here");
+        //Debug.Log("Been Here");
         //Set the 3DCards to what the selected card is
         Title.text = SelectedCard.title;
         Description.text = SelectedCard.description;
@@ -146,9 +137,9 @@ public class CardManager : MonoBehaviour{
         Range.text = SelectedCard.range.ToString();
 
         if(SelectedCard.actions == 1){
-            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/SingleAction-removebg-preview.png");
+            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/SingleAction-removebg-preview");
         }else if(SelectedCard.actions == 2){
-            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/DoubleAction-removebg-preview.png");
+            Actions.style.backgroundImage = Resources.Load<Texture2D>("/Cards/Templates/DoubleAction-removebg-preview");
         }else if(SelectedCard.actions >= 3){
             Label ActionCount = new Label
             {
@@ -173,6 +164,22 @@ public class CardManager : MonoBehaviour{
         };
 
         return newCard;
+    }
+
+    IEnumerator saveAsPhoto(Card card){
+        //This function might have to be Synchronous
+        string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower() + ".png";
+
+        //Change the Card
+        change3DCard(card);
+        //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
+        savedTexture = getFrontOfCard();
+                
+        SaveTextureToFileUtility.SaveTextureToFile(savedTexture as RenderTexture, PathToSave, -1, -1, SaveTextureToFileUtility.SaveTextureFileFormat.PNG,0,false);
+                
+        savedTexture = Resources.Load<Texture>("Assets/Resources/Cards/" + card.title.ToLower() + ".png") as Texture2D;
+
+        yield return savedTexture;
     }
 
 }
