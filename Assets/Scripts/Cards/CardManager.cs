@@ -91,6 +91,7 @@ public class CardManager : MonoBehaviour{
 
             if (!saved){
                 string PathToSave = "Assets/Resources/Cards/" + card.title.ToLower();
+                change3DCard(card);
 
                 //Grab the Texture from the 3DCard and copy it to a new texture for the 2DCard
                 savedTexture = getFrontOfCard();
