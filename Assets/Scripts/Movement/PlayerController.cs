@@ -31,6 +31,7 @@ public class PlayerController : NetworkBehaviour
     public GameObject combatUI;
     //public Animator animator;
     public NetworkAnimator n_animator;
+    public TextMeshProUGUI playerName;
     // Start is called before the first frame update
 
     public GameObject PlayerModel;
@@ -56,6 +57,7 @@ public class PlayerController : NetworkBehaviour
 
         //The player loads in during lobby, hide model and cameras until all players enter game
         PlayerModel.SetActive(false);
+        
     }
 
     void toggleCameraLock(){
@@ -80,15 +82,13 @@ public class PlayerController : NetworkBehaviour
     {
         //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
-            if(PlayerModel.activeSelf == false && isLocalPlayer){
+            if(PlayerModel.activeSelf == false){
                 GameObject.Find("BuildingUI").SetActive(false);
                 GameObject.Find("Building Hotkeys").SetActive(false);
                 GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
-                foreach(GameObject sprite in GameObject.FindGameObjectsWithTag("Sprite")){
-                    sprite.SetActive(true);
-                }
+                playerName.text = GetComponent<PlayerObjectController>().PlayerName;
                 
                 gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
                 rb.useGravity = true;

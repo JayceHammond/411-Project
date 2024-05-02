@@ -17,6 +17,7 @@ TagManager:
   - BuildingUI
   - Rocks
   - Card
+  - Sprite
   layers:
   - Default
   - TransparentFX
