@@ -84,9 +84,7 @@ public class PlayerController : NetworkBehaviour
         //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
             if(PlayerModel.activeSelf == false){
-                GameObject.Find("BuildingUI").SetActive(false);
-                GameObject.Find("Building Hotkeys").SetActive(false);
-                GameObject.Find("DM Camera").SetActive(false);
+
                 SetPosition();
                 PlayerModel.SetActive(true); //Turn on player
                 playerName.text = GetComponent<PlayerObjectController>().PlayerName;
@@ -94,6 +92,9 @@ public class PlayerController : NetworkBehaviour
                 gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
                 rb.useGravity = true;
                 //GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
+                GameObject.Find("BuildingUI").SetActive(false);
+                GameObject.Find("Building Hotkeys").SetActive(false);
+                GameObject.Find("DM Camera").SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
             }
             UpdatedMovement();
@@ -257,6 +258,7 @@ public class PlayerController : NetworkBehaviour
         bool walking;
         bool idle;
 
+        playerName.transform.position = transform.position;
         Vector3 moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
         //moveDirection.y = 0f;
         moveDirection.Normalize();
