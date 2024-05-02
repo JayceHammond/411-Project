@@ -80,10 +80,23 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerModel.activeSelf);
+
         //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
-            if(PlayerModel.activeSelf == false){
+            if(PlayerModel.activeSelf == false && gameObject.name == "LocalGamePlayer"){
+                GameObject.Find("BuildingUI").SetActive(false);
+                GameObject.Find("Building Hotkeys").SetActive(false);
+                GameObject.Find("DM Camera").SetActive(false);
+                SetPosition();
+                PlayerModel.SetActive(true); //Turn on player
+                playerName.text = GetComponent<PlayerObjectController>().PlayerName;
+                
+                gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
+                rb.useGravity = true;
+                //GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            if(PlayerModel.activeSelf == false && gameObject.name == "PlayerObject(Clone)"){
                 GameObject.Find("BuildingUI").SetActive(false);
                 GameObject.Find("Building Hotkeys").SetActive(false);
                 GameObject.Find("DM Camera").SetActive(false);
