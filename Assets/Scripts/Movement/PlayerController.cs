@@ -4,7 +4,6 @@ using Mirror;
 using UnityEngine.SceneManagement;
 using System;
 using TMPro;
-using Mirror.Examples.Basic;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -89,20 +88,7 @@ public class PlayerController : NetworkBehaviour
                 GameObject.Find("Building Hotkeys").SetActive(false);
                 GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
-                PlayerModel.SetActive(true); //Turn on player
-                playerName.text = GetComponent<PlayerObjectController>().PlayerName;
-                
-                gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
-                rb.useGravity = true;
-                //GetComponentInChildren<SpriteBillboard>().GameplayCamera = gameplayCam.GetComponent<Camera>();
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            if(PlayerModel.activeSelf == false && gameObject.name == "PlayerObject(Clone)"){
-                GameObject.Find("BuildingUI").SetActive(false);
-                GameObject.Find("Building Hotkeys").SetActive(false);
-                GameObject.Find("DM Camera").SetActive(false);
-                SetPosition();
-                PlayerModel.SetActive(true); //Turn on player
+                transform.GetChild(1).GetChild(0).gameObject.SetActive(true); //Turn on player
                 playerName.text = GetComponent<PlayerObjectController>().PlayerName;
                 
                 gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
