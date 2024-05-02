@@ -80,6 +80,7 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(PlayerModel.activeSelf);
         //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
             if(PlayerModel.activeSelf == false){
