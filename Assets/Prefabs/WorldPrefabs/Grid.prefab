@@ -53,6 +53,8 @@ MonoBehaviour:
   <Height>k__BackingField: 5
   <HexSize>k__BackingField: 5
   <HexPrefab>k__BackingField: {fileID: 0}
+  activeCam: {fileID: 0}
+  maxDistance: 30
 --- !u!33 &6030019527013369132
 MeshFilter:
   m_ObjectHideFlags: 0
