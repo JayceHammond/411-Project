@@ -39,7 +39,8 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-       
+       cameras.SetActive(true);
+       PlayerModel.SetActive(false);
     }
     void Start()
     {
@@ -56,7 +57,7 @@ public class PlayerController : NetworkBehaviour
         cameraTransform = Camera.main.transform;
 
         //The player loads in during lobby, hide model and cameras until all players enter game
-        PlayerModel.SetActive(false);
+        
         
     }
 
@@ -88,7 +89,6 @@ public class PlayerController : NetworkBehaviour
                 GameObject.Find("Building Hotkeys").SetActive(false);
                 GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
-                cameras.SetActive(true);
                 PlayerModel.SetActive(true); //Turn on player
                 playerName.text = GetComponent<PlayerObjectController>().PlayerName;
                 
