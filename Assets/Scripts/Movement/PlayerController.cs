@@ -83,12 +83,12 @@ public class PlayerController : NetworkBehaviour
 
         //Check if we are in Multiplayer Scene
         if(SceneManager.GetActiveScene().name == "MultiplayerTest" && SceneManager.GetSceneByName("MainMenu").IsValid() == false){
-            if(PlayerModel.activeSelf == false && gameObject.name == "LocalGamePlayer"){
+            if(PlayerModel.activeSelf == false){
                 GameObject.Find("BuildingUI").SetActive(false);
                 GameObject.Find("Building Hotkeys").SetActive(false);
                 GameObject.Find("DM Camera").SetActive(false);
                 SetPosition();
-                transform.GetChild(1).GetChild(0).gameObject.SetActive(true); //Turn on player
+                PlayerModel.SetActive(true); //Turn on player
                 playerName.text = GetComponent<PlayerObjectController>().PlayerName;
                 
                 gameplayCam.GetComponent<DiceController>().displayTextOBJ = GameObject.Find("RollText").GetComponent<TextMeshProUGUI>();
